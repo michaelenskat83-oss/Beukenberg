@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Bäckerei">
+    <meta name="application-name" content="Bäckerei">
+    <title>Bäckerei Rezeptrechner</title>
+    
+    <!-- App Icon / Favicon -->
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <link rel="apple-touch-icon" href="data:image/png;base64,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">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0D0221;
+            min-height: 100vh;
+            color: #F0E6FF;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212,175,55,0.3);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .menu-btn {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212,175,55,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #F0E6FF;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .menu-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-color: rgba(212,175,55,0.6);
+        }
+
+        .menu-btn .emoji {
+            font-size: 28px;
+        }
+
+        .screen {
+            display: none;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            color: #0D0221;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .back-btn:active {
+            opacity: 0.8;
+        }
+
+        .recipe-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .recipe-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,55,0.4);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #F0E6FF;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .recipe-btn:active {
+            background: rgba(212,175,55,0.1);
+            border-color: rgba(212,175,55,0.8);
+        }
+
+        .calculator {
+            margin-top: 20px;
+        }
+
+        .slider-container {
+            margin: 20px 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        .slider-value {
+            font-size: 20px;
+            color: #F0E6FF;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.15);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(212,175,55,0.5);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(212,175,55,0.5);
+        }
+
+        .ingredients-table {
+            margin: 20px 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .ingredients-table th,
+        .ingredients-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .ingredients-table th {
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            color: #0D0221;
+            font-weight: 700;
+        }
+
+        .total-row {
+            font-weight: 700;
+            background: rgba(212,175,55,0.08);
+            font-size: 18px;
+            color: #D4AF37;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            color: #0D0221;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .action-btn:active {
+            opacity: 0.8;
+        }
+
+        .action-btn.secondary {
+            background: rgba(190,149,196,0.15);
+            color: #BE95C4;
+            border: 1px solid rgba(190,149,196,0.4);
+        }
+
+        .action-btn.danger {
+            background: rgba(231,76,60,0.15);
+            color: #e74c3c;
+            border: 1px solid rgba(231,76,60,0.4);
+        }
+
+        .action-btn.success {
+            background: rgba(39,174,96,0.15);
+            color: #27ae60;
+            border: 1px solid rgba(39,174,96,0.4);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .popup.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background: rgba(18,1,41,0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(212,175,55,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+        }
+
+        .popup-content h2 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .popup-content p {
+            margin-bottom: 20px;
+            color: #BE95C4;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .popup-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255,255,255,0.05);
+            color: #F0E6FF;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: rgba(212,175,55,0.6);
+        }
+
+        .form-group select option {
+            background: #120129;
+            color: #F0E6FF;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .delete-ingredient-btn {
+            background: rgba(231,76,60,0.2);
+            color: #e74c3c;
+            border: 1px solid rgba(231,76,60,0.4);
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .daily-plan-item {
+            background: rgba(255,255,255,0.04);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .daily-plan-item h4 {
+            color: #D4AF37;
+            margin-bottom: 5px;
+        }
+
+        .daily-plan-item p {
+            font-size: 14px;
+            color: #BE95C4;
+        }
+
+        .success-animation {
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            color: #0D0221;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .recipe-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .recipe-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9E7BB5;
+        }
+
+        .empty-state .emoji {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            font-weight: 600;
+            color: #BE95C4;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            color: #0D0221;
+            border-color: transparent;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-input-label {
+            display: block;
+            background: rgba(190,149,196,0.15);
+            color: #BE95C4;
+            border: 1px solid rgba(190,149,196,0.4);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            background: rgba(255,255,255,0.05);
+            color: #F0E6FF;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input[type="text"]::placeholder, input[type="number"]::placeholder {
+            color: #9E7BB5;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: rgba(212,175,55,0.6);
+        }
+
+        h2, h3 {
+            color: #D4AF37;
+        }
+
+        small {
+            color: #BE95C4 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PIN Lock Screen -->
+        <div id="pin-lock-screen" class="screen" style="display: none;">
+            <div style="text-align: center; padding: 40px 20px;">
+                <div style="font-size: 60px; margin-bottom: 20px;">🔒</div>
+                <h2 style="color: #D4AF37; margin-bottom: 30px;" id="pin-title">PIN einrichten</h2>
+                
+                <div id="pin-warning" style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4); border-radius: 15px; padding: 25px; margin-bottom: 30px; text-align: left;">
+                    <h3 style="color: #D4AF37; margin-bottom: 15px;">⚠️ WICHTIG - Firmenrezepte</h3>
+                    <p style="margin-bottom: 10px; line-height: 1.6;">Diese Rezepte sind <strong>Eigentum der Bäckerei</strong>.</p>
+                    <p style="margin-bottom: 10px; line-height: 1.6;">Die Weitergabe an Dritte ist <strong>vertraglich untersagt</strong> und kann rechtliche Folgen haben.</p>
+                    <p style="margin-bottom: 0; line-height: 1.6; color: #e74c3c; font-weight: 600;">Bei Verstößen drohen arbeitsrechtliche und zivilrechtliche Konsequenzen.</p>
+                </div>
+                
+                <div id="pin-setup-form">
+                    <p id="pin-instruction" style="margin-bottom: 20px; font-size: 16px;">Lege eine 4-stellige PIN fest:</p>
+                    <input 
+                        type="number" 
+                        id="pin-input" 
+                        maxlength="4" 
+                        pattern="[0-9]*" 
+                        inputmode="numeric"
+                        placeholder="0000"
+                        style="width: 200px; padding: 20px; font-size: 32px; text-align: center; border: 2px solid #D4AF37; border-radius: 15px; letter-spacing: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.05); color: #F0E6FF;"
+                        oninput="if(this.value.length > 4) this.value = this.value.slice(0,4)"
+                    >
+                    <br>
+                    <button onclick="handlePinSubmit()" class="action-btn success" style="min-width: 200px; font-size: 18px;">
+                        ✓ Bestätigen
+                    </button>
+                    <p id="pin-error" style="color: #e74c3c; margin-top: 15px; display: none; font-weight: 600;"></p>
+                </div>
+            </div>
+        </div>
+        
+        <header>
+            <h1>🥖 Bäckerei Rezeptrechner</h1>
+        </header>
+
+        <!-- Hauptmenü -->
+        <div id="main-menu" class="screen active">
+            <div class="menu-grid">
+                <button class="menu-btn" onclick="showCategory('Brot')">
+                    <span class="emoji">🍞</span>
+                    Brot
+                </button>
+                <button class="menu-btn" onclick="showCategory('Brötchen')">
+                    <span class="emoji">🥖</span>
+                    Brötchen
+                </button>
+                <button class="menu-btn" onclick="showCategory('Plunder')">
+                    <span class="emoji">🥐</span>
+                    Plunder
+                </button>
+                <button class="menu-btn" onclick="showCategory('Kuchen')">
+                    <span class="emoji">🧁</span>
+                    Kuchen
+                </button>
+                <button class="menu-btn" onclick="showCategory('Spezial')">
+                    <span class="emoji">⭐</span>
+                    Spezial
+                </button>
+                <button class="menu-btn" onclick="showCategory('Vorteig')">
+                    <span class="emoji">🧪</span>
+                    Vorteig
+                </button>
+                <button class="menu-btn" onclick="showBrotTracker()" style="grid-column: 1 / -1; background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.5);">
+                    <span class="emoji">📋</span>
+                    Brot Tracker
+                </button>
+            </div>
+        </div>
+
+        <!-- Kategorie-Ansicht -->
+        <div id="category-screen" class="screen">
+            <button class="back-btn" onclick="showMainMenu()">← Zurück</button>
+            <div class="category-header" id="category-title"></div>
+            <div id="recipe-list" class="recipe-list"></div>
+        </div>
+
+        <!-- Rechner-Ansicht -->
+        <div id="calculator-screen" class="screen">
+            <button class="back-btn" onclick="backToCategory()">← Zurück</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 id="recipe-title" style="color: #D4AF37; margin: 0;"></h2>
+                <span id="recipe-ta" style="color: #D4AF37; font-size: 18px; font-weight: 600;"></span>
+            </div>
+            
+            <!-- Standard Slider -->
+            <div id="standard-slider-container" class="slider-container">
+                <div class="slider-label">
+                    <span id="slider-label-text">Anzahl:</span>
+                    <span class="slider-value" id="slider-value">1</span>
+                </div>
+                <input type="range" id="amount-slider" min="1" max="10" value="1" oninput="updateCalculation()">
+            </div>
+
+            <!-- Multi-Variant Sliders -->
+            <div id="multi-variant-container" style="display: none;">
+                <div id="multi-variant-sliders"></div>
+            </div>
+
+            <table class="ingredients-table">
+                <thead>
+                    <tr>
+                        <th>Zutat</th>
+                        <th>Menge (kg)</th>
+                    </tr>
+                </thead>
+                <tbody id="ingredients-body"></tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td>Gesamt</td>
+                        <td id="total-weight">0.00 kg</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+
+        <!-- Brot Tracker -->
+        <div id="brot-tracker-screen" class="screen">
+            <button class="back-btn" onclick="showMainMenu()">← Zurück</button>
+            <h2 style="color: #D4AF37; margin-bottom: 5px;">📋 Brot Tracker</h2>
+            <p id="tracker-date" style="color: #BE95C4; margin-bottom: 20px; font-size: 14px;"></p>
+            <div id="tracker-list"></div>
+            <button onclick="shareBrotTracker()" style="margin-top: 20px; background: #25D366; border: none; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(37,211,102,0.4); margin-left: auto; margin-right: auto;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#fff">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div id="success-popup" class="popup">
+        <div class="popup-content success-animation">
+            <h2>✅ Erfolgreich!</h2>
+            <p id="success-message"></p>
+        </div>
+    </div>
+
+    <!-- Confirm Popup -->
+    <div id="confirm-popup" class="popup">
+        <div class="popup-content">
+            <h2 id="confirm-title">Bestätigung</h2>
+            <p id="confirm-message"></p>
+            <div class="popup-buttons">
+                <button style="background: rgba(190,149,196,0.2); color: #BE95C4; border: 1px solid rgba(190,149,196,0.4);" onclick="closeConfirmPopup()">Abbrechen</button>
+                <button style="background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid rgba(231,76,60,0.4);" id="confirm-action-btn">Bestätigen</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Globale Variablen
+        let recipes = [];
+        let currentCategory = '';
+        let currentRecipe = null;
+        
+        // PIN Management
+        const PIN_STORAGE_KEY = 'bakery_pin';
+        const PIN_LAST_CHECK_KEY = 'bakery_pin_last_check';
+        const PIN_CHECK_INTERVAL = 6 * 30 * 24 * 60 * 60 * 1000; // 6 Monate in Millisekunden
+        
+        function checkPinRequired() {
+            const storedPin = localStorage.getItem(PIN_STORAGE_KEY);
+            const lastCheck = localStorage.getItem(PIN_LAST_CHECK_KEY);
+            
+            if (!storedPin) {
+                // Erste Nutzung - PIN einrichten
+                showPinSetup();
+                return true;
+            }
+            
+            if (lastCheck) {
+                const timeSinceCheck = Date.now() - parseInt(lastCheck);
+                if (timeSinceCheck >= PIN_CHECK_INTERVAL) {
+                    // 6 Monate vorbei - PIN erneut abfragen
+                    showPinVerification();
+                    return true;
+                }
+            }
+            
+            // PIN noch gültig
+            return false;
+        }
+        
+        function showPinSetup() {
+            document.getElementById('pin-title').textContent = 'PIN einrichten';
+            document.getElementById('pin-instruction').textContent = 'Lege eine 4-stellige PIN fest:';
+            document.getElementById('pin-warning').style.display = 'block';
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-error').style.display = 'none';
+            
+            document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
+            document.getElementById('pin-lock-screen').style.display = 'block';
+            setTimeout(() => document.getElementById('pin-input').focus(), 100);
+        }
+        
+        function showPinVerification() {
+            document.getElementById('pin-title').textContent = 'PIN eingeben';
+            document.getElementById('pin-instruction').textContent = 'Gib deine PIN ein:';
+            document.getElementById('pin-warning').style.display = 'none';
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-error').style.display = 'none';
+            
+            document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
+            document.getElementById('pin-lock-screen').style.display = 'block';
+            setTimeout(() => document.getElementById('pin-input').focus(), 100);
+        }
+        
+        function handlePinSubmit() {
+            const input = document.getElementById('pin-input').value.trim();
+            const errorEl = document.getElementById('pin-error');
+            
+            // Check if exactly 4 digits
+            if (input.length !== 4) {
+                errorEl.textContent = 'PIN muss genau 4 Ziffern haben (aktuell: ' + input.length + ')';
+                errorEl.style.display = 'block';
+                return;
+            }
+            
+            if (!/^\d{4}$/.test(input)) {
+                errorEl.textContent = 'PIN darf nur Zahlen enthalten';
+                errorEl.style.display = 'block';
+                return;
+            }
+            
+            const storedPin = localStorage.getItem(PIN_STORAGE_KEY);
+            
+            if (!storedPin) {
+                // PIN einrichten
+                localStorage.setItem(PIN_STORAGE_KEY, input);
+                localStorage.setItem(PIN_LAST_CHECK_KEY, Date.now().toString());
+                unlockApp();
+            } else {
+                // PIN überprüfen
+                if (input === storedPin) {
+                    localStorage.setItem(PIN_LAST_CHECK_KEY, Date.now().toString());
+                    unlockApp();
+                } else {
+                    errorEl.textContent = 'Falsche PIN!';
+                    errorEl.style.display = 'block';
+                    document.getElementById('pin-input').value = '';
+                    setTimeout(() => document.getElementById('pin-input').focus(), 100);
+                }
+            }
+        }
+        
+        function unlockApp() {
+            document.getElementById('pin-lock-screen').style.display = 'none';
+            
+            // Load data after unlock
+            loadData();
+            if (recipes.length === 0) {
+                loadDefaultRecipes();
+            }
+            
+            // Show main menu
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('main-menu').classList.add('active');
+        }
+        
+
+        // Initialisierung
+        function init() {
+            // Check PIN first - blocks everything else
+            if (checkPinRequired()) {
+                return; // Stop here until PIN is entered
+            }
+            
+            loadData();
+            if (recipes.length === 0) {
+                loadDefaultRecipes();
+            }
+            
+            // Migration: Rename Semmel to Brötchen
+            const semmelIndex = recipes.findIndex(r => r.name === 'Semmel');
+            if (semmelIndex !== -1) {
+                recipes[semmelIndex].name = 'Brötchen';
+                saveData();
+            }
+            
+            // Migration: Update Brötchen max to 1600 and step to 100
+            const broetchenIndex = recipes.findIndex(r => r.name === 'Brötchen');
+            if (broetchenIndex !== -1) {
+                if (recipes[broetchenIndex].max !== 1600) {
+                    recipes[broetchenIndex].max = 1600;
+                    recipes[broetchenIndex].step = 100;
+                    saveData();
+                }
+            }
+            
+            // Migration: Add Platzteig if missing
+            const hasPlatzteig = recipes.some(r => r.name === 'Platzteig');
+            if (!hasPlatzteig) {
+                recipes.push({
+                    id: Date.now() + 17,
+                    name: 'Platzteig',
+                    category: 'Spezial',
+                    unit: 'Multi',
+                    max: 100,
+                    isMultiVariant: true,
+                    baseWeight: 70,
+                    ingredients: [
+                        { name: 'WM 550', amount: 37.72 },
+                        { name: 'Wasser', amount: 15.54 },
+                        { name: 'Hefe', amount: 3.32 },
+                        { name: 'Eier', amount: 1.51 },
+                        { name: 'Salz', amount: 0.60 },
+                        { name: 'UniversalBackcreme', amount: 9.05 },
+                        { name: 'Zucker', amount: 2.26 }
+                    ],
+                    variants: [
+                        { 
+                            name: 'Hagelzucker',
+                            percentage: 5,
+                            weights: [0.6, 0.85, 2.1]
+                        },
+                        { 
+                            name: 'Rosinen',
+                            percentage: 18,
+                            weights: [0.6, 0.85, 2.4]
+                        }
+                    ]
+                });
+                saveData();
+            } else {
+                // Migration: Update Platzteig Rosinen weight from 2.1 to 2.4
+                const platzteigIndex = recipes.findIndex(r => r.name === 'Platzteig');
+                if (platzteigIndex !== -1 && recipes[platzteigIndex].isMultiVariant) {
+                    const rosinenVariant = recipes[platzteigIndex].variants?.find(v => v.name === 'Rosinen');
+                    if (rosinenVariant && rosinenVariant.weights && rosinenVariant.weights[2] === 2.1) {
+                        rosinenVariant.weights[2] = 2.4;
+                        saveData();
+                    }
+                }
+            }
+            
+            // Migration: Add Mehrkorn if missing
+            const hasMehrkorn = recipes.some(r => r.name === 'Mehrkorn');
+            if (!hasMehrkorn) {
+                recipes.push({
+                    id: Date.now() + 18,
+                    name: 'Mehrkorn',
+                    category: 'Brot',
+                    unit: 'Multi',
+                    max: 150,
+                    isMultiVariant: true,
+                    baseWeight: 154.05,
+                    hasPremix: true,
+                    premix: {
+                        name: 'Mehrkorn-Mischung',
+                        ingredients: [
+                            { name: 'Mehrkorn', amount: 30 },
+                            { name: 'Wasser', amount: 20 }
+                        ],
+                        total: 50
+                    },
+                    ingredients: [
+                        { name: 'Weizenvollkorn', amount: 38 },
+                        { name: 'RM 1150', amount: 18 },
+                        { name: 'Sauerteig', amount: 7.5 },
+                        { name: 'Wasser', amount: 30 },
+                        { name: 'Salz', amount: 1.25 },
+                        { name: 'BAS-T', amount: 0.8 },
+                        { name: 'Staback', amount: 1 },
+                        { name: 'FrischeProfi', amount: 1 },
+                        { name: 'Extend Natural', amount: 1.5 },
+                        { name: 'Hefe', amount: 5 }
+                    ],
+                    variants: [
+                        { 
+                            name: 'Normal',
+                            percentage: 0,
+                            weights: [0.85, 3.0]
+                        },
+                        { 
+                            name: 'Möhren',
+                            percentage: 6.25,
+                            weights: [0.8]
+                        }
+                    ]
+                });
+                saveData();
+            }
+            
+            // Migration: Add Milchbrötchen if missing
+            const hasMilchbroetchen = recipes.some(r => r.name === 'Milchbrötchen');
+            if (!hasMilchbroetchen) {
+                recipes.push({
+                    id: Date.now() + 100,
+                    name: 'Milchbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Multi',
+                    max: 50,
+                    isMultiVariant: true,
+                    isTrayBased: true,
+                    baseWeight: 25.2,
+                    ingredients: [
+                        { name: 'Wasser', amount: 5.92 },
+                        { name: 'WM 550', amount: 14.03 },
+                        { name: 'UniversalBackcreme', amount: 0.33 },
+                        { name: 'Salz', amount: 0.21 },
+                        { name: 'Fett', amount: 0.94 },
+                        { name: 'Milchpulver', amount: 0.54 },
+                        { name: 'Zucker', amount: 1.6 },
+                        { name: 'Hefe', amount: 0.82 },
+                        { name: 'Eier', amount: 0.82 }
+                    ],
+                    variants: [
+                        { name: 'Ohne', perTray: 30, pieceWeight: 0.07, percentage: 0, weights: [1] },
+                        { name: 'Rosinen', perTray: 30, pieceWeight: 0.08, percentage: 20, weights: [1] },
+                        { name: 'Schokolade', perTray: 30, pieceWeight: 0.08, percentage: 9.09, weights: [1] },
+                        { name: 'Hörnchen', perTray: 20, pieceWeight: 0.09, percentage: 0, weights: [1] },
+                        { name: 'Vanillestangen', perTray: 20, pieceWeight: 0.07, percentage: 0, weights: [1] },
+                        { name: 'Cremeballen', perTray: 20, pieceWeight: 0.07, percentage: 0, weights: [1] }
+                    ]
+                });
+                saveData();
+            }
+            
+            // Migration: Update old Bauernbrot to new Bauern recipe
+            const bauernIndex = recipes.findIndex(r => r.name === 'Bauernbrot' || r.name === 'Bauern');
+            if (bauernIndex !== -1) {
+                recipes[bauernIndex] = {
+                    ...recipes[bauernIndex],
+                    name: 'Bauern',
+                    unitWeight: 2.0,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.94 },
+                        { name: 'RM 1150', amount: 0.20 },
+                        { name: 'Salz', amount: 0.025 },
+                        { name: 'Staback CL', amount: 0.025 },
+                        { name: 'FrischeProfi', amount: 0.012 },
+                        { name: 'Extend Natural', amount: 0.018 },
+                        { name: 'Fett', amount: 0.030 },
+                        { name: 'Hefe', amount: 0.060 },
+                        { name: 'Wasser', amount: 0.69 }
+                    ]
+                };
+                saveData();
+            }
+            
+        }
+
+        // Standard-Rezepte laden
+        function loadDefaultRecipes() {
+            recipes = [
+                {
+                    id: Date.now() + 1,
+                    name: 'Bauern',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 2.0,
+                    max: 100,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.94 },
+                        { name: 'RM 1150', amount: 0.20 },
+                        { name: 'Salz', amount: 0.025 },
+                        { name: 'Staback CL', amount: 0.025 },
+                        { name: 'FrischeProfi', amount: 0.012 },
+                        { name: 'Extend Natural', amount: 0.018 },
+                        { name: 'Fett', amount: 0.030 },
+                        { name: 'Hefe', amount: 0.060 },
+                        { name: 'Wasser', amount: 0.69 }
+                    ]
+                },
+                {
+                    id: Date.now() + 2,
+                    name: 'Weizenbrot',
+                    category: 'Brot',
+                    unit: 'Kästen',
+                    unitWeight: 1.0,
+                    max: 150,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Wasser', amount: 0.6 },
+                        { name: 'Salz', amount: 0.02 },
+                        { name: 'Hefe', amount: 0.015 },
+                        { name: 'Zucker', amount: 0.01 }
+                    ]
+                },
+                {
+                    id: Date.now() + 3,
+                    name: 'Roggen-Sauerteigbrot',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 1.0,
+                    max: 100,
+                    ingredients: [
+                        { name: 'RM 1150', amount: 0.8 },
+                        { name: 'WM 550', amount: 0.2 },
+                        { name: 'Sauerteig', amount: 0.3 },
+                        { name: 'Wasser', amount: 0.55 },
+                        { name: 'Salz', amount: 0.025 }
+                    ]
+                },
+                {
+                    id: Date.now() + 4,
+                    name: 'Brötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.06,
+                    max: 1600,
+                    step: 100,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Wasser', amount: 0.55 },
+                        { name: 'Salz', amount: 0.02 },
+                        { name: 'Hefe', amount: 0.02 },
+                        { name: 'Backmalz', amount: 0.005 }
+                    ]
+                },
+                {
+                    id: Date.now() + 5,
+                    name: 'Körnerbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.07,
+                    max: 500,
+                    ingredients: [
+                        { name: 'WM 1050', amount: 0.7 },
+                        { name: 'Vollkornmehl', amount: 0.3 },
+                        { name: 'Wasser', amount: 0.6 },
+                        { name: 'Salz', amount: 0.02 },
+                        { name: 'Hefe', amount: 0.015 }
+                    ]
+                },
+                {
+                    id: Date.now() + 6,
+                    name: 'Laugenbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.08,
+                    max: 500,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Wasser', amount: 0.5 },
+                        { name: 'Salz', amount: 0.02 },
+                        { name: 'Hefe', amount: 0.02 },
+                        { name: 'Butter', amount: 0.05 }
+                    ]
+                },
+                {
+                    id: Date.now() + 7,
+                    name: 'Plunderteig Grundrezept',
+                    category: 'Plunder',
+                    unit: 'Bleche',
+                    unitWeight: 1.0,
+                    max: 50,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Milch', amount: 0.4 },
+                        { name: 'Butter', amount: 0.5 },
+                        { name: 'Zucker', amount: 0.15 },
+                        { name: 'Eier', amount: 0.15 },
+                        { name: 'Hefe', amount: 0.025 },
+                        { name: 'Salz', amount: 0.015 }
+                    ]
+                },
+                {
+                    id: Date.now() + 8,
+                    name: 'Rosinenschnecken',
+                    category: 'Plunder',
+                    unit: 'Stück',
+                    unitWeight: 0.1,
+                    max: 400,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Milch', amount: 0.4 },
+                        { name: 'Butter', amount: 0.35 },
+                        { name: 'Zucker', amount: 0.2 },
+                        { name: 'Rosinen', amount: 0.25 },
+                        { name: 'Eier', amount: 0.1 },
+                        { name: 'Hefe', amount: 0.02 }
+                    ]
+                },
+                {
+                    id: Date.now() + 9,
+                    name: 'Nussschnecken',
+                    category: 'Plunder',
+                    unit: 'Stück',
+                    unitWeight: 0.12,
+                    max: 400,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Milch', amount: 0.4 },
+                        { name: 'Butter', amount: 0.4 },
+                        { name: 'Zucker', amount: 0.25 },
+                        { name: 'Nüsse', amount: 0.3 },
+                        { name: 'Eier', amount: 0.1 },
+                        { name: 'Hefe', amount: 0.02 }
+                    ]
+                },
+                {
+                    id: Date.now() + 10,
+                    name: 'Rührkuchen',
+                    category: 'Kuchen',
+                    unit: 'Bleche',
+                    unitWeight: 1.5,
+                    max: 50,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.5 },
+                        { name: 'Zucker', amount: 0.4 },
+                        { name: 'Butter', amount: 0.35 },
+                        { name: 'Eier', amount: 0.35 },
+                        { name: 'Milch', amount: 0.2 }
+                    ]
+                },
+                {
+                    id: Date.now() + 11,
+                    name: 'Marmorkuchen',
+                    category: 'Kuchen',
+                    unit: 'Kästen',
+                    unitWeight: 1.2,
+                    max: 100,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.5 },
+                        { name: 'Zucker', amount: 0.4 },
+                        { name: 'Butter', amount: 0.35 },
+                        { name: 'Eier', amount: 0.35 },
+                        { name: 'Milch', amount: 0.2 },
+                        { name: 'Schokolade', amount: 0.08 }
+                    ]
+                },
+                {
+                    id: Date.now() + 12,
+                    name: 'Obstkuchen',
+                    category: 'Kuchen',
+                    unit: 'Bleche',
+                    unitWeight: 1.5,
+                    max: 50,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.6 },
+                        { name: 'Zucker', amount: 0.3 },
+                        { name: 'Butter', amount: 0.25 },
+                        { name: 'Eier', amount: 0.2 },
+                        { name: 'Milch', amount: 0.15 }
+                    ]
+                },
+                {
+                    id: Date.now() + 13,
+                    name: 'Dinkel-Vollkornbrot',
+                    category: 'Spezial',
+                    unit: 'Brote',
+                    unitWeight: 1.0,
+                    max: 100,
+                    ingredients: [
+                        { name: 'DM630', amount: 0.5 },
+                        { name: 'Vollkornmehl', amount: 0.5 },
+                        { name: 'Wasser', amount: 0.7 },
+                        { name: 'Salz', amount: 0.025 },
+                        { name: 'Hefe', amount: 0.015 },
+                        { name: 'Gewürze', amount: 0.01 }
+                    ]
+                },
+                {
+                    id: Date.now() + 14,
+                    name: 'Ciabatta',
+                    category: 'Spezial',
+                    unit: 'Stück',
+                    unitWeight: 0.25,
+                    max: 300,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Wasser', amount: 0.75 },
+                        { name: 'Salz', amount: 0.02 },
+                        { name: 'Hefe', amount: 0.01 },
+                        { name: 'Öl', amount: 0.03 }
+                    ]
+                },
+                {
+                    id: Date.now() + 15,
+                    name: 'Roggensauer',
+                    category: 'Vorteig',
+                    unit: 'Kästen',
+                    unitWeight: 2.0,
+                    max: 20,
+                    ingredients: [
+                        { name: 'RM 1150', amount: 1.0 },
+                        { name: 'Wasser', amount: 1.0 },
+                        { name: 'Sauerteig', amount: 0.1 }
+                    ]
+                },
+                {
+                    id: Date.now() + 16,
+                    name: 'Weizenpoolish',
+                    category: 'Vorteig',
+                    unit: 'Kästen',
+                    unitWeight: 2.0,
+                    max: 20,
+                    ingredients: [
+                        { name: 'WM 550', amount: 1.0 },
+                        { name: 'Wasser', amount: 1.0 },
+                        { name: 'Hefe', amount: 0.005 }
+                    ]
+                },
+                {
+                    id: Date.now() + 17,
+                    name: 'Platzteig',
+                    category: 'Spezial',
+                    unit: 'Multi',
+                    max: 100,
+                    isMultiVariant: true,
+                    baseWeight: 70,
+                    ingredients: [
+                        { name: 'WM 550', amount: 37.72 },
+                        { name: 'Wasser', amount: 15.54 },
+                        { name: 'Hefe', amount: 3.32 },
+                        { name: 'Eier', amount: 1.51 },
+                        { name: 'Salz', amount: 0.60 },
+                        { name: 'UniversalBackcreme', amount: 9.05 },
+                        { name: 'Zucker', amount: 2.26 }
+                    ],
+                    variants: [
+                        { 
+                            name: 'Hagelzucker',
+                            percentage: 5,
+                            weights: [0.6, 0.85, 2.1]
+                        },
+                        { 
+                            name: 'Rosinen',
+                            percentage: 18,
+                            weights: [0.6, 0.85, 2.4]
+                        }
+                    ]
+                },
+                {
+                    id: Date.now() + 18,
+                    name: 'Mehrkorn',
+                    category: 'Brot',
+                    unit: 'Multi',
+                    max: 150,
+                    isMultiVariant: true,
+                    baseWeight: 154.05,
+                    hasPremix: true,
+                    premix: {
+                        name: 'Mehrkorn-Mischung',
+                        ingredients: [
+                            { name: 'Mehrkorn', amount: 30 },
+                            { name: 'Wasser', amount: 20 }
+                        ],
+                        total: 50
+                    },
+                    ingredients: [
+                        { name: 'Weizenvollkorn', amount: 38 },
+                        { name: 'RM 1150', amount: 18 },
+                        { name: 'Sauerteig', amount: 7.5 },
+                        { name: 'Wasser', amount: 30 },
+                        { name: 'Salz', amount: 1.25 },
+                        { name: 'BAS-T', amount: 0.8 },
+                        { name: 'Staback', amount: 1 },
+                        { name: 'FrischeProfi', amount: 1 },
+                        { name: 'Extend Natural', amount: 1.5 },
+                        { name: 'Hefe', amount: 5 }
+                    ],
+                    variants: [
+                        { 
+                            name: 'Normal',
+                            percentage: 0,
+                            weights: [0.85, 3.0]
+                        },
+                        { 
+                            name: 'Möhren',
+                            percentage: 6.25,
+                            weights: [0.8]
+                        }
+                    ]
+                },
+                {
+                    id: Date.now() + 100,
+                    name: 'Milchbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Multi',
+                    max: 50,
+                    isMultiVariant: true,
+                    isTrayBased: true, // Special flag for tray-based calculation
+                    baseWeight: 25.2, // 25.2 kg Teig from recipe
+                    ingredients: [
+                        { name: 'Wasser', amount: 5.92 },
+                        { name: 'WM 550', amount: 14.03 },
+                        { name: 'UniversalBackcreme', amount: 0.33 },
+                        { name: 'Salz', amount: 0.21 },
+                        { name: 'Fett', amount: 0.94 },
+                        { name: 'Milchpulver', amount: 0.54 },
+                        { name: 'Zucker', amount: 1.6 },
+                        { name: 'Hefe', amount: 0.82 },
+                        { name: 'Eier', amount: 0.82 }
+                    ],
+                    variants: [
+                        { 
+                            name: 'Ohne',
+                            perTray: 30,
+                            pieceWeight: 0.07, // 70g in kg
+                            percentage: 0,
+                            weights: [1] // Just one "size" - trays
+                        },
+                        { 
+                            name: 'Rosinen',
+                            perTray: 30,
+                            pieceWeight: 0.08, // 80g in kg
+                            percentage: 20, // 0.4kg Rosinen / 2kg Teig = 20%
+                            weights: [1]
+                        },
+                        { 
+                            name: 'Schokolade',
+                            perTray: 30,
+                            pieceWeight: 0.08, // 80g in kg
+                            percentage: 9.09, // 0.2kg Schoko / 2.2kg Teig ≈ 9.09%
+                            weights: [1]
+                        },
+                        { 
+                            name: 'Hörnchen',
+                            perTray: 20,
+                            pieceWeight: 0.09, // 90g in kg
+                            percentage: 0,
+                            weights: [1]
+                        },
+                        { 
+                            name: 'Vanillestangen',
+                            perTray: 20,
+                            pieceWeight: 0.07, // 70g in kg
+                            percentage: 0,
+                            weights: [1]
+                        },
+                        { 
+                            name: 'Cremeballen',
+                            perTray: 20,
+                            pieceWeight: 0.07, // 70g in kg
+                            percentage: 0,
+                            weights: [1]
+                        }
+                    ]
+                }
+            ];
+            saveData();
+        }
+        // Daten laden
+        function loadData() {
+            try {
+                const storedRecipes = localStorage.getItem('bakery_recipes');
+                if (storedRecipes) recipes = JSON.parse(storedRecipes);
+            } catch (e) {
+                console.error('Fehler beim Laden der Daten:', e);
+            }
+        }
+
+        // Daten speichern
+        function saveData() {
+            try {
+                localStorage.setItem('bakery_recipes', JSON.stringify(recipes));
+            } catch (e) {
+                console.error('Fehler beim Speichern der Daten:', e);
+            }
+        }
+
+        // Navigation
+        function showMainMenu() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('main-menu').classList.add('active');
+        }
+
+        // Brot Tracker
+        const TRACKER_VARIANTS = {
+            'Mehrkorn': [
+                { key: 'mk-850',   label: 'Mehrkorn 850g'  },
+                { key: 'mk-3000',  label: 'Mehrkorn 3000g' },
+                { key: 'mk-moehre', label: 'Möhre'         },
+            ],
+            'Platzteig': [
+                { key: 'pl-hag-600',  label: 'Hagelzucker 600g'  },
+                { key: 'pl-hag-850',  label: 'Hagelzucker 850g'  },
+                { key: 'pl-hag-2100', label: 'Hagelzucker 2100g' },
+                { key: 'pl-ros-600',  label: 'Rosine 600g'       },
+                { key: 'pl-ros-850',  label: 'Rosine 850g'       },
+                { key: 'pl-ros-2400', label: 'Rosine 2400g'      },
+            ]
+        };
+
+        const INPUT_STYLE = 'width:75px;padding:8px;border:1px solid rgba(212,175,55,0.4);border-radius:8px;background:rgba(255,255,255,0.05);color:#F0E6FF;font-size:16px;text-align:center;font-family:\'Poppins\',sans-serif;';
+        const ROW_STYLE   = 'display:flex;align-items:center;justify-content:space-between;padding:12px 15px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:8px;';
+        const SUB_ROW_STYLE = 'display:flex;align-items:center;justify-content:space-between;padding:10px 15px 10px 30px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:6px;';
+
+        function _trackerRow(id, label, unit, sub) {
+            const style = sub ? SUB_ROW_STYLE : ROW_STYLE;
+            const labelStyle = sub
+                ? 'flex:1;color:#BE95C4;font-size:14px;'
+                : 'flex:1;font-weight:600;';
+            return `<div style="${style}">
+                <span style="${labelStyle}">${label}</span>
+                <span style="color:#BE95C4;font-size:13px;margin-right:10px;">${unit}</span>
+                <input type="number" inputmode="numeric" min="0" value="0" id="${id}" style="${INPUT_STYLE}">
+            </div>`;
+        }
+
+        function showBrotTracker() {
+            const trackerCategories = ['Brot', 'Brötchen', 'Plunder', 'Kuchen', 'Spezial'];
+            const today = new Date();
+            document.getElementById('tracker-date').textContent =
+                today.toLocaleDateString('de-DE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            const container = document.getElementById('tracker-list');
+            let html = '';
+
+            trackerCategories.forEach(cat => {
+                const catRecipes = recipes.filter(r => r.category === cat);
+                if (catRecipes.length === 0) return;
+
+                html += `<div style="margin-bottom: 20px;">
+                    <div class="category-header">${cat}</div>`;
+
+                catRecipes.forEach(recipe => {
+                    const variants = TRACKER_VARIANTS[recipe.name];
+                    if (variants) {
+                        // Recipe header row (no input)
+                        html += `<div style="padding:10px 15px 6px;font-weight:700;color:#D4AF37;">${recipe.name}</div>`;
+                        variants.forEach(v => {
+                            html += _trackerRow(`tracker-${v.key}`, v.label, 'Stk', true);
+                        });
+                    } else {
+                        const unit = recipe.unit || 'Stk';
+                        html += _trackerRow(`tracker-${recipe.id}`, recipe.name, unit, false);
+                    }
+                });
+
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('brot-tracker-screen').classList.add('active');
+        }
+
+        function shareBrotTracker() {
+            const trackerCategories = ['Brot', 'Brötchen', 'Plunder', 'Kuchen', 'Spezial'];
+            const today = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+            let lines = [`*${today}*\n`];
+            let hasAny = false;
+            let total = 0;
+
+            trackerCategories.forEach(cat => {
+                const catRecipes = recipes.filter(r => r.category === cat);
+                const catLines = [];
+
+                catRecipes.forEach(recipe => {
+                    const variants = TRACKER_VARIANTS[recipe.name];
+                    if (variants) {
+                        const subLines = [];
+                        variants.forEach(v => {
+                            const input = document.getElementById(`tracker-${v.key}`);
+                            const val = input ? parseInt(input.value) || 0 : 0;
+                            if (val > 0) {
+                                subLines.push(`    ◦ ${v.label}: ${val} Stk`);
+                                hasAny = true;
+                                total += val;
+                            }
+                        });
+                        if (subLines.length > 0) {
+                            catLines.push(`  • ${recipe.name}`);
+                            catLines.push(...subLines);
+                        }
+                    } else {
+                        const input = document.getElementById(`tracker-${recipe.id}`);
+                        const val = input ? parseInt(input.value) || 0 : 0;
+                        if (val > 0) {
+                            const unit = recipe.unit || 'Stk';
+                            catLines.push(`  • ${recipe.name}: ${val} ${unit}`);
+                            hasAny = true;
+                            total += val;
+                        }
+                    }
+                });
+
+                if (catLines.length > 0) {
+                    lines.push(`*${cat}*`);
+                    lines.push(...catLines);
+                    lines.push('');
+                }
+            });
+
+            if (!hasAny) {
+                alert('Bitte mindestens eine Menge eintragen.');
+                return;
+            }
+
+            lines.push(`*Gesamt: ${total} Stk*`);
+
+            const text = lines.join('\n');
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
+        }
+
+        function showCategory(category) {
+            currentCategory = category;
+            document.getElementById('category-title').textContent = category;
+            
+            const categoryRecipes = recipes.filter(r => r.category === category);
+            const recipeList = document.getElementById('recipe-list');
+            
+            if (categoryRecipes.length === 0) {
+                recipeList.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>Keine Rezepte in dieser Kategorie</p></div>';
+            } else {
+                recipeList.innerHTML = categoryRecipes.map(recipe => 
+                    `<button class="recipe-btn" onclick="showCalculator(${recipe.id})">${recipe.name}</button>`
+                ).join('');
+            }
+            
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('category-screen').classList.add('active');
+        }
+
+        function showCalculator(recipeId) {
+            currentRecipe = recipes.find(r => r.id === recipeId);
+            if (!currentRecipe) return;
+            
+            document.getElementById('recipe-title').textContent = currentRecipe.name;
+            
+            // Calculate and display TA (Teigausbeute)
+            const ta = calculateTA(currentRecipe);
+            document.getElementById('recipe-ta').textContent = ta ? `TA: ${ta}` : '';
+            
+            // Check if it's a multi-variant recipe
+            if (currentRecipe.isMultiVariant) {
+                showMultiVariantCalculator();
+            } else {
+                showStandardCalculator();
+            }
+            
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('calculator-screen').classList.add('active');
+        }
+        
+        function calculateTA(recipe) {
+            // TA = (Total Dough Weight / Flour Weight) × 100
+            let flourWeight = 0;
+            let waterWeight = 0;
+            
+            const ingredients = recipe.isMultiVariant ? recipe.ingredients : recipe.ingredients;
+            
+            ingredients.forEach(ing => {
+                const name = ing.name.toLowerCase();
+                // Check if it's flour
+                if (name.includes('mehl') || name.includes('wm ') || name.includes('rm ') || 
+                    name.includes('dm') || name.includes('vollkorn') || name.includes('schrot')) {
+                    flourWeight += ing.amount;
+                }
+                // Check if it's water
+                if (name === 'wasser') {
+                    waterWeight += ing.amount;
+                }
+            });
+            
+            // Also check premix if exists
+            if (recipe.hasPremix && recipe.premix) {
+                recipe.premix.ingredients.forEach(ing => {
+                    const name = ing.name.toLowerCase();
+                    if (name.includes('mehl') || name.includes('wm ') || name.includes('rm ') || 
+                        name.includes('dm') || name.includes('vollkorn') || name.includes('schrot')) {
+                        flourWeight += ing.amount;
+                    }
+                    if (name === 'wasser') {
+                        waterWeight += ing.amount;
+                    }
+                });
+            }
+            
+            if (flourWeight === 0) return null;
+            
+            // TA = ((flour + water) / flour) × 100
+            const ta = Math.round(((flourWeight + waterWeight) / flourWeight) * 100);
+            return ta;
+        }
+
+        function showStandardCalculator() {
+            document.getElementById('slider-label-text').textContent = `Anzahl ${currentRecipe.unit}:`;
+            
+            const slider = document.getElementById('amount-slider');
+            const step = currentRecipe.step || 1;
+            slider.max = currentRecipe.max;
+            slider.step = step;
+            slider.min = step;
+            slider.value = step;
+            
+            // Show standard slider, hide multi-variant
+            document.getElementById('standard-slider-container').style.display = 'block';
+            document.getElementById('multi-variant-container').style.display = 'none';
+            
+            updateCalculation();
+        }
+
+        function showMultiVariantCalculator() {
+            // Hide standard slider, show multi-variant
+            document.getElementById('standard-slider-container').style.display = 'none';
+            document.getElementById('multi-variant-container').style.display = 'block';
+            
+            // Build multi-variant sliders
+            const container = document.getElementById('multi-variant-sliders');
+            container.innerHTML = '';
+            
+            const isTrayBased = currentRecipe.isTrayBased || false;
+            
+            currentRecipe.variants.forEach((variant, vIndex) => {
+                variant.weights.forEach((weight, wIndex) => {
+                    const sliderId = `variant-${vIndex}-${wIndex}`;
+                    
+                    let labelText, unitText;
+                    if (isTrayBased) {
+                        // Milchbrötchen: Show variant name and "Bleche"
+                        labelText = variant.name;
+                        unitText = 'Bleche';
+                    } else {
+                        // Platzteig/Mehrkorn: Show weight in grams
+                        const weightInGrams = weight * 1000;
+                        labelText = `${variant.name} ${weightInGrams}g`;
+                        unitText = '';
+                    }
+                    
+                    const sliderHtml = `
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>${labelText}:</span>
+                                <span class="slider-value" id="${sliderId}-value">0 ${unitText}</span>
+                            </div>
+                            <input type="range" id="${sliderId}" class="multi-slider" 
+                                min="0" max="${currentRecipe.max}" value="0" 
+                                data-variant="${vIndex}" data-weight="${wIndex}"
+                                oninput="updateMultiVariantCalculation()">
+                        </div>
+                    `;
+                    container.innerHTML += sliderHtml;
+                });
+            });
+            
+            updateMultiVariantCalculation();
+        }
+
+        function backToCategory() {
+            showCategory(currentCategory);
+        }
+
+        function updateCalculation() {
+            if (!currentRecipe) return;
+            
+            const amount = parseInt(document.getElementById('amount-slider').value);
+            document.getElementById('slider-value').textContent = amount;
+            
+            const tbody = document.getElementById('ingredients-body');
+            let total = 0;
+            
+            tbody.innerHTML = currentRecipe.ingredients.map(ing => {
+                const calculated = Math.ceil(ing.amount * amount * 100) / 100;
+                total += calculated;
+                return `<tr>
+                    <td>${ing.name}</td>
+                    <td>${calculated.toFixed(2)} kg</td>
+                </tr>`;
+            }).join('');
+            
+            document.getElementById('total-weight').textContent = `${total.toFixed(2)} kg`;
+        }
+
+        function updateMultiVariantCalculation() {
+            if (!currentRecipe || !currentRecipe.isMultiVariant) return;
+            
+            const isTrayBased = currentRecipe.isTrayBased || false;
+            
+            // Collect all slider values
+            const sliders = document.querySelectorAll('.multi-slider');
+            let totalDoughNeeded = 0;
+            const variantTotals = {};
+            const variantDoughAmounts = {}; // Track total dough per variant
+            
+            sliders.forEach(slider => {
+                const amount = parseInt(slider.value);
+                const vIndex = parseInt(slider.dataset.variant);
+                const wIndex = parseInt(slider.dataset.weight);
+                const variant = currentRecipe.variants[vIndex];
+                
+                // Update slider value display
+                const unitText = isTrayBased ? ' Bleche' : '';
+                document.getElementById(`${slider.id}-value`).textContent = amount + unitText;
+                
+                if (amount > 0) {
+                    let totalProductWeight;
+                    
+                    if (isTrayBased) {
+                        const numTrays = amount;
+                        const piecesPerTray = variant.perTray;
+                        const pieceWeight = variant.pieceWeight;
+                        totalProductWeight = numTrays * piecesPerTray * pieceWeight;
+                    } else {
+                        const weight = variant.weights[wIndex];
+                        totalProductWeight = amount * weight;
+                    }
+                    
+                    const doughForThisBatch = totalProductWeight / (1 + variant.percentage / 100);
+                    totalDoughNeeded += doughForThisBatch;
+                    
+                    // Track variant additions
+                    if (variant.percentage > 0) {
+                        if (!variantTotals[variant.name]) {
+                            variantTotals[variant.name] = 0;
+                            variantDoughAmounts[variant.name] = 0;
+                        }
+                        variantTotals[variant.name] += (totalProductWeight - doughForThisBatch);
+                        variantDoughAmounts[variant.name] += doughForThisBatch;
+                    }
+                }
+            });
+            
+            const tbody = document.getElementById('ingredients-body');
+            let ingredientsHtml = '';
+            
+            // Check if should split (Platzteig > 130kg)
+            const isPlatzteig = currentRecipe.name === 'Platzteig';
+            const shouldSplit = isPlatzteig && totalDoughNeeded > 130;
+            
+            if (shouldSplit) {
+                // SPLIT VIEW - Show two separate recipes
+                ingredientsHtml += `<tr style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4);">
+                    <td colspan="2" style="text-align: center; padding: 15px;">
+                        <strong>⚠️ Teig wird aufgeteilt (${totalDoughNeeded.toFixed(0)} kg > 130 kg)</strong>
+                    </td>
+                </tr>`;
+                
+                // For each variant, show separate recipe
+                Object.entries(variantTotals).forEach(([variantName, additionAmount], index) => {
+                    const doughAmount = variantDoughAmounts[variantName];
+                    const batchMultiplier = doughAmount / currentRecipe.baseWeight;
+                    
+                    // Recipe header
+                    ingredientsHtml += `<tr style="background: rgba(39,174,96,0.08); border-top: 2px solid rgba(39,174,96,0.5);">
+                        <td colspan="2"><strong>📝 Rezept ${index + 1} - ${variantName}</strong> (${doughAmount.toFixed(2)} kg Teig)</td>
+                    </tr>`;
+                    
+                    // Ingredients for this variant
+                    currentRecipe.ingredients.forEach(ing => {
+                        const calculated = Math.ceil(ing.amount * batchMultiplier * 100) / 100;
+                        ingredientsHtml += `<tr>
+                            <td>${ing.name}</td>
+                            <td>${calculated.toFixed(2)} kg</td>
+                        </tr>`;
+                    });
+                    
+                    // Addition
+                    const additionRounded = Math.ceil(additionAmount * 100) / 100;
+                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                        <td>${variantName}</td>
+                        <td>${additionRounded.toFixed(2)} kg</td>
+                    </tr>`;
+                    
+                    // Subtotal
+                    const subtotal = doughAmount + additionAmount;
+                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.15);">
+                        <td><strong>Gesamt Rezept ${index + 1}</strong></td>
+                        <td><strong>${subtotal.toFixed(2)} kg</strong></td>
+                    </tr>`;
+                });
+                
+            } else {
+                // NORMAL VIEW - Single recipe
+                const batchMultiplier = totalDoughNeeded / currentRecipe.baseWeight;
+                
+                // Premix (if exists)
+                if (currentRecipe.hasPremix && currentRecipe.premix) {
+                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.15);"><td colspan="2"><strong>${currentRecipe.premix.name}</strong></td></tr>`;
+                    currentRecipe.premix.ingredients.forEach(ing => {
+                        const calculated = Math.ceil(ing.amount * batchMultiplier * 100) / 100;
+                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                            <td>${ing.name}</td>
+                            <td>${calculated.toFixed(2)} kg</td>
+                        </tr>`;
+                    });
+                    const premixTotal = Math.ceil(currentRecipe.premix.total * batchMultiplier * 100) / 100;
+                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.25);"><td><strong>Mischung gesamt</strong></td><td><strong>${premixTotal.toFixed(2)} kg</strong></td></tr>`;
+                }
+                
+                // Base ingredients
+                ingredientsHtml += '<tr style="background: rgba(255,255,255,0.06);"><td colspan="2"><strong>Hauptteig</strong></td></tr>';
+                currentRecipe.ingredients.forEach(ing => {
+                    const calculated = Math.ceil(ing.amount * batchMultiplier * 100) / 100;
+                    ingredientsHtml += `<tr>
+                        <td>${ing.name}</td>
+                        <td>${calculated.toFixed(2)} kg</td>
+                    </tr>`;
+                });
+                
+                // Variant additions with dough breakdown
+                if (Object.keys(variantTotals).length > 0) {
+                    ingredientsHtml += '<tr style="background: rgba(255,255,255,0.06);"><td colspan="2"><strong>Zusätze</strong></td></tr>';
+                    Object.entries(variantTotals).forEach(([variantName, additionAmount]) => {
+                        const additionRounded = Math.ceil(additionAmount * 100) / 100;
+                        const doughRounded = Math.ceil(variantDoughAmounts[variantName] * 100) / 100;
+                        
+                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.08);">
+                            <td colspan="2"><strong>${variantName}:</strong></td>
+                        </tr>`;
+                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                            <td style="padding-left: 20px;">Teig</td>
+                            <td>${doughRounded.toFixed(2)} kg</td>
+                        </tr>`;
+                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                            <td style="padding-left: 20px;">${variantName}</td>
+                            <td>${additionRounded.toFixed(2)} kg</td>
+                        </tr>`;
+                    });
+                }
+            }
+            
+            tbody.innerHTML = ingredientsHtml;
+            
+            // Calculate total weight
+            let totalWeight = totalDoughNeeded + Object.values(variantTotals).reduce((sum, val) => sum + val, 0);
+            
+            document.getElementById('total-weight').textContent = `${totalWeight.toFixed(2)} kg`;
+        }
+
+        function showSuccessPopup(message) {
+            document.getElementById('success-message').textContent = message;
+            document.getElementById('success-popup').classList.add('active');
+            
+            setTimeout(() => {
+                document.getElementById('success-popup').classList.remove('active');
+            }, 4000);
+        }
+
+        function showConfirmPopup(title, message, onConfirm, onAlternate = null) {
+            document.getElementById('confirm-title').textContent = title;
+            document.getElementById('confirm-message').textContent = message;
+            
+            const confirmBtn = document.getElementById('confirm-action-btn');
+            
+            if (onAlternate) {
+                confirmBtn.textContent = 'Hinzufügen';
+                confirmBtn.style.background = '#27ae60';
+                confirmBtn.onclick = () => {
+                    closeConfirmPopup();
+                    onConfirm();
+                };
+                
+                // Zweiter Button für "Ersetzen"
+                const buttonsDiv = confirmBtn.parentElement;
+                if (buttonsDiv.children.length === 2) {
+                    const replaceBtn = document.createElement('button');
+                    replaceBtn.textContent = 'Ersetzen';
+                    replaceBtn.style.background = '#e74c3c';
+                    replaceBtn.style.color = '#fff';
+                    replaceBtn.onclick = () => {
+                        closeConfirmPopup();
+                        onAlternate();
+                    };
+                    buttonsDiv.appendChild(replaceBtn);
+                }
+            } else {
+                confirmBtn.textContent = 'Bestätigen';
+                confirmBtn.style.background = '#e74c3c';
+                confirmBtn.onclick = () => {
+                    closeConfirmPopup();
+                    onConfirm();
+                };
+                
+                // Entferne dritten Button falls vorhanden
+                const buttonsDiv = confirmBtn.parentElement;
+                while (buttonsDiv.children.length > 2) {
+                    buttonsDiv.removeChild(buttonsDiv.lastChild);
+                }
+            }
+            
+            document.getElementById('confirm-popup').classList.add('active');
+        }
+
+        function closeConfirmPopup() {
+            document.getElementById('confirm-popup').classList.remove('active');
+        }
+
+        // Initialisierung beim Laden
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
