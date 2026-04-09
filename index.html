@@ -585,6 +585,28 @@
                     <span class="emoji">📋</span>
                     Brot Tracker
                 </button>
+                <button class="menu-btn" onclick="showChangelog()" style="grid-column: 1 / -1; background: rgba(100,180,100,0.1); border-color: rgba(100,200,100,0.4);">
+                    <span class="emoji">📝</span>
+                    Was hat sich geändert?
+                </button>
+            </div>
+        </div>
+
+        <!-- Changelog Modal -->
+        <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
+            <div style="max-width:600px; margin:40px auto; background:#1a0a33; border:1px solid rgba(212,175,55,0.4); border-radius:15px; padding:25px;">
+                <h2 style="color:#D4AF37; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 09.04.2026</p>
+                <ul style="color:#F0E6FF; line-height:2; padding-left:20px;">
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Weizenbrot</em> entfernt</li>
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Roggen-Sauerteigbrot</em> entfernt</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Körnerbrötchen</em> entfernt</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Laugenbrötchen</em> entfernt</li>
+                    <li>Kategorie <strong>Plunder</strong>: Rezept <em>Rosinenschnecken</em> entfernt</li>
+                    <li>Kategorie <strong>Plunder</strong>: Rezept <em>Nussschnecken</em> entfernt</li>
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Hefekassler</em> hinzugefügt (2 kg/Brot)</li>
+                </ul>
+                <button onclick="document.getElementById('changelog-modal').style.display='none'" style="margin-top:25px; width:100%; padding:12px; background:linear-gradient(135deg,#D4AF37,#C5A022); color:#0D0221; border:none; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer;">Schließen</button>
             </div>
         </div>
 
@@ -986,33 +1008,22 @@
                     ]
                 },
                 {
-                    id: Date.now() + 2,
-                    name: 'Weizenbrot',
-                    category: 'Brot',
-                    unit: 'Kästen',
-                    unitWeight: 1.0,
-                    max: 150,
-                    ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Wasser', amount: 0.6 },
-                        { name: 'Salz', amount: 0.02 },
-                        { name: 'Hefe', amount: 0.015 },
-                        { name: 'Zucker', amount: 0.01 }
-                    ]
-                },
-                {
-                    id: Date.now() + 3,
-                    name: 'Roggen-Sauerteigbrot',
+                    id: Date.now() + 20,
+                    name: 'Hefekassler',
                     category: 'Brot',
                     unit: 'Brote',
-                    unitWeight: 1.0,
+                    unitWeight: 2.0,
                     max: 100,
                     ingredients: [
-                        { name: 'RM 1150', amount: 0.8 },
-                        { name: 'WM 550', amount: 0.2 },
-                        { name: 'Sauerteig', amount: 0.3 },
-                        { name: 'Wasser', amount: 0.55 },
-                        { name: 'Salz', amount: 0.025 }
+                        { name: 'WM 550', amount: 0.810 },
+                        { name: 'RM 1150', amount: 0.267 },
+                        { name: 'Salz', amount: 0.025 },
+                        { name: 'Starback', amount: 0.017 },
+                        { name: 'FrischeProfi', amount: 0.008 },
+                        { name: 'Hefe', amount: 0.021 },
+                        { name: 'Sauerteig', amount: 0.164 },
+                        { name: 'Wasser', amount: 0.683 },
+                        { name: 'Correctol', amount: 0.005 }
                     ]
                 },
                 {
@@ -1032,36 +1043,6 @@
                     ]
                 },
                 {
-                    id: Date.now() + 5,
-                    name: 'Körnerbrötchen',
-                    category: 'Brötchen',
-                    unit: 'Stück',
-                    unitWeight: 0.07,
-                    max: 500,
-                    ingredients: [
-                        { name: 'WM 1050', amount: 0.7 },
-                        { name: 'Vollkornmehl', amount: 0.3 },
-                        { name: 'Wasser', amount: 0.6 },
-                        { name: 'Salz', amount: 0.02 },
-                        { name: 'Hefe', amount: 0.015 }
-                    ]
-                },
-                {
-                    id: Date.now() + 6,
-                    name: 'Laugenbrötchen',
-                    category: 'Brötchen',
-                    unit: 'Stück',
-                    unitWeight: 0.08,
-                    max: 500,
-                    ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Wasser', amount: 0.5 },
-                        { name: 'Salz', amount: 0.02 },
-                        { name: 'Hefe', amount: 0.02 },
-                        { name: 'Butter', amount: 0.05 }
-                    ]
-                },
-                {
                     id: Date.now() + 7,
                     name: 'Plunderteig Grundrezept',
                     category: 'Plunder',
@@ -1076,40 +1057,6 @@
                         { name: 'Eier', amount: 0.15 },
                         { name: 'Hefe', amount: 0.025 },
                         { name: 'Salz', amount: 0.015 }
-                    ]
-                },
-                {
-                    id: Date.now() + 8,
-                    name: 'Rosinenschnecken',
-                    category: 'Plunder',
-                    unit: 'Stück',
-                    unitWeight: 0.1,
-                    max: 400,
-                    ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Milch', amount: 0.4 },
-                        { name: 'Butter', amount: 0.35 },
-                        { name: 'Zucker', amount: 0.2 },
-                        { name: 'Rosinen', amount: 0.25 },
-                        { name: 'Eier', amount: 0.1 },
-                        { name: 'Hefe', amount: 0.02 }
-                    ]
-                },
-                {
-                    id: Date.now() + 9,
-                    name: 'Nussschnecken',
-                    category: 'Plunder',
-                    unit: 'Stück',
-                    unitWeight: 0.12,
-                    max: 400,
-                    ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Milch', amount: 0.4 },
-                        { name: 'Butter', amount: 0.4 },
-                        { name: 'Zucker', amount: 0.25 },
-                        { name: 'Nüsse', amount: 0.3 },
-                        { name: 'Eier', amount: 0.1 },
-                        { name: 'Hefe', amount: 0.02 }
                     ]
                 },
                 {
@@ -1356,8 +1303,16 @@
             saveData();
         }
         // Daten laden
+        const DATA_VERSION = '2026-04-09c';
+
         function loadData() {
             try {
+                const storedVersion = localStorage.getItem('bakery_data_version');
+                if (storedVersion !== DATA_VERSION) {
+                    localStorage.removeItem('bakery_recipes');
+                    localStorage.setItem('bakery_data_version', DATA_VERSION);
+                    return;
+                }
                 const storedRecipes = localStorage.getItem('bakery_recipes');
                 if (storedRecipes) recipes = JSON.parse(storedRecipes);
             } catch (e) {
@@ -1411,6 +1366,10 @@
                 <span style="color:#BE95C4;font-size:13px;margin-right:10px;">${unit}</span>
                 <input type="number" inputmode="numeric" min="0" value="0" id="${id}" style="${INPUT_STYLE}">
             </div>`;
+        }
+
+        function showChangelog() {
+            document.getElementById('changelog-modal').style.display = 'block';
         }
 
         function showBrotTracker() {
