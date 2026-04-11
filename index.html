@@ -516,40 +516,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- PIN Lock Screen -->
-        <div id="pin-lock-screen" class="screen" style="display: none;">
-            <div style="text-align: center; padding: 40px 20px;">
-                <div style="font-size: 60px; margin-bottom: 20px;">🔒</div>
-                <h2 style="color: #D4AF37; margin-bottom: 30px;" id="pin-title">PIN einrichten</h2>
-                
-                <div id="pin-warning" style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4); border-radius: 15px; padding: 25px; margin-bottom: 30px; text-align: left;">
-                    <h3 style="color: #D4AF37; margin-bottom: 15px;">⚠️ WICHTIG - Firmenrezepte</h3>
-                    <p style="margin-bottom: 10px; line-height: 1.6;">Diese Rezepte sind <strong>Eigentum der Bäckerei</strong>.</p>
-                    <p style="margin-bottom: 10px; line-height: 1.6;">Die Weitergabe an Dritte ist <strong>vertraglich untersagt</strong> und kann rechtliche Folgen haben.</p>
-                    <p style="margin-bottom: 0; line-height: 1.6; color: #e74c3c; font-weight: 600;">Bei Verstößen drohen arbeitsrechtliche und zivilrechtliche Konsequenzen.</p>
-                </div>
-                
-                <div id="pin-setup-form">
-                    <p id="pin-instruction" style="margin-bottom: 20px; font-size: 16px;">Lege eine 4-stellige PIN fest:</p>
-                    <input 
-                        type="number" 
-                        id="pin-input" 
-                        maxlength="4" 
-                        pattern="[0-9]*" 
-                        inputmode="numeric"
-                        placeholder="0000"
-                        style="width: 200px; padding: 20px; font-size: 32px; text-align: center; border: 2px solid #D4AF37; border-radius: 15px; letter-spacing: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.05); color: #F0E6FF;"
-                        oninput="if(this.value.length > 4) this.value = this.value.slice(0,4)"
-                    >
-                    <br>
-                    <button onclick="handlePinSubmit()" class="action-btn success" style="min-width: 200px; font-size: 18px;">
-                        ✓ Bestätigen
-                    </button>
-                    <p id="pin-error" style="color: #e74c3c; margin-top: 15px; display: none; font-weight: 600;"></p>
-                </div>
-            </div>
-        </div>
-        
         <header>
             <h1>🥖 Bäckerei Rezeptrechner</h1>
         </header>
@@ -596,15 +562,33 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a0a33; border:1px solid rgba(212,175,55,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#D4AF37; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 09.04.2026</p>
-                <ul style="color:#F0E6FF; line-height:2; padding-left:20px;">
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 11.04.2026</p>
+
+                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">11.04.2026</p>
+                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Finnenbrot</em> hinzugefügt (3,3 kg/Brot)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Brötchen mit Vorteig</em> hinzugefügt (70 g/Stück)</li>
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Sauerteigkassler</em> aktualisiert (neue Zutaten)</li>
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Sauerteigkassler</em> hinzugefügt (2,4 kg/Brot)</li>
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Konze</em> hinzugefügt (3,3 kg/Brot)</li>
+                    <li>Passwortschutz entfernt</li>
+                </ul>
+
+                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">09.04.2026</p>
+                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Hefekassler</em> hinzugefügt (2 kg/Brot)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Bauernbrot</em> umbenannt in <em>Bauern</em> (2 kg/Brot)</li>
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Weizenbrot</em> entfernt</li>
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Roggen-Sauerteigbrot</em> entfernt</li>
                     <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Körnerbrötchen</em> entfernt</li>
                     <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Laugenbrötchen</em> entfernt</li>
                     <li>Kategorie <strong>Plunder</strong>: Rezept <em>Rosinenschnecken</em> entfernt</li>
                     <li>Kategorie <strong>Plunder</strong>: Rezept <em>Nussschnecken</em> entfernt</li>
-                    <li>Kategorie <strong>Brot</strong>: Rezept <em>Hefekassler</em> hinzugefügt (2 kg/Brot)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: <em>Milchbrötchen</em> hinzugefügt (Varianten: Ohne, Rosinen, Schokolade, Hörnchen, Vanillestangen, Cremeballen)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Mehrkorn</em> hinzugefügt (Varianten: Normal 3 kg, Möhren 0,8 kg)</li>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Platzteig</em> hinzugefügt (Varianten: Hagelzucker, Rosinen)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: <em>Semmel</em> umbenannt in <em>Brötchen</em></li>
+                    <li>Kategorie <strong>Brötchen</strong>: Max. Stückzahl auf 1.600 erhöht</li>
                 </ul>
                 <button onclick="document.getElementById('changelog-modal').style.display='none'" style="margin-top:25px; width:100%; padding:12px; background:linear-gradient(135deg,#D4AF37,#C5A022); color:#0D0221; border:none; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer;">Schließen</button>
             </div>
@@ -698,118 +682,9 @@
         let currentCategory = '';
         let currentRecipe = null;
         
-        // PIN Management
-        const PIN_STORAGE_KEY = 'bakery_pin';
-        const PIN_LAST_CHECK_KEY = 'bakery_pin_last_check';
-        const PIN_CHECK_INTERVAL = 6 * 30 * 24 * 60 * 60 * 1000; // 6 Monate in Millisekunden
-        
-        function checkPinRequired() {
-            const storedPin = localStorage.getItem(PIN_STORAGE_KEY);
-            const lastCheck = localStorage.getItem(PIN_LAST_CHECK_KEY);
-            
-            if (!storedPin) {
-                // Erste Nutzung - PIN einrichten
-                showPinSetup();
-                return true;
-            }
-            
-            if (lastCheck) {
-                const timeSinceCheck = Date.now() - parseInt(lastCheck);
-                if (timeSinceCheck >= PIN_CHECK_INTERVAL) {
-                    // 6 Monate vorbei - PIN erneut abfragen
-                    showPinVerification();
-                    return true;
-                }
-            }
-            
-            // PIN noch gültig
-            return false;
-        }
-        
-        function showPinSetup() {
-            document.getElementById('pin-title').textContent = 'PIN einrichten';
-            document.getElementById('pin-instruction').textContent = 'Lege eine 4-stellige PIN fest:';
-            document.getElementById('pin-warning').style.display = 'block';
-            document.getElementById('pin-input').value = '';
-            document.getElementById('pin-error').style.display = 'none';
-            
-            document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
-            document.getElementById('pin-lock-screen').style.display = 'block';
-            setTimeout(() => document.getElementById('pin-input').focus(), 100);
-        }
-        
-        function showPinVerification() {
-            document.getElementById('pin-title').textContent = 'PIN eingeben';
-            document.getElementById('pin-instruction').textContent = 'Gib deine PIN ein:';
-            document.getElementById('pin-warning').style.display = 'none';
-            document.getElementById('pin-input').value = '';
-            document.getElementById('pin-error').style.display = 'none';
-            
-            document.querySelectorAll('.screen').forEach(s => s.style.display = 'none');
-            document.getElementById('pin-lock-screen').style.display = 'block';
-            setTimeout(() => document.getElementById('pin-input').focus(), 100);
-        }
-        
-        function handlePinSubmit() {
-            const input = document.getElementById('pin-input').value.trim();
-            const errorEl = document.getElementById('pin-error');
-            
-            // Check if exactly 4 digits
-            if (input.length !== 4) {
-                errorEl.textContent = 'PIN muss genau 4 Ziffern haben (aktuell: ' + input.length + ')';
-                errorEl.style.display = 'block';
-                return;
-            }
-            
-            if (!/^\d{4}$/.test(input)) {
-                errorEl.textContent = 'PIN darf nur Zahlen enthalten';
-                errorEl.style.display = 'block';
-                return;
-            }
-            
-            const storedPin = localStorage.getItem(PIN_STORAGE_KEY);
-            
-            if (!storedPin) {
-                // PIN einrichten
-                localStorage.setItem(PIN_STORAGE_KEY, input);
-                localStorage.setItem(PIN_LAST_CHECK_KEY, Date.now().toString());
-                unlockApp();
-            } else {
-                // PIN überprüfen
-                if (input === storedPin) {
-                    localStorage.setItem(PIN_LAST_CHECK_KEY, Date.now().toString());
-                    unlockApp();
-                } else {
-                    errorEl.textContent = 'Falsche PIN!';
-                    errorEl.style.display = 'block';
-                    document.getElementById('pin-input').value = '';
-                    setTimeout(() => document.getElementById('pin-input').focus(), 100);
-                }
-            }
-        }
-        
-        function unlockApp() {
-            document.getElementById('pin-lock-screen').style.display = 'none';
-            
-            // Load data after unlock
-            loadData();
-            if (recipes.length === 0) {
-                loadDefaultRecipes();
-            }
-            
-            // Show main menu
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('main-menu').classList.add('active');
-        }
-        
 
         // Initialisierung
         function init() {
-            // Check PIN first - blocks everything else
-            if (checkPinRequired()) {
-                return; // Stop here until PIN is entered
-            }
-            
             loadData();
             if (recipes.length === 0) {
                 loadDefaultRecipes();
@@ -961,6 +836,110 @@
                 saveData();
             }
             
+            // Migration: Add Finnenbrot if missing
+            const hasFinnenbrot = recipes.some(r => r.name === 'Finnenbrot');
+            if (!hasFinnenbrot) {
+                recipes.push({
+                    id: Date.now() + 104,
+                    name: 'Finnenbrot',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 3.3,
+                    max: 40,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.46 },
+                        { name: 'RM 1150', amount: 0.46 },
+                        { name: 'Wasser', amount: 1.17 },
+                        { name: 'Kornmix', amount: 0.73 },
+                        { name: 'Sonnenblumenkerne', amount: 0.36 },
+                        { name: 'Hefe', amount: 0.06 },
+                        { name: 'Salz', amount: 0.03 },
+                        { name: 'Staback', amount: 0.03 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add or update Brötchen mit Vorteig
+            const broetchenVorteigIndex = recipes.findIndex(r => r.name === 'Brötchen mit Vorteig');
+            const broetchenVorteigData = {
+                id: Date.now() + 103,
+                name: 'Brötchen mit Vorteig',
+                category: 'Brötchen',
+                unit: 'Stück',
+                unitWeight: 0.07,
+                max: 1600,
+                step: 100,
+                ingredients: [
+                    { name: 'WM 550', amount: 0.038 },
+                    { name: 'Wasser', amount: 0.019 },
+                    { name: 'Vorteig', amount: 0.0095 },
+                    { name: 'Ferma Cool Malt', amount: 0.0013 },
+                    { name: 'Salz', amount: 0.00095 },
+                    { name: 'Hefe', amount: 0.00064 },
+                    { name: 'Wiener Note', amount: 0.00048 }
+                ]
+            };
+            if (broetchenVorteigIndex === -1) {
+                recipes.push(broetchenVorteigData);
+            } else {
+                recipes[broetchenVorteigIndex] = { ...recipes[broetchenVorteigIndex], ...broetchenVorteigData };
+            }
+            saveData();
+
+            // Migration: Add or update Sauerteigkassler
+            const sauerteigkasslerIndex = recipes.findIndex(r => r.name === 'Sauerteigkassler');
+            const sauerteigkasslerData = {
+                id: Date.now() + 102,
+                name: 'Sauerteigkassler',
+                category: 'Brot',
+                unit: 'Brote',
+                unitWeight: 2.4,
+                max: 100,
+                ingredients: [
+                    { name: 'WM 550', amount: 0.78 },
+                    { name: 'RM 1150', amount: 0.30 },
+                    { name: 'Wasser', amount: 0.67 },
+                    { name: 'Sauerteig', amount: 0.52 },
+                    { name: 'Hefe', amount: 0.07 },
+                    { name: 'Salz', amount: 0.02 },
+                    { name: 'Staback CL', amount: 0.02 },
+                    { name: 'BAS-T', amount: 0.01 },
+                    { name: 'FrischeProfi', amount: 0.01 }
+                ]
+            };
+            if (sauerteigkasslerIndex === -1) {
+                recipes.push(sauerteigkasslerData);
+            } else {
+                recipes[sauerteigkasslerIndex] = { ...recipes[sauerteigkasslerIndex], ...sauerteigkasslerData };
+            }
+            saveData();
+
+            // Migration: Add Konze if missing
+            const hasKonze = recipes.some(r => r.name === 'Konze');
+            if (!hasKonze) {
+                recipes.push({
+                    id: Date.now() + 101,
+                    name: 'Konze',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 3.3,
+                    max: 100,
+                    ingredients: [
+                        { name: 'RM 1150', amount: 0.825 },
+                        { name: 'WM 550', amount: 0.808 },
+                        { name: 'Wasser', amount: 1.101 },
+                        { name: 'Sauerteig', amount: 0.367 },
+                        { name: 'Salz', amount: 0.044 },
+                        { name: 'BAS-T', amount: 0.044 },
+                        { name: 'Hefe', amount: 0.073 },
+                        { name: 'Staback CL', amount: 0.018 },
+                        { name: 'FrischeProfi', amount: 0.018 }
+                    ]
+                });
+                saveData();
+            }
+
             // Migration: Update old Bauernbrot to new Bauern recipe
             const bauernIndex = recipes.findIndex(r => r.name === 'Bauernbrot' || r.name === 'Bauern');
             if (bauernIndex !== -1) {
@@ -1024,6 +1003,80 @@
                         { name: 'Sauerteig', amount: 0.164 },
                         { name: 'Wasser', amount: 0.683 },
                         { name: 'Correctol', amount: 0.005 }
+                    ]
+                },
+                {
+                    id: Date.now() + 102,
+                    name: 'Sauerteigkassler',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 2.4,
+                    max: 100,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.78 },
+                        { name: 'RM 1150', amount: 0.30 },
+                        { name: 'Wasser', amount: 0.67 },
+                        { name: 'Sauerteig', amount: 0.52 },
+                        { name: 'Hefe', amount: 0.07 },
+                        { name: 'Salz', amount: 0.02 },
+                        { name: 'Staback CL', amount: 0.02 },
+                        { name: 'BAS-T', amount: 0.01 },
+                        { name: 'FrischeProfi', amount: 0.01 }
+                    ]
+                },
+                {
+                    id: Date.now() + 104,
+                    name: 'Finnenbrot',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 3.3,
+                    max: 40,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.46 },
+                        { name: 'RM 1150', amount: 0.46 },
+                        { name: 'Wasser', amount: 1.17 },
+                        { name: 'Kornmix', amount: 0.73 },
+                        { name: 'Sonnenblumenkerne', amount: 0.36 },
+                        { name: 'Hefe', amount: 0.06 },
+                        { name: 'Salz', amount: 0.03 },
+                        { name: 'Staback', amount: 0.03 }
+                    ]
+                },
+                {
+                    id: Date.now() + 101,
+                    name: 'Konze',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 3.3,
+                    max: 100,
+                    ingredients: [
+                        { name: 'RM 1150', amount: 0.825 },
+                        { name: 'WM 550', amount: 0.808 },
+                        { name: 'Wasser', amount: 1.101 },
+                        { name: 'Sauerteig', amount: 0.367 },
+                        { name: 'Salz', amount: 0.044 },
+                        { name: 'BAS-T', amount: 0.044 },
+                        { name: 'Hefe', amount: 0.073 },
+                        { name: 'Staback CL', amount: 0.018 },
+                        { name: 'FrischeProfi', amount: 0.018 }
+                    ]
+                },
+                {
+                    id: Date.now() + 103,
+                    name: 'Brötchen mit Vorteig',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.07,
+                    max: 1600,
+                    step: 100,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.038 },
+                        { name: 'Wasser', amount: 0.019 },
+                        { name: 'Vorteig', amount: 0.0095 },
+                        { name: 'Ferma Cool Malt', amount: 0.0013 },
+                        { name: 'Salz', amount: 0.00095 },
+                        { name: 'Hefe', amount: 0.00064 },
+                        { name: 'Wiener Note', amount: 0.00048 }
                     ]
                 },
                 {
