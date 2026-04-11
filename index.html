@@ -566,7 +566,14 @@
 
                 <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">11.04.2026</p>
                 <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Omegabrötchen</em> hinzugefügt (90 g/Stück, Blechanzeige 30 Stück/Blech)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Mehrkornbrötchen</em> hinzugefügt (90 g/Stück, Blechanzeige 30 Stück/Blech)</li>
+                    <li>Rechner: Blechanzeige hinzugefügt (wird bei Rezepten mit Blechgröße angezeigt)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Dinkelbrötchen</em> hinzugefügt (85 g/Stück)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Kartoffelkürbis</em> hinzugefügt (98 g/Stück)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Roggenbrötchen</em> hinzugefügt (80 g/Stück)</li>
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Finnenbrot</em> hinzugefügt (3,3 kg/Brot)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Brötchen</em> aktualisiert (70 g/Stück, Backmalz entfernt, Ferma Cool Malt + Wiener Note hinzugefügt)</li>
                     <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Brötchen mit Vorteig</em> hinzugefügt (70 g/Stück)</li>
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Sauerteigkassler</em> aktualisiert (neue Zutaten)</li>
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Sauerteigkassler</em> hinzugefügt (2,4 kg/Brot)</li>
@@ -617,6 +624,9 @@
                 </div>
                 <input type="range" id="amount-slider" min="1" max="10" value="1" oninput="updateCalculation()">
             </div>
+
+            <!-- Blech-Anzeige (nur bei Rezepten mit traySize) -->
+            <div id="tray-info" style="display:none; background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.3); border-radius:10px; padding:10px 15px; margin-top:8px; text-align:center; font-size:15px; color:#D4AF37; font-weight:600;"></div>
 
             <!-- Multi-Variant Sliders -->
             <div id="multi-variant-container" style="display: none;">
@@ -697,14 +707,24 @@
                 saveData();
             }
             
-            // Migration: Update Brötchen max to 1600 and step to 100
+            // Migration: Update Brötchen to new recipe (70g, Ferma Cool Malt, Wiener Note)
             const broetchenIndex = recipes.findIndex(r => r.name === 'Brötchen');
             if (broetchenIndex !== -1) {
-                if (recipes[broetchenIndex].max !== 1600) {
-                    recipes[broetchenIndex].max = 1600;
-                    recipes[broetchenIndex].step = 100;
-                    saveData();
-                }
+                recipes[broetchenIndex] = {
+                    ...recipes[broetchenIndex],
+                    unitWeight: 0.07,
+                    max: 1600,
+                    step: 100,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.0435 },
+                        { name: 'Wasser', amount: 0.0225 },
+                        { name: 'Ferma Cool Malt', amount: 0.00158 },
+                        { name: 'Salz', amount: 0.00113 },
+                        { name: 'Hefe', amount: 0.00075 },
+                        { name: 'Wiener Note', amount: 0.00056 }
+                    ]
+                };
+                saveData();
             }
             
             // Migration: Add Platzteig if missing
@@ -855,6 +875,125 @@
                         { name: 'Hefe', amount: 0.06 },
                         { name: 'Salz', amount: 0.03 },
                         { name: 'Staback', amount: 0.03 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Omegabrötchen if missing
+            const hasOmegabroetchen = recipes.some(r => r.name === 'Omegabrötchen');
+            if (!hasOmegabroetchen) {
+                recipes.push({
+                    id: Date.now() + 109,
+                    name: 'Omegabrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.09,
+                    max: 600,
+                    step: 30,
+                    traySize: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.028572 },
+                        { name: 'Maxikrüstchen', amount: 0.028572 },
+                        { name: 'Wasser', amount: 0.031439 },
+                        { name: 'Hefe', amount: 0.001433 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Mehrkornbrötchen if missing
+            const hasMehrkornbroetchen = recipes.some(r => r.name === 'Mehrkornbrötchen');
+            if (!hasMehrkornbroetchen) {
+                recipes.push({
+                    id: Date.now() + 108,
+                    name: 'Mehrkornbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.09,
+                    max: 1200,
+                    step: 30,
+                    traySize: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.042260 },
+                        { name: 'Wasser', amount: 0.029563 },
+                        { name: 'Kornmix', amount: 0.013932 },
+                        { name: 'Hefe', amount: 0.001578 },
+                        { name: 'Backmittel', amount: 0.001511 },
+                        { name: 'Salz', amount: 0.001145 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Dinkelbrötchen if missing
+            const hasDinkelbroetchen = recipes.some(r => r.name === 'Dinkelbrötchen');
+            if (!hasDinkelbroetchen) {
+                recipes.push({
+                    id: Date.now() + 107,
+                    name: 'Dinkelbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.085,
+                    max: 1200,
+                    step: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.033180 },
+                        { name: 'Wasser', amount: 0.029232 },
+                        { name: 'Dinkelmix 33%', amount: 0.016607 },
+                        { name: 'Sonnenblumenkerne', amount: 0.003822 },
+                        { name: 'Hefe', amount: 0.000999 },
+                        { name: 'Backmittel', amount: 0.000664 },
+                        { name: 'Wiener Note', amount: 0.000496 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Kartoffelkürbis if missing
+            const hasKartoffelkuerbis = recipes.some(r => r.name === 'Kartoffelkürbis');
+            if (!hasKartoffelkuerbis) {
+                recipes.push({
+                    id: Date.now() + 106,
+                    name: 'Kartoffelkürbis',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.098,
+                    max: 750,
+                    step: 25,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.05082 },
+                        { name: 'Wasser', amount: 0.03418 },
+                        { name: 'Kürbiskerne', amount: 0.0024 },
+                        { name: 'Backmittel', amount: 0.002 },
+                        { name: 'Kartoffelflocken', amount: 0.00488 },
+                        { name: 'RM 1150', amount: 0.001 },
+                        { name: 'Salz', amount: 0.001 },
+                        { name: 'Hefe', amount: 0.001 },
+                        { name: 'Staback', amount: 0.00076 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Roggenbrötchen if missing
+            const hasRoggenbroetchen = recipes.some(r => r.name === 'Roggenbrötchen');
+            if (!hasRoggenbroetchen) {
+                recipes.push({
+                    id: Date.now() + 105,
+                    name: 'Roggenbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.08,
+                    max: 900,
+                    step: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.03121 },
+                        { name: 'RM 1150', amount: 0.0052 },
+                        { name: 'Roggenmix', amount: 0.01557 },
+                        { name: 'Wasser', amount: 0.02619 },
+                        { name: 'Hefe', amount: 0.00117 },
+                        { name: 'Wiener Note', amount: 0.00065 }
                     ]
                 });
                 saveData();
@@ -1062,6 +1201,95 @@
                     ]
                 },
                 {
+                    id: Date.now() + 109,
+                    name: 'Omegabrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.09,
+                    max: 600,
+                    step: 30,
+                    traySize: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.028572 },
+                        { name: 'Maxikrüstchen', amount: 0.028572 },
+                        { name: 'Wasser', amount: 0.031439 },
+                        { name: 'Hefe', amount: 0.001433 }
+                    ]
+                },
+                {
+                    id: Date.now() + 108,
+                    name: 'Mehrkornbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.09,
+                    max: 1200,
+                    step: 30,
+                    traySize: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.042260 },
+                        { name: 'Wasser', amount: 0.029563 },
+                        { name: 'Kornmix', amount: 0.013932 },
+                        { name: 'Hefe', amount: 0.001578 },
+                        { name: 'Backmittel', amount: 0.001511 },
+                        { name: 'Salz', amount: 0.001145 }
+                    ]
+                },
+                {
+                    id: Date.now() + 107,
+                    name: 'Dinkelbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.085,
+                    max: 1200,
+                    step: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.033180 },
+                        { name: 'Wasser', amount: 0.029232 },
+                        { name: 'Dinkelmix 33%', amount: 0.016607 },
+                        { name: 'Sonnenblumenkerne', amount: 0.003822 },
+                        { name: 'Hefe', amount: 0.000999 },
+                        { name: 'Backmittel', amount: 0.000664 },
+                        { name: 'Wiener Note', amount: 0.000496 }
+                    ]
+                },
+                {
+                    id: Date.now() + 106,
+                    name: 'Kartoffelkürbis',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.098,
+                    max: 750,
+                    step: 25,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.05082 },
+                        { name: 'Wasser', amount: 0.03418 },
+                        { name: 'Kürbiskerne', amount: 0.0024 },
+                        { name: 'Backmittel', amount: 0.002 },
+                        { name: 'Kartoffelflocken', amount: 0.00488 },
+                        { name: 'RM 1150', amount: 0.001 },
+                        { name: 'Salz', amount: 0.001 },
+                        { name: 'Hefe', amount: 0.001 },
+                        { name: 'Staback', amount: 0.00076 }
+                    ]
+                },
+                {
+                    id: Date.now() + 105,
+                    name: 'Roggenbrötchen',
+                    category: 'Brötchen',
+                    unit: 'Stück',
+                    unitWeight: 0.08,
+                    max: 900,
+                    step: 30,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.03121 },
+                        { name: 'RM 1150', amount: 0.0052 },
+                        { name: 'Roggenmix', amount: 0.01557 },
+                        { name: 'Wasser', amount: 0.02619 },
+                        { name: 'Hefe', amount: 0.00117 },
+                        { name: 'Wiener Note', amount: 0.00065 }
+                    ]
+                },
+                {
                     id: Date.now() + 103,
                     name: 'Brötchen mit Vorteig',
                     category: 'Brötchen',
@@ -1084,15 +1312,16 @@
                     name: 'Brötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
-                    unitWeight: 0.06,
+                    unitWeight: 0.07,
                     max: 1600,
                     step: 100,
                     ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Wasser', amount: 0.55 },
-                        { name: 'Salz', amount: 0.02 },
-                        { name: 'Hefe', amount: 0.02 },
-                        { name: 'Backmalz', amount: 0.005 }
+                        { name: 'WM 550', amount: 0.0435 },
+                        { name: 'Wasser', amount: 0.0225 },
+                        { name: 'Ferma Cool Malt', amount: 0.00158 },
+                        { name: 'Salz', amount: 0.00113 },
+                        { name: 'Hefe', amount: 0.00075 },
+                        { name: 'Wiener Note', amount: 0.00056 }
                     ]
                 },
                 {
@@ -1673,13 +1902,13 @@
 
         function updateCalculation() {
             if (!currentRecipe) return;
-            
+
             const amount = parseInt(document.getElementById('amount-slider').value);
             document.getElementById('slider-value').textContent = amount;
-            
+
             const tbody = document.getElementById('ingredients-body');
             let total = 0;
-            
+
             tbody.innerHTML = currentRecipe.ingredients.map(ing => {
                 const calculated = Math.ceil(ing.amount * amount * 100) / 100;
                 total += calculated;
@@ -1688,8 +1917,18 @@
                     <td>${calculated.toFixed(2)} kg</td>
                 </tr>`;
             }).join('');
-            
+
             document.getElementById('total-weight').textContent = `${total.toFixed(2)} kg`;
+
+            // Blechanzeige
+            const trayInfo = document.getElementById('tray-info');
+            if (currentRecipe.traySize) {
+                const trays = Math.ceil(amount / currentRecipe.traySize);
+                trayInfo.textContent = `🍞 ${trays} Blech${trays !== 1 ? 'e' : ''} (${currentRecipe.traySize} Stück/Blech)`;
+                trayInfo.style.display = 'block';
+            } else {
+                trayInfo.style.display = 'none';
+            }
         }
 
         function updateMultiVariantCalculation() {
