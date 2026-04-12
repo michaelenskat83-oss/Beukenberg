@@ -264,62 +264,6 @@
             border: 1px solid rgba(39,174,96,0.4);
         }
 
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .popup.active {
-            display: flex;
-        }
-
-        .popup-content {
-            background: rgba(18,1,41,0.95);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(212,175,55,0.3);
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
-        }
-
-        .popup-content h2 {
-            color: #D4AF37;
-            margin-bottom: 15px;
-        }
-
-        .popup-content p {
-            margin-bottom: 20px;
-            color: #BE95C4;
-        }
-
-        .popup-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .popup-buttons button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
         .form-group {
             margin-bottom: 15px;
         }
@@ -388,21 +332,6 @@
         .daily-plan-item p {
             font-size: 14px;
             color: #BE95C4;
-        }
-
-        .success-animation {
-            animation: slideInUp 0.5s ease-out;
-        }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .category-header {
@@ -562,7 +491,20 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a0a33; border:1px solid rgba(212,175,55,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#D4AF37; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 11.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 12.04.2026</p>
+
+                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">12.04.2026</p>
+                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Kuchen</strong>: Rezepte <em>Rührkuchen</em>, <em>Marmorkuchen</em> und <em>Obstkuchen</em> entfernt</li>
+                    <li>Kategorie <strong>Spezial</strong>: Rezept <em>Dinkel-Vollkornbrot</em> entfernt</li>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Ciabatta</em> aktualisiert — neue Zutaten, Slider 50–1000 Stück in 50er-Schritten</li>
+                    <li>Kategorie <strong>Vorteig</strong>: <em>Weizenpoolish</em> umbenannt in <em>Weizen Vorteig</em></li>
+                    <li>Kategorie <strong>Vorteig</strong>: <em>Weizen Vorteig</em> aktualisiert — WM 550 10,25 kg + Wasser 5,75 kg pro Vorteig, Slider 1–10</li>
+                    <li>Kategorie <strong>Vorteig</strong>: <em>Roggensauer</em> aktualisiert — neue Zutaten (RM 1150 + Wasser, kein Sauerteig), Slider 5–150 kg in 5er-Schritten</li>
+                    <li>Alle Kategorien: Rezepte werden alphabetisch sortiert angezeigt</li>
+                    <li><strong>Brot Tracker</strong>: Zeigt nur noch ausgewählte Rezepte (Bauern, Hefekassler, Mehrkorn, Konze, Sauerteigkassler, Finnenbrot, Platzteig)</li>
+                    <li><strong>Brot Tracker</strong>: <em>Kosacken</em> hinzugefügt</li>
+                </ul>
 
                 <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">11.04.2026</p>
                 <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -663,26 +605,6 @@
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
             </button>
-        </div>
-    </div>
-
-    <!-- Success Popup -->
-    <div id="success-popup" class="popup">
-        <div class="popup-content success-animation">
-            <h2>✅ Erfolgreich!</h2>
-            <p id="success-message"></p>
-        </div>
-    </div>
-
-    <!-- Confirm Popup -->
-    <div id="confirm-popup" class="popup">
-        <div class="popup-content">
-            <h2 id="confirm-title">Bestätigung</h2>
-            <p id="confirm-message"></p>
-            <div class="popup-buttons">
-                <button style="background: rgba(190,149,196,0.2); color: #BE95C4; border: 1px solid rgba(190,149,196,0.4);" onclick="closeConfirmPopup()">Abbrechen</button>
-                <button style="background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid rgba(231,76,60,0.4);" id="confirm-action-btn">Bestätigen</button>
-            </div>
         </div>
     </div>
 
@@ -1079,6 +1001,69 @@
                 saveData();
             }
 
+            // Migration: Update Ciabatta recipe
+            const ciabattaIdx = recipes.findIndex(r => r.name === 'Ciabatta');
+            if (ciabattaIdx !== -1) {
+                recipes[ciabattaIdx] = {
+                    ...recipes[ciabattaIdx],
+                    unitWeight: 58.36/600,
+                    max: 1000,
+                    step: 50,
+                    ingredients: [
+                        { name: 'WM 550',   amount: 52/600 },
+                        { name: 'So Soft',  amount: 1.55/600 },
+                        { name: 'Staback',  amount: 1.03/600 },
+                        { name: 'Hefe',     amount: 1.55/600 },
+                        { name: 'Salz',     amount: 1.19/600 },
+                        { name: 'Öl',       amount: 0.52/600 },
+                        { name: 'Zucker',   amount: 0.52/600 }
+                    ]
+                };
+                saveData();
+            }
+
+            // Migration: Update Roggensauer recipe
+            const roggensauerIdx = recipes.findIndex(r => r.name === 'Roggensauer');
+            if (roggensauerIdx !== -1) {
+                recipes[roggensauerIdx] = {
+                    ...recipes[roggensauerIdx],
+                    unit: 'kg',
+                    unitWeight: 1.0,
+                    max: 150,
+                    step: 5,
+                    ingredients: [
+                        { name: 'RM 1150', amount: 25/45 },
+                        { name: 'Wasser', amount: 20/45 }
+                    ]
+                };
+                saveData();
+            }
+
+            // Migration: Rename Weizenpoolish to Weizen Vorteig + update recipe
+            const weizenpoolish = recipes.find(r => r.name === 'Weizenpoolish');
+            if (weizenpoolish) { weizenpoolish.name = 'Weizen Vorteig'; saveData(); }
+            const weizenVorteigIdx = recipes.findIndex(r => r.name === 'Weizen Vorteig');
+            if (weizenVorteigIdx !== -1) {
+                recipes[weizenVorteigIdx] = {
+                    ...recipes[weizenVorteigIdx],
+                    unit: 'Vorteig',
+                    unitWeight: 16.0,
+                    max: 10,
+                    step: 1,
+                    ingredients: [
+                        { name: 'WM 550', amount: 10.25 },
+                        { name: 'Wasser', amount: 5.75 }
+                    ]
+                };
+                saveData();
+            }
+
+            // Migration: Remove deprecated recipes
+            const removedRecipes = ['Rührkuchen', 'Marmorkuchen', 'Obstkuchen', 'Dinkel-Vollkornbrot'];
+            const beforeCount = recipes.length;
+            recipes = recipes.filter(r => !removedRecipes.includes(r.name));
+            if (recipes.length !== beforeCount) saveData();
+
             // Migration: Update old Bauernbrot to new Bauern recipe
             const bauernIndex = recipes.findIndex(r => r.name === 'Bauernbrot' || r.name === 'Bauern');
             if (bauernIndex !== -1) {
@@ -1342,106 +1327,47 @@
                     ]
                 },
                 {
-                    id: Date.now() + 10,
-                    name: 'Rührkuchen',
-                    category: 'Kuchen',
-                    unit: 'Bleche',
-                    unitWeight: 1.5,
-                    max: 50,
-                    ingredients: [
-                        { name: 'WM 550', amount: 0.5 },
-                        { name: 'Zucker', amount: 0.4 },
-                        { name: 'Butter', amount: 0.35 },
-                        { name: 'Eier', amount: 0.35 },
-                        { name: 'Milch', amount: 0.2 }
-                    ]
-                },
-                {
-                    id: Date.now() + 11,
-                    name: 'Marmorkuchen',
-                    category: 'Kuchen',
-                    unit: 'Kästen',
-                    unitWeight: 1.2,
-                    max: 100,
-                    ingredients: [
-                        { name: 'WM 550', amount: 0.5 },
-                        { name: 'Zucker', amount: 0.4 },
-                        { name: 'Butter', amount: 0.35 },
-                        { name: 'Eier', amount: 0.35 },
-                        { name: 'Milch', amount: 0.2 },
-                        { name: 'Schokolade', amount: 0.08 }
-                    ]
-                },
-                {
-                    id: Date.now() + 12,
-                    name: 'Obstkuchen',
-                    category: 'Kuchen',
-                    unit: 'Bleche',
-                    unitWeight: 1.5,
-                    max: 50,
-                    ingredients: [
-                        { name: 'WM 550', amount: 0.6 },
-                        { name: 'Zucker', amount: 0.3 },
-                        { name: 'Butter', amount: 0.25 },
-                        { name: 'Eier', amount: 0.2 },
-                        { name: 'Milch', amount: 0.15 }
-                    ]
-                },
-                {
-                    id: Date.now() + 13,
-                    name: 'Dinkel-Vollkornbrot',
-                    category: 'Spezial',
-                    unit: 'Brote',
-                    unitWeight: 1.0,
-                    max: 100,
-                    ingredients: [
-                        { name: 'DM630', amount: 0.5 },
-                        { name: 'Vollkornmehl', amount: 0.5 },
-                        { name: 'Wasser', amount: 0.7 },
-                        { name: 'Salz', amount: 0.025 },
-                        { name: 'Hefe', amount: 0.015 },
-                        { name: 'Gewürze', amount: 0.01 }
-                    ]
-                },
-                {
                     id: Date.now() + 14,
                     name: 'Ciabatta',
                     category: 'Spezial',
                     unit: 'Stück',
-                    unitWeight: 0.25,
-                    max: 300,
+                    unitWeight: 58.36/600,
+                    max: 1000,
+                    step: 50,
                     ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Wasser', amount: 0.75 },
-                        { name: 'Salz', amount: 0.02 },
-                        { name: 'Hefe', amount: 0.01 },
-                        { name: 'Öl', amount: 0.03 }
+                        { name: 'WM 550',   amount: 52/600 },
+                        { name: 'So Soft',  amount: 1.55/600 },
+                        { name: 'Staback',  amount: 1.03/600 },
+                        { name: 'Hefe',     amount: 1.55/600 },
+                        { name: 'Salz',     amount: 1.19/600 },
+                        { name: 'Öl',       amount: 0.52/600 },
+                        { name: 'Zucker',   amount: 0.52/600 }
                     ]
                 },
                 {
                     id: Date.now() + 15,
                     name: 'Roggensauer',
                     category: 'Vorteig',
-                    unit: 'Kästen',
-                    unitWeight: 2.0,
-                    max: 20,
+                    unit: 'kg',
+                    unitWeight: 1.0,
+                    max: 150,
+                    step: 5,
                     ingredients: [
-                        { name: 'RM 1150', amount: 1.0 },
-                        { name: 'Wasser', amount: 1.0 },
-                        { name: 'Sauerteig', amount: 0.1 }
+                        { name: 'RM 1150', amount: 25/45 },
+                        { name: 'Wasser', amount: 20/45 }
                     ]
                 },
                 {
                     id: Date.now() + 16,
-                    name: 'Weizenpoolish',
+                    name: 'Weizen Vorteig',
                     category: 'Vorteig',
-                    unit: 'Kästen',
-                    unitWeight: 2.0,
-                    max: 20,
+                    unit: 'Vorteig',
+                    unitWeight: 16.0,
+                    max: 10,
+                    step: 1,
                     ingredients: [
-                        { name: 'WM 550', amount: 1.0 },
-                        { name: 'Wasser', amount: 1.0 },
-                        { name: 'Hefe', amount: 0.005 }
+                        { name: 'WM 550', amount: 10.25 },
+                        { name: 'Wasser', amount: 5.75 }
                     ]
                 },
                 {
@@ -1618,6 +1544,13 @@
         }
 
         // Brot Tracker
+        const TRACKER_WHITELIST = ['Bauern', 'Hefekassler', 'Mehrkorn', 'Konze', 'Sauerteigkassler', 'Finnenbrot', 'Platzteig', 'Kosacken'];
+
+        // Einträge die nur im Tracker erscheinen (kein Rezept hinterlegt): Name → Einheit
+        const TRACKER_EXTRAS = {
+            'Kosacken': 'Stk'
+        };
+
         const TRACKER_VARIANTS = {
             'Mehrkorn': [
                 { key: 'mk-850',   label: 'Mehrkorn 850g'  },
@@ -1655,7 +1588,6 @@
         }
 
         function showBrotTracker() {
-            const trackerCategories = ['Brot', 'Brötchen', 'Plunder', 'Kuchen', 'Spezial'];
             const today = new Date();
             document.getElementById('tracker-date').textContent =
                 today.toLocaleDateString('de-DE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -1663,28 +1595,22 @@
             const container = document.getElementById('tracker-list');
             let html = '';
 
-            trackerCategories.forEach(cat => {
-                const catRecipes = recipes.filter(r => r.category === cat);
-                if (catRecipes.length === 0) return;
+            TRACKER_WHITELIST.forEach(name => {
+                const recipe = recipes.find(r => r.name === name);
+                if (!recipe) return;
 
-                html += `<div style="margin-bottom: 20px;">
-                    <div class="category-header">${cat}</div>`;
-
-                catRecipes.forEach(recipe => {
-                    const variants = TRACKER_VARIANTS[recipe.name];
-                    if (variants) {
-                        // Recipe header row (no input)
-                        html += `<div style="padding:10px 15px 6px;font-weight:700;color:#D4AF37;">${recipe.name}</div>`;
-                        variants.forEach(v => {
-                            html += _trackerRow(`tracker-${v.key}`, v.label, 'Stk', true);
-                        });
-                    } else {
-                        const unit = recipe.unit || 'Stk';
-                        html += _trackerRow(`tracker-${recipe.id}`, recipe.name, unit, false);
-                    }
-                });
-
-                html += `</div>`;
+                const variants = TRACKER_VARIANTS[name];
+                if (variants) {
+                    html += `<div style="padding:10px 15px 6px;font-weight:700;color:#D4AF37;">${name}</div>`;
+                    variants.forEach(v => {
+                        html += _trackerRow(`tracker-${v.key}`, v.label, 'Stk', true);
+                    });
+                } else if (recipe) {
+                    const unit = recipe.unit || 'Stk';
+                    html += _trackerRow(`tracker-${recipe.id}`, name, unit, false);
+                } else if (TRACKER_EXTRAS[name]) {
+                    html += _trackerRow(`tracker-extra-${name}`, name, TRACKER_EXTRAS[name], false);
+                }
             });
 
             container.innerHTML = html;
@@ -1693,50 +1619,49 @@
         }
 
         function shareBrotTracker() {
-            const trackerCategories = ['Brot', 'Brötchen', 'Plunder', 'Kuchen', 'Spezial'];
             const today = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
 
             let lines = [`*${today}*\n`];
             let hasAny = false;
             let total = 0;
 
-            trackerCategories.forEach(cat => {
-                const catRecipes = recipes.filter(r => r.category === cat);
-                const catLines = [];
+            TRACKER_WHITELIST.forEach(name => {
+                const recipe = recipes.find(r => r.name === name);
+                if (!recipe) return;
 
-                catRecipes.forEach(recipe => {
-                    const variants = TRACKER_VARIANTS[recipe.name];
-                    if (variants) {
-                        const subLines = [];
-                        variants.forEach(v => {
-                            const input = document.getElementById(`tracker-${v.key}`);
-                            const val = input ? parseInt(input.value) || 0 : 0;
-                            if (val > 0) {
-                                subLines.push(`    ◦ ${v.label}: ${val} Stk`);
-                                hasAny = true;
-                                total += val;
-                            }
-                        });
-                        if (subLines.length > 0) {
-                            catLines.push(`  • ${recipe.name}`);
-                            catLines.push(...subLines);
-                        }
-                    } else {
-                        const input = document.getElementById(`tracker-${recipe.id}`);
+                const variants = TRACKER_VARIANTS[name];
+                if (variants) {
+                    const subLines = [];
+                    variants.forEach(v => {
+                        const input = document.getElementById(`tracker-${v.key}`);
                         const val = input ? parseInt(input.value) || 0 : 0;
                         if (val > 0) {
-                            const unit = recipe.unit || 'Stk';
-                            catLines.push(`  • ${recipe.name}: ${val} ${unit}`);
+                            subLines.push(`    ◦ ${v.label}: ${val} Stk`);
                             hasAny = true;
                             total += val;
                         }
+                    });
+                    if (subLines.length > 0) {
+                        lines.push(`  • ${name}`);
+                        lines.push(...subLines);
                     }
-                });
-
-                if (catLines.length > 0) {
-                    lines.push(`*${cat}*`);
-                    lines.push(...catLines);
-                    lines.push('');
+                } else if (recipe) {
+                    const input = document.getElementById(`tracker-${recipe.id}`);
+                    const val = input ? parseInt(input.value) || 0 : 0;
+                    if (val > 0) {
+                        const unit = recipe.unit || 'Stk';
+                        lines.push(`  • ${name}: ${val} ${unit}`);
+                        hasAny = true;
+                        total += val;
+                    }
+                } else if (TRACKER_EXTRAS[name]) {
+                    const input = document.getElementById(`tracker-extra-${name}`);
+                    const val = input ? parseInt(input.value) || 0 : 0;
+                    if (val > 0) {
+                        lines.push(`  • ${name}: ${val} ${TRACKER_EXTRAS[name]}`);
+                        hasAny = true;
+                        total += val;
+                    }
                 }
             });
 
@@ -1756,7 +1681,7 @@
             currentCategory = category;
             document.getElementById('category-title').textContent = category;
             
-            const categoryRecipes = recipes.filter(r => r.category === category);
+            const categoryRecipes = recipes.filter(r => r.category === category).sort((a, b) => a.name.localeCompare(b.name, 'de'));
             const recipeList = document.getElementById('recipe-list');
             
             if (categoryRecipes.length === 0) {
@@ -1797,7 +1722,7 @@
             let flourWeight = 0;
             let waterWeight = 0;
             
-            const ingredients = recipe.isMultiVariant ? recipe.ingredients : recipe.ingredients;
+            const ingredients = recipe.ingredients;
             
             ingredients.forEach(ing => {
                 const name = ing.name.toLowerCase();
@@ -2085,64 +2010,6 @@
             let totalWeight = totalDoughNeeded + Object.values(variantTotals).reduce((sum, val) => sum + val, 0);
             
             document.getElementById('total-weight').textContent = `${totalWeight.toFixed(2)} kg`;
-        }
-
-        function showSuccessPopup(message) {
-            document.getElementById('success-message').textContent = message;
-            document.getElementById('success-popup').classList.add('active');
-            
-            setTimeout(() => {
-                document.getElementById('success-popup').classList.remove('active');
-            }, 4000);
-        }
-
-        function showConfirmPopup(title, message, onConfirm, onAlternate = null) {
-            document.getElementById('confirm-title').textContent = title;
-            document.getElementById('confirm-message').textContent = message;
-            
-            const confirmBtn = document.getElementById('confirm-action-btn');
-            
-            if (onAlternate) {
-                confirmBtn.textContent = 'Hinzufügen';
-                confirmBtn.style.background = '#27ae60';
-                confirmBtn.onclick = () => {
-                    closeConfirmPopup();
-                    onConfirm();
-                };
-                
-                // Zweiter Button für "Ersetzen"
-                const buttonsDiv = confirmBtn.parentElement;
-                if (buttonsDiv.children.length === 2) {
-                    const replaceBtn = document.createElement('button');
-                    replaceBtn.textContent = 'Ersetzen';
-                    replaceBtn.style.background = '#e74c3c';
-                    replaceBtn.style.color = '#fff';
-                    replaceBtn.onclick = () => {
-                        closeConfirmPopup();
-                        onAlternate();
-                    };
-                    buttonsDiv.appendChild(replaceBtn);
-                }
-            } else {
-                confirmBtn.textContent = 'Bestätigen';
-                confirmBtn.style.background = '#e74c3c';
-                confirmBtn.onclick = () => {
-                    closeConfirmPopup();
-                    onConfirm();
-                };
-                
-                // Entferne dritten Button falls vorhanden
-                const buttonsDiv = confirmBtn.parentElement;
-                while (buttonsDiv.children.length > 2) {
-                    buttonsDiv.removeChild(buttonsDiv.lastChild);
-                }
-            }
-            
-            document.getElementById('confirm-popup').classList.add('active');
-        }
-
-        function closeConfirmPopup() {
-            document.getElementById('confirm-popup').classList.remove('active');
         }
 
         // Initialisierung beim Laden
