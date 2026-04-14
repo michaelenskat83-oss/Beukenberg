@@ -976,6 +976,47 @@
             saveData();
 
             // Migration: Add Konze if missing
+            // Migration: Add Roggenvollkornbrot if missing
+            const hasRoggenvollkornbrot = recipes.some(r => r.name === 'Roggenvollkornbrot');
+            if (!hasRoggenvollkornbrot) {
+                recipes.push({
+                    id: BASE_ID + 111,
+                    name: 'Roggenvollkornbrot',
+                    category: 'Brot',
+                    unit: 'Kästen',
+                    unitWeight: 4.8,
+                    max: 15,
+                    step: 1,
+                    ingredients: [
+                        { name: 'Roggenvollkorn', amount: 4.8 * 100  / 184.7 },
+                        { name: 'Wasser',         amount: 4.8 * 79.3 / 184.7 },
+                        { name: 'Hefe',           amount: 4.8 * 2.6  / 184.7 },
+                        { name: 'Salz',           amount: 4.8 * 2.8  / 184.7 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Dinkelvollkornbrot if missing
+            const hasDinkelvollkornbrot = recipes.some(r => r.name === 'Dinkelvollkornbrot');
+            if (!hasDinkelvollkornbrot) {
+                recipes.push({
+                    id: BASE_ID + 110,
+                    name: 'Dinkelvollkornbrot',
+                    category: 'Brot',
+                    unit: 'Kästen',
+                    unitWeight: 4.8,
+                    max: 15,
+                    step: 1,
+                    ingredients: [
+                        { name: 'KOMPLET mein VKB', amount: 14.29 * 4.8 / 24.55 },
+                        { name: 'Hefe',             amount: 0.26  * 4.8 / 24.55 },
+                        { name: 'Wasser',           amount: 10    * 4.8 / 24.55 }
+                    ]
+                });
+                saveData();
+            }
+
             const hasKonze = recipes.some(r => r.name === 'Konze');
             if (!hasKonze) {
                 recipes.push({
@@ -1182,6 +1223,35 @@
                         { name: 'Hefe', amount: 0.073 },
                         { name: 'Staback CL', amount: 0.018 },
                         { name: 'FrischeProfi', amount: 0.018 }
+                    ]
+                },
+                {
+                    id: BASE_ID + 111,
+                    name: 'Roggenvollkornbrot',
+                    category: 'Brot',
+                    unit: 'Kästen',
+                    unitWeight: 4.8,
+                    max: 15,
+                    step: 1,
+                    ingredients: [
+                        { name: 'Roggenvollkorn', amount: 4.8 * 100  / 184.7 },
+                        { name: 'Wasser',         amount: 4.8 * 79.3 / 184.7 },
+                        { name: 'Hefe',           amount: 4.8 * 2.6  / 184.7 },
+                        { name: 'Salz',           amount: 4.8 * 2.8  / 184.7 }
+                    ]
+                },
+                {
+                    id: BASE_ID + 110,
+                    name: 'Dinkelvollkornbrot',
+                    category: 'Brot',
+                    unit: 'Kästen',
+                    unitWeight: 4.8,
+                    max: 15,
+                    step: 1,
+                    ingredients: [
+                        { name: 'KOMPLET mein VKB', amount: 14.29 * 4.8 / 24.55 },
+                        { name: 'Hefe',             amount: 0.26  * 4.8 / 24.55 },
+                        { name: 'Wasser',           amount: 10    * 4.8 / 24.55 }
                     ]
                 },
                 {
