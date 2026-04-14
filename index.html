@@ -610,6 +610,7 @@
 
     <script>
         // Globale Variablen
+        const BASE_ID = Date.now();
         let recipes = [];
         let currentCategory = '';
         let currentRecipe = null;
@@ -653,7 +654,7 @@
             const hasPlatzteig = recipes.some(r => r.name === 'Platzteig');
             if (!hasPlatzteig) {
                 recipes.push({
-                    id: Date.now() + 17,
+                    id: BASE_ID + 17,
                     name: 'Platzteig',
                     category: 'Spezial',
                     unit: 'Multi',
@@ -699,7 +700,7 @@
             const hasMehrkorn = recipes.some(r => r.name === 'Mehrkorn');
             if (!hasMehrkorn) {
                 recipes.push({
-                    id: Date.now() + 18,
+                    id: BASE_ID + 18,
                     name: 'Mehrkorn',
                     category: 'Brot',
                     unit: 'Multi',
@@ -747,7 +748,7 @@
             const hasMilchbroetchen = recipes.some(r => r.name === 'Milchbrötchen');
             if (!hasMilchbroetchen) {
                 recipes.push({
-                    id: Date.now() + 100,
+                    id: BASE_ID + 100,
                     name: 'Milchbrötchen',
                     category: 'Brötchen',
                     unit: 'Multi',
@@ -782,7 +783,7 @@
             const hasFinnenbrot = recipes.some(r => r.name === 'Finnenbrot');
             if (!hasFinnenbrot) {
                 recipes.push({
-                    id: Date.now() + 104,
+                    id: BASE_ID + 104,
                     name: 'Finnenbrot',
                     category: 'Brot',
                     unit: 'Brote',
@@ -806,7 +807,7 @@
             const hasOmegabroetchen = recipes.some(r => r.name === 'Omegabrötchen');
             if (!hasOmegabroetchen) {
                 recipes.push({
-                    id: Date.now() + 109,
+                    id: BASE_ID + 109,
                     name: 'Omegabrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -828,7 +829,7 @@
             const hasMehrkornbroetchen = recipes.some(r => r.name === 'Mehrkornbrötchen');
             if (!hasMehrkornbroetchen) {
                 recipes.push({
-                    id: Date.now() + 108,
+                    id: BASE_ID + 108,
                     name: 'Mehrkornbrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -852,7 +853,7 @@
             const hasDinkelbroetchen = recipes.some(r => r.name === 'Dinkelbrötchen');
             if (!hasDinkelbroetchen) {
                 recipes.push({
-                    id: Date.now() + 107,
+                    id: BASE_ID + 107,
                     name: 'Dinkelbrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -876,7 +877,7 @@
             const hasKartoffelkuerbis = recipes.some(r => r.name === 'Kartoffelkürbis');
             if (!hasKartoffelkuerbis) {
                 recipes.push({
-                    id: Date.now() + 106,
+                    id: BASE_ID + 106,
                     name: 'Kartoffelkürbis',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -902,7 +903,7 @@
             const hasRoggenbroetchen = recipes.some(r => r.name === 'Roggenbrötchen');
             if (!hasRoggenbroetchen) {
                 recipes.push({
-                    id: Date.now() + 105,
+                    id: BASE_ID + 105,
                     name: 'Roggenbrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -924,7 +925,6 @@
             // Migration: Add or update Brötchen mit Vorteig
             const broetchenVorteigIndex = recipes.findIndex(r => r.name === 'Brötchen mit Vorteig');
             const broetchenVorteigData = {
-                id: Date.now() + 103,
                 name: 'Brötchen mit Vorteig',
                 category: 'Brötchen',
                 unit: 'Stück',
@@ -951,7 +951,6 @@
             // Migration: Add or update Sauerteigkassler
             const sauerteigkasslerIndex = recipes.findIndex(r => r.name === 'Sauerteigkassler');
             const sauerteigkasslerData = {
-                id: Date.now() + 102,
                 name: 'Sauerteigkassler',
                 category: 'Brot',
                 unit: 'Brote',
@@ -980,7 +979,7 @@
             const hasKonze = recipes.some(r => r.name === 'Konze');
             if (!hasKonze) {
                 recipes.push({
-                    id: Date.now() + 101,
+                    id: BASE_ID + 101,
                     name: 'Konze',
                     category: 'Brot',
                     unit: 'Brote',
@@ -1092,7 +1091,7 @@
         function loadDefaultRecipes() {
             recipes = [
                 {
-                    id: Date.now() + 1,
+                    id: BASE_ID + 1,
                     name: 'Bauern',
                     category: 'Brot',
                     unit: 'Brote',
@@ -1111,7 +1110,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 20,
+                    id: BASE_ID + 20,
                     name: 'Hefekassler',
                     category: 'Brot',
                     unit: 'Brote',
@@ -1130,7 +1129,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 102,
+                    id: BASE_ID + 102,
                     name: 'Sauerteigkassler',
                     category: 'Brot',
                     unit: 'Brote',
@@ -1149,7 +1148,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 104,
+                    id: BASE_ID + 104,
                     name: 'Finnenbrot',
                     category: 'Brot',
                     unit: 'Brote',
@@ -1167,7 +1166,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 101,
+                    id: BASE_ID + 101,
                     name: 'Konze',
                     category: 'Brot',
                     unit: 'Brote',
@@ -1186,7 +1185,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 109,
+                    id: BASE_ID + 109,
                     name: 'Omegabrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1202,7 +1201,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 108,
+                    id: BASE_ID + 108,
                     name: 'Mehrkornbrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1220,7 +1219,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 107,
+                    id: BASE_ID + 107,
                     name: 'Dinkelbrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1238,7 +1237,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 106,
+                    id: BASE_ID + 106,
                     name: 'Kartoffelkürbis',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1258,7 +1257,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 105,
+                    id: BASE_ID + 105,
                     name: 'Roggenbrötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1275,7 +1274,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 103,
+                    id: BASE_ID + 103,
                     name: 'Brötchen mit Vorteig',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1293,7 +1292,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 4,
+                    id: BASE_ID + 4,
                     name: 'Brötchen',
                     category: 'Brötchen',
                     unit: 'Stück',
@@ -1310,7 +1309,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 7,
+                    id: BASE_ID + 7,
                     name: 'Plunderteig Grundrezept',
                     category: 'Plunder',
                     unit: 'Bleche',
@@ -1327,7 +1326,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 14,
+                    id: BASE_ID + 14,
                     name: 'Ciabatta',
                     category: 'Spezial',
                     unit: 'Stück',
@@ -1345,7 +1344,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 15,
+                    id: BASE_ID + 15,
                     name: 'Roggensauer',
                     category: 'Vorteig',
                     unit: 'kg',
@@ -1358,7 +1357,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 16,
+                    id: BASE_ID + 16,
                     name: 'Weizen Vorteig',
                     category: 'Vorteig',
                     unit: 'Vorteig',
@@ -1371,7 +1370,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 17,
+                    id: BASE_ID + 17,
                     name: 'Platzteig',
                     category: 'Spezial',
                     unit: 'Multi',
@@ -1401,7 +1400,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 18,
+                    id: BASE_ID + 18,
                     name: 'Mehrkorn',
                     category: 'Brot',
                     unit: 'Multi',
@@ -1443,7 +1442,7 @@
                     ]
                 },
                 {
-                    id: Date.now() + 100,
+                    id: BASE_ID + 100,
                     name: 'Milchbrötchen',
                     category: 'Brötchen',
                     unit: 'Multi',
@@ -1511,7 +1510,7 @@
             saveData();
         }
         // Daten laden
-        const DATA_VERSION = '2026-04-09c';
+        const DATA_VERSION = '2026-04-14';
 
         function loadData() {
             try {
