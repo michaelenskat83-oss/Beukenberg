@@ -1597,10 +1597,9 @@
 
             TRACKER_WHITELIST.forEach(name => {
                 const recipe = recipes.find(r => r.name === name);
-                if (!recipe) return;
 
                 const variants = TRACKER_VARIANTS[name];
-                if (variants) {
+                if (variants && recipe) {
                     html += `<div style="padding:10px 15px 6px;font-weight:700;color:#D4AF37;">${name}</div>`;
                     variants.forEach(v => {
                         html += _trackerRow(`tracker-${v.key}`, v.label, 'Stk', true);
@@ -1627,10 +1626,9 @@
 
             TRACKER_WHITELIST.forEach(name => {
                 const recipe = recipes.find(r => r.name === name);
-                if (!recipe) return;
 
                 const variants = TRACKER_VARIANTS[name];
-                if (variants) {
+                if (variants && recipe) {
                     const subLines = [];
                     variants.forEach(v => {
                         const input = document.getElementById(`tracker-${v.key}`);
