@@ -491,13 +491,21 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a0a33; border:1px solid rgba(212,175,55,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#D4AF37; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 14.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 16.04.2026</p>
+
+                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">16.04.2026</p>
+                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brötchen</strong>: <em>Milchbrötchen</em> — Rezept aktualisiert (HTK statt UniversalBackcreme, neue Mengen)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Dinkelvollkornbrot</em> — Kastengewicht auf 4,6 kg geändert</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Roggenvollkornbrot</em> — Kastengewicht auf 4,6 kg geändert</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Blankenstein</em> — Kastengewicht auf 4,6 kg geändert</li>
+                </ul>
 
                 <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">14.04.2026</p>
                 <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
-                    <li>Kategorie <strong>Brot</strong>: <em>Dinkelvollkornbrot</em> hinzugefügt (4,8 kg/Kasten, Slider 1–15)</li>
-                    <li>Kategorie <strong>Brot</strong>: <em>Roggenvollkornbrot</em> hinzugefügt (4,8 kg/Kasten, Slider 1–15)</li>
-                    <li>Kategorie <strong>Brot</strong>: <em>Blankenstein</em> hinzugefügt (6,0 kg/Kasten, Slider 1–15)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Dinkelvollkornbrot</em> hinzugefügt (Slider 1–15)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Roggenvollkornbrot</em> hinzugefügt (Slider 1–15)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Blankenstein</em> hinzugefügt (Slider 1–15)</li>
                     <li><strong>Bugfix</strong>: <em>Kartoffelkürbis</em> und <em>Roggenbrötchen</em> zeigten fälschlicherweise das Mehrkornbrötchen-Rezept an</li>
                     <li><strong>Bugfix</strong>: <em>Kosacken</em> erschien nicht im Brot Tracker</li>
                 </ul>
@@ -764,17 +772,17 @@
                     max: 50,
                     isMultiVariant: true,
                     isTrayBased: true,
-                    baseWeight: 25.2,
+                    baseWeight: 25.21,
                     ingredients: [
                         { name: 'Wasser', amount: 5.92 },
                         { name: 'WM 550', amount: 14.03 },
-                        { name: 'UniversalBackcreme', amount: 0.33 },
+                        { name: 'HTK', amount: 0.34 },
                         { name: 'Salz', amount: 0.21 },
                         { name: 'Fett', amount: 0.94 },
-                        { name: 'Milchpulver', amount: 0.54 },
+                        { name: 'Milchpulver', amount: 0.55 },
                         { name: 'Zucker', amount: 1.6 },
-                        { name: 'Hefe', amount: 0.82 },
-                        { name: 'Eier', amount: 0.82 }
+                        { name: 'Hefe', amount: 0.81 },
+                        { name: 'Ei', amount: 0.81 }
                     ],
                     variants: [
                         { name: 'Ohne', perTray: 30, pieceWeight: 0.07, percentage: 0, weights: [1] },
@@ -993,16 +1001,16 @@
                     name: 'Blankenstein',
                     category: 'Brot',
                     unit: 'Kästen',
-                    unitWeight: 6.0,
+                    unitWeight: 4.6,
                     max: 15,
                     step: 1,
                     ingredients: [
-                        { name: 'Roggenvollkorn', amount: 6 * 70   / 183.8 },
-                        { name: 'Weizenvollkorn', amount: 6 * 30   / 183.8 },
-                        { name: 'Hefe',           amount: 6 * 2    / 183.8 },
-                        { name: 'Salz',           amount: 6 * 0.8  / 183.8 },
-                        { name: 'Staback',        amount: 6 * 1    / 183.8 },
-                        { name: 'Wasser',         amount: 6 * 80   / 183.8 }
+                        { name: 'Roggenvollkorn', amount: 4.6 * 70   / 183.8 },
+                        { name: 'Weizenvollkorn', amount: 4.6 * 30   / 183.8 },
+                        { name: 'Hefe',           amount: 4.6 * 2    / 183.8 },
+                        { name: 'Salz',           amount: 4.6 * 0.8  / 183.8 },
+                        { name: 'Staback',        amount: 4.6 * 1    / 183.8 },
+                        { name: 'Wasser',         amount: 4.6 * 80   / 183.8 }
                     ]
                 });
                 saveData();
@@ -1016,14 +1024,14 @@
                     name: 'Roggenvollkornbrot',
                     category: 'Brot',
                     unit: 'Kästen',
-                    unitWeight: 4.8,
+                    unitWeight: 4.6,
                     max: 15,
                     step: 1,
                     ingredients: [
-                        { name: 'Roggenvollkorn', amount: 4.8 * 100  / 184.7 },
-                        { name: 'Wasser',         amount: 4.8 * 79.3 / 184.7 },
-                        { name: 'Hefe',           amount: 4.8 * 2.6  / 184.7 },
-                        { name: 'Salz',           amount: 4.8 * 2.8  / 184.7 }
+                        { name: 'Roggenvollkorn', amount: 4.6 * 100  / 184.7 },
+                        { name: 'Wasser',         amount: 4.6 * 79.3 / 184.7 },
+                        { name: 'Hefe',           amount: 4.6 * 2.6  / 184.7 },
+                        { name: 'Salz',           amount: 4.6 * 2.8  / 184.7 }
                     ]
                 });
                 saveData();
@@ -1037,13 +1045,13 @@
                     name: 'Dinkelvollkornbrot',
                     category: 'Brot',
                     unit: 'Kästen',
-                    unitWeight: 4.8,
+                    unitWeight: 4.6,
                     max: 15,
                     step: 1,
                     ingredients: [
-                        { name: 'KOMPLET mein VKB', amount: 14.29 * 4.8 / 24.55 },
-                        { name: 'Hefe',             amount: 0.26  * 4.8 / 24.55 },
-                        { name: 'Wasser',           amount: 10    * 4.8 / 24.55 }
+                        { name: 'KOMPLET mein VKB', amount: 14.29 * 4.6 / 24.55 },
+                        { name: 'Hefe',             amount: 0.26  * 4.6 / 24.55 },
+                        { name: 'Wasser',           amount: 10    * 4.6 / 24.55 }
                     ]
                 });
                 saveData();
@@ -1262,16 +1270,16 @@
                     name: 'Blankenstein',
                     category: 'Brot',
                     unit: 'Kästen',
-                    unitWeight: 6.0,
+                    unitWeight: 4.6,
                     max: 15,
                     step: 1,
                     ingredients: [
-                        { name: 'Roggenvollkorn', amount: 6 * 70   / 183.8 },
-                        { name: 'Weizenvollkorn', amount: 6 * 30   / 183.8 },
-                        { name: 'Hefe',           amount: 6 * 2    / 183.8 },
-                        { name: 'Salz',           amount: 6 * 0.8  / 183.8 },
-                        { name: 'Staback',        amount: 6 * 1    / 183.8 },
-                        { name: 'Wasser',         amount: 6 * 80   / 183.8 }
+                        { name: 'Roggenvollkorn', amount: 4.6 * 70   / 183.8 },
+                        { name: 'Weizenvollkorn', amount: 4.6 * 30   / 183.8 },
+                        { name: 'Hefe',           amount: 4.6 * 2    / 183.8 },
+                        { name: 'Salz',           amount: 4.6 * 0.8  / 183.8 },
+                        { name: 'Staback',        amount: 4.6 * 1    / 183.8 },
+                        { name: 'Wasser',         amount: 4.6 * 80   / 183.8 }
                     ]
                 },
                 {
@@ -1279,14 +1287,14 @@
                     name: 'Roggenvollkornbrot',
                     category: 'Brot',
                     unit: 'Kästen',
-                    unitWeight: 4.8,
+                    unitWeight: 4.6,
                     max: 15,
                     step: 1,
                     ingredients: [
-                        { name: 'Roggenvollkorn', amount: 4.8 * 100  / 184.7 },
-                        { name: 'Wasser',         amount: 4.8 * 79.3 / 184.7 },
-                        { name: 'Hefe',           amount: 4.8 * 2.6  / 184.7 },
-                        { name: 'Salz',           amount: 4.8 * 2.8  / 184.7 }
+                        { name: 'Roggenvollkorn', amount: 4.6 * 100  / 184.7 },
+                        { name: 'Wasser',         amount: 4.6 * 79.3 / 184.7 },
+                        { name: 'Hefe',           amount: 4.6 * 2.6  / 184.7 },
+                        { name: 'Salz',           amount: 4.6 * 2.8  / 184.7 }
                     ]
                 },
                 {
@@ -1294,13 +1302,13 @@
                     name: 'Dinkelvollkornbrot',
                     category: 'Brot',
                     unit: 'Kästen',
-                    unitWeight: 4.8,
+                    unitWeight: 4.6,
                     max: 15,
                     step: 1,
                     ingredients: [
-                        { name: 'KOMPLET mein VKB', amount: 14.29 * 4.8 / 24.55 },
-                        { name: 'Hefe',             amount: 0.26  * 4.8 / 24.55 },
-                        { name: 'Wasser',           amount: 10    * 4.8 / 24.55 }
+                        { name: 'KOMPLET mein VKB', amount: 14.29 * 4.6 / 24.55 },
+                        { name: 'Hefe',             amount: 0.26  * 4.6 / 24.55 },
+                        { name: 'Wasser',           amount: 10    * 4.6 / 24.55 }
                     ]
                 },
                 {
@@ -1568,17 +1576,17 @@
                     max: 50,
                     isMultiVariant: true,
                     isTrayBased: true, // Special flag for tray-based calculation
-                    baseWeight: 25.2, // 25.2 kg Teig from recipe
+                    baseWeight: 25.21, // 25.21 kg Teig from recipe
                     ingredients: [
                         { name: 'Wasser', amount: 5.92 },
                         { name: 'WM 550', amount: 14.03 },
-                        { name: 'UniversalBackcreme', amount: 0.33 },
+                        { name: 'HTK', amount: 0.34 },
                         { name: 'Salz', amount: 0.21 },
                         { name: 'Fett', amount: 0.94 },
-                        { name: 'Milchpulver', amount: 0.54 },
+                        { name: 'Milchpulver', amount: 0.55 },
                         { name: 'Zucker', amount: 1.6 },
-                        { name: 'Hefe', amount: 0.82 },
-                        { name: 'Eier', amount: 0.82 }
+                        { name: 'Hefe', amount: 0.81 },
+                        { name: 'Ei', amount: 0.81 }
                     ],
                     variants: [
                         { 
@@ -1629,7 +1637,7 @@
             saveData();
         }
         // Daten laden
-        const DATA_VERSION = '2026-04-14';
+        const DATA_VERSION = '2026-04-16d';
 
         function loadData() {
             try {
