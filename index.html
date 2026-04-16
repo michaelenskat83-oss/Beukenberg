@@ -23,9 +23,9 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #0D0221;
+            background: #3265a6;
             min-height: 100vh;
-            color: #F0E6FF;
+            color: #000000;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -39,7 +39,7 @@
             background: rgba(255,255,255,0.06);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212,175,55,0.3);
+            border: 1px solid rgba(151,164,195,0.3);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 20px;
@@ -48,10 +48,7 @@
         }
 
         h1 {
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #000000;
             font-size: 24px;
             font-weight: 700;
         }
@@ -64,15 +61,15 @@
         }
 
         .menu-btn {
-            background: rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.25);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212,175,55,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
             padding: 20px;
             border-radius: 15px;
             font-size: 16px;
             font-weight: 600;
-            color: #F0E6FF;
+            color: #000000;
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -87,7 +84,7 @@
         .menu-btn:active {
             transform: scale(0.95);
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            border-color: rgba(212,175,55,0.6);
+            border-color: rgba(151,164,195,0.6);
         }
 
         .menu-btn .emoji {
@@ -111,8 +108,8 @@
         }
 
         .back-btn {
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
-            color: #0D0221;
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
+            color: #000000;
             border: none;
             padding: 12px 24px;
             border-radius: 10px;
@@ -136,11 +133,11 @@
 
         .recipe-btn {
             background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(212,175,55,0.4);
+            border: 1px solid rgba(151,164,195,0.4);
             padding: 15px;
             border-radius: 10px;
             font-size: 16px;
-            color: #F0E6FF;
+            color: #000000;
             cursor: pointer;
             text-align: left;
             font-weight: 600;
@@ -148,8 +145,8 @@
         }
 
         .recipe-btn:active {
-            background: rgba(212,175,55,0.1);
-            border-color: rgba(212,175,55,0.8);
+            background: rgba(151,164,195,0.1);
+            border-color: rgba(151,164,195,0.8);
         }
 
         .calculator {
@@ -165,12 +162,12 @@
             justify-content: space-between;
             margin-bottom: 10px;
             font-weight: 600;
-            color: #D4AF37;
+            color: #97a4c3;
         }
 
         .slider-value {
             font-size: 20px;
-            color: #F0E6FF;
+            color: #000000;
         }
 
         input[type="range"] {
@@ -188,19 +185,19 @@
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(212,175,55,0.5);
+            box-shadow: 0 2px 8px rgba(151,164,195,0.5);
         }
 
         input[type="range"]::-moz-range-thumb {
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
             cursor: pointer;
             border: none;
-            box-shadow: 0 2px 8px rgba(212,175,55,0.5);
+            box-shadow: 0 2px 8px rgba(151,164,195,0.5);
         }
 
         .ingredients-table {
@@ -217,21 +214,21 @@
         }
 
         .ingredients-table th {
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
-            color: #0D0221;
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
+            color: #000000;
             font-weight: 700;
         }
 
         .total-row {
             font-weight: 700;
-            background: rgba(212,175,55,0.08);
+            background: rgba(151,164,195,0.08);
             font-size: 18px;
-            color: #D4AF37;
+            color: #97a4c3;
         }
 
         .action-btn {
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
-            color: #0D0221;
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
+            color: #000000;
             border: none;
             padding: 15px;
             border-radius: 10px;
@@ -247,9 +244,9 @@
         }
 
         .action-btn.secondary {
-            background: rgba(190,149,196,0.15);
-            color: #BE95C4;
-            border: 1px solid rgba(190,149,196,0.4);
+            background: rgba(26,42,74,0.15);
+            color: #1a2a4a;
+            border: 1px solid rgba(26,42,74,0.4);
         }
 
         .action-btn.danger {
@@ -272,7 +269,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
-            color: #D4AF37;
+            color: #97a4c3;
         }
 
         .form-group input,
@@ -284,18 +281,18 @@
             font-size: 16px;
             font-family: 'Poppins', sans-serif;
             background: rgba(255,255,255,0.05);
-            color: #F0E6FF;
+            color: #000000;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: rgba(212,175,55,0.6);
+            border-color: rgba(151,164,195,0.6);
         }
 
         .form-group select option {
-            background: #120129;
-            color: #F0E6FF;
+            background: #1a3d6b;
+            color: #000000;
         }
 
         .ingredients-grid {
@@ -321,22 +318,22 @@
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 10px;
-            border-left: 4px solid #D4AF37;
+            border-left: 4px solid #97a4c3;
         }
 
         .daily-plan-item h4 {
-            color: #D4AF37;
+            color: #97a4c3;
             margin-bottom: 5px;
         }
 
         .daily-plan-item p {
             font-size: 14px;
-            color: #BE95C4;
+            color: #1a2a4a;
         }
 
         .category-header {
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
-            color: #0D0221;
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
+            color: #000000;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -369,7 +366,7 @@
         .empty-state {
             text-align: center;
             padding: 40px 20px;
-            color: #9E7BB5;
+            color: #1a2a4a;
         }
 
         .empty-state .emoji {
@@ -390,13 +387,13 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 10px;
             font-weight: 600;
-            color: #BE95C4;
+            color: #1a2a4a;
             cursor: pointer;
         }
 
         .tab.active {
-            background: linear-gradient(135deg, #D4AF37, #C5A022);
-            color: #0D0221;
+            background: linear-gradient(135deg, #97a4c3, #7d8fa8);
+            color: #000000;
             border-color: transparent;
         }
 
@@ -406,9 +403,9 @@
 
         .file-input-label {
             display: block;
-            background: rgba(190,149,196,0.15);
-            color: #BE95C4;
-            border: 1px solid rgba(190,149,196,0.4);
+            background: rgba(26,42,74,0.15);
+            color: #1a2a4a;
+            border: 1px solid rgba(26,42,74,0.4);
             padding: 15px;
             border-radius: 10px;
             text-align: center;
@@ -419,34 +416,34 @@
 
         input[type="text"], input[type="number"] {
             background: rgba(255,255,255,0.05);
-            color: #F0E6FF;
+            color: #000000;
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 10px;
             font-family: 'Poppins', sans-serif;
         }
 
         input[type="text"]::placeholder, input[type="number"]::placeholder {
-            color: #9E7BB5;
+            color: #1a2a4a;
         }
 
         input[type="text"]:focus, input[type="number"]:focus {
             outline: none;
-            border-color: rgba(212,175,55,0.6);
+            border-color: rgba(151,164,195,0.6);
         }
 
         h2, h3 {
-            color: #D4AF37;
+            color: #97a4c3;
         }
 
         small {
-            color: #BE95C4 !important;
+            color: #1a2a4a !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🥖 Bäckerei Rezeptrechner</h1>
+            <h1>Bäckerei Rezeptrechner</h1>
         </header>
 
         <!-- Hauptmenü -->
@@ -476,7 +473,7 @@
                     <span class="emoji">🧪</span>
                     Vorteig
                 </button>
-                <button class="menu-btn" onclick="showBrotTracker()" style="grid-column: 1 / -1; background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.5);">
+                <button class="menu-btn" onclick="showBrotTracker()" style="grid-column: 1 / -1; background: rgba(151,164,195,0.12); border-color: rgba(151,164,195,0.5);">
                     <span class="emoji">📋</span>
                     Brot Tracker
                 </button>
@@ -489,20 +486,21 @@
 
         <!-- Changelog Modal -->
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
-            <div style="max-width:600px; margin:40px auto; background:#1a0a33; border:1px solid rgba(212,175,55,0.4); border-radius:15px; padding:25px;">
-                <h2 style="color:#D4AF37; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
+            <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
+                <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
                 <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 16.04.2026</p>
 
-                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">16.04.2026</p>
-                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">16.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
                     <li>Kategorie <strong>Brötchen</strong>: <em>Milchbrötchen</em> — Rezept aktualisiert (HTK statt UniversalBackcreme, neue Mengen)</li>
                     <li>Kategorie <strong>Brot</strong>: <em>Dinkelvollkornbrot</em> — Kastengewicht auf 4,6 kg geändert</li>
                     <li>Kategorie <strong>Brot</strong>: <em>Roggenvollkornbrot</em> — Kastengewicht auf 4,6 kg geändert</li>
                     <li>Kategorie <strong>Brot</strong>: <em>Blankenstein</em> — Kastengewicht auf 4,6 kg geändert</li>
+                    <li><strong>Design</strong>: Neues Farbschema (Blau), Header-Schrift schwarz, Baguette-Icon entfernt, Buttons heller</li>
                 </ul>
 
-                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">14.04.2026</p>
-                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">14.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
                     <li>Kategorie <strong>Brot</strong>: <em>Dinkelvollkornbrot</em> hinzugefügt (Slider 1–15)</li>
                     <li>Kategorie <strong>Brot</strong>: <em>Roggenvollkornbrot</em> hinzugefügt (Slider 1–15)</li>
                     <li>Kategorie <strong>Brot</strong>: <em>Blankenstein</em> hinzugefügt (Slider 1–15)</li>
@@ -510,8 +508,8 @@
                     <li><strong>Bugfix</strong>: <em>Kosacken</em> erschien nicht im Brot Tracker</li>
                 </ul>
 
-                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">12.04.2026</p>
-                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">12.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
                     <li>Kategorie <strong>Kuchen</strong>: Rezepte <em>Rührkuchen</em>, <em>Marmorkuchen</em> und <em>Obstkuchen</em> entfernt</li>
                     <li>Kategorie <strong>Spezial</strong>: Rezept <em>Dinkel-Vollkornbrot</em> entfernt</li>
                     <li>Kategorie <strong>Spezial</strong>: <em>Ciabatta</em> aktualisiert — neue Zutaten, Slider 50–1000 Stück in 50er-Schritten</li>
@@ -523,8 +521,8 @@
                     <li><strong>Brot Tracker</strong>: <em>Kosacken</em> hinzugefügt</li>
                 </ul>
 
-                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">11.04.2026</p>
-                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">11.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
                     <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Omegabrötchen</em> hinzugefügt (90 g/Stück, Blechanzeige 30 Stück/Blech)</li>
                     <li>Kategorie <strong>Brötchen</strong>: Rezept <em>Mehrkornbrötchen</em> hinzugefügt (90 g/Stück, Blechanzeige 30 Stück/Blech)</li>
                     <li>Rechner: Blechanzeige hinzugefügt (wird bei Rezepten mit Blechgröße angezeigt)</li>
@@ -540,8 +538,8 @@
                     <li>Passwortschutz entfernt</li>
                 </ul>
 
-                <p style="color:#D4AF37; font-size:13px; font-weight:600; margin:10px 0 4px;">09.04.2026</p>
-                <ul style="color:#F0E6FF; line-height:2; padding-left:20px; margin-bottom:12px;">
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">09.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Hefekassler</em> hinzugefügt (2 kg/Brot)</li>
                     <li>Kategorie <strong>Brot</strong>: <em>Bauernbrot</em> umbenannt in <em>Bauern</em> (2 kg/Brot)</li>
                     <li>Kategorie <strong>Brot</strong>: Rezept <em>Weizenbrot</em> entfernt</li>
@@ -556,7 +554,7 @@
                     <li>Kategorie <strong>Brötchen</strong>: <em>Semmel</em> umbenannt in <em>Brötchen</em></li>
                     <li>Kategorie <strong>Brötchen</strong>: Max. Stückzahl auf 1.600 erhöht</li>
                 </ul>
-                <button onclick="document.getElementById('changelog-modal').style.display='none'" style="margin-top:25px; width:100%; padding:12px; background:linear-gradient(135deg,#D4AF37,#C5A022); color:#0D0221; border:none; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer;">Schließen</button>
+                <button onclick="document.getElementById('changelog-modal').style.display='none'" style="margin-top:25px; width:100%; padding:12px; background:linear-gradient(135deg,#97a4c3,#7d8fa8); color:#000000; border:none; border-radius:10px; font-size:16px; font-weight:700; cursor:pointer;">Schließen</button>
             </div>
         </div>
 
@@ -571,8 +569,8 @@
         <div id="calculator-screen" class="screen">
             <button class="back-btn" onclick="backToCategory()">← Zurück</button>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h2 id="recipe-title" style="color: #D4AF37; margin: 0;"></h2>
-                <span id="recipe-ta" style="color: #D4AF37; font-size: 18px; font-weight: 600;"></span>
+                <h2 id="recipe-title" style="color: #97a4c3; margin: 0;"></h2>
+                <span id="recipe-ta" style="color: #97a4c3; font-size: 18px; font-weight: 600;"></span>
             </div>
             
             <!-- Standard Slider -->
@@ -585,7 +583,7 @@
             </div>
 
             <!-- Blech-Anzeige (nur bei Rezepten mit traySize) -->
-            <div id="tray-info" style="display:none; background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.3); border-radius:10px; padding:10px 15px; margin-top:8px; text-align:center; font-size:15px; color:#D4AF37; font-weight:600;"></div>
+            <div id="tray-info" style="display:none; background:rgba(151,164,195,0.1); border:1px solid rgba(151,164,195,0.3); border-radius:10px; padding:10px 15px; margin-top:8px; text-align:center; font-size:15px; color:#97a4c3; font-weight:600;"></div>
 
             <!-- Multi-Variant Sliders -->
             <div id="multi-variant-container" style="display: none;">
@@ -614,8 +612,8 @@
         <!-- Brot Tracker -->
         <div id="brot-tracker-screen" class="screen">
             <button class="back-btn" onclick="showMainMenu()">← Zurück</button>
-            <h2 style="color: #D4AF37; margin-bottom: 5px;">📋 Brot Tracker</h2>
-            <p id="tracker-date" style="color: #BE95C4; margin-bottom: 20px; font-size: 14px;"></p>
+            <h2 style="color: #97a4c3; margin-bottom: 5px;">📋 Brot Tracker</h2>
+            <p id="tracker-date" style="color: #1a2a4a; margin-bottom: 20px; font-size: 14px;"></p>
             <div id="tracker-list"></div>
             <button onclick="shareBrotTracker()" style="margin-top: 20px; background: #25D366; border: none; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(37,211,102,0.4); margin-left: auto; margin-right: auto;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#fff">
@@ -1693,18 +1691,18 @@
             ]
         };
 
-        const INPUT_STYLE = 'width:75px;padding:8px;border:1px solid rgba(212,175,55,0.4);border-radius:8px;background:rgba(255,255,255,0.05);color:#F0E6FF;font-size:16px;text-align:center;font-family:\'Poppins\',sans-serif;';
+        const INPUT_STYLE = 'width:75px;padding:8px;border:1px solid rgba(151,164,195,0.4);border-radius:8px;background:rgba(255,255,255,0.05);color:#000000;font-size:16px;text-align:center;font-family:\'Poppins\',sans-serif;';
         const ROW_STYLE   = 'display:flex;align-items:center;justify-content:space-between;padding:12px 15px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:8px;';
         const SUB_ROW_STYLE = 'display:flex;align-items:center;justify-content:space-between;padding:10px 15px 10px 30px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:6px;';
 
         function _trackerRow(id, label, unit, sub) {
             const style = sub ? SUB_ROW_STYLE : ROW_STYLE;
             const labelStyle = sub
-                ? 'flex:1;color:#BE95C4;font-size:14px;'
+                ? 'flex:1;color:#1a2a4a;font-size:14px;'
                 : 'flex:1;font-weight:600;';
             return `<div style="${style}">
                 <span style="${labelStyle}">${label}</span>
-                <span style="color:#BE95C4;font-size:13px;margin-right:10px;">${unit}</span>
+                <span style="color:#1a2a4a;font-size:13px;margin-right:10px;">${unit}</span>
                 <input type="number" inputmode="numeric" min="0" value="0" id="${id}" style="${INPUT_STYLE}">
             </div>`;
         }
@@ -1726,7 +1724,7 @@
 
                 const variants = TRACKER_VARIANTS[name];
                 if (variants && recipe) {
-                    html += `<div style="padding:10px 15px 6px;font-weight:700;color:#D4AF37;">${name}</div>`;
+                    html += `<div style="padding:10px 15px 6px;font-weight:700;color:#97a4c3;">${name}</div>`;
                     variants.forEach(v => {
                         html += _trackerRow(`tracker-${v.key}`, v.label, 'Stk', true);
                     });
@@ -2038,7 +2036,7 @@
             
             if (shouldSplit) {
                 // SPLIT VIEW - Show two separate recipes
-                ingredientsHtml += `<tr style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.4);">
+                ingredientsHtml += `<tr style="background: rgba(151,164,195,0.1); border: 1px solid rgba(151,164,195,0.4);">
                     <td colspan="2" style="text-align: center; padding: 15px;">
                         <strong>⚠️ Teig wird aufgeteilt (${totalDoughNeeded.toFixed(0)} kg > 130 kg)</strong>
                     </td>
@@ -2065,14 +2063,14 @@
                     
                     // Addition
                     const additionRounded = Math.ceil(additionAmount * 100) / 100;
-                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                    ingredientsHtml += `<tr style="background: rgba(151,164,195,0.05);">
                         <td>${variantName}</td>
                         <td>${additionRounded.toFixed(2)} kg</td>
                     </tr>`;
                     
                     // Subtotal
                     const subtotal = doughAmount + additionAmount;
-                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.15);">
+                    ingredientsHtml += `<tr style="background: rgba(151,164,195,0.15);">
                         <td><strong>Gesamt Rezept ${index + 1}</strong></td>
                         <td><strong>${subtotal.toFixed(2)} kg</strong></td>
                     </tr>`;
@@ -2084,16 +2082,16 @@
                 
                 // Premix (if exists)
                 if (currentRecipe.hasPremix && currentRecipe.premix) {
-                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.15);"><td colspan="2"><strong>${currentRecipe.premix.name}</strong></td></tr>`;
+                    ingredientsHtml += `<tr style="background: rgba(151,164,195,0.15);"><td colspan="2"><strong>${currentRecipe.premix.name}</strong></td></tr>`;
                     currentRecipe.premix.ingredients.forEach(ing => {
                         const calculated = Math.ceil(ing.amount * batchMultiplier * 100) / 100;
-                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                        ingredientsHtml += `<tr style="background: rgba(151,164,195,0.05);">
                             <td>${ing.name}</td>
                             <td>${calculated.toFixed(2)} kg</td>
                         </tr>`;
                     });
                     const premixTotal = Math.ceil(currentRecipe.premix.total * batchMultiplier * 100) / 100;
-                    ingredientsHtml += `<tr style="background: rgba(212,175,55,0.25);"><td><strong>Mischung gesamt</strong></td><td><strong>${premixTotal.toFixed(2)} kg</strong></td></tr>`;
+                    ingredientsHtml += `<tr style="background: rgba(151,164,195,0.25);"><td><strong>Mischung gesamt</strong></td><td><strong>${premixTotal.toFixed(2)} kg</strong></td></tr>`;
                 }
                 
                 // Base ingredients
@@ -2113,14 +2111,14 @@
                         const additionRounded = Math.ceil(additionAmount * 100) / 100;
                         const doughRounded = Math.ceil(variantDoughAmounts[variantName] * 100) / 100;
                         
-                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.08);">
+                        ingredientsHtml += `<tr style="background: rgba(151,164,195,0.08);">
                             <td colspan="2"><strong>${variantName}:</strong></td>
                         </tr>`;
-                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                        ingredientsHtml += `<tr style="background: rgba(151,164,195,0.05);">
                             <td style="padding-left: 20px;">Teig</td>
                             <td>${doughRounded.toFixed(2)} kg</td>
                         </tr>`;
-                        ingredientsHtml += `<tr style="background: rgba(212,175,55,0.05);">
+                        ingredientsHtml += `<tr style="background: rgba(151,164,195,0.05);">
                             <td style="padding-left: 20px;">${variantName}</td>
                             <td>${additionRounded.toFixed(2)} kg</td>
                         </tr>`;
