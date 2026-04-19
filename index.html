@@ -488,7 +488,15 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 16.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 19.04.2026</p>
+
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">19.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brot</strong>: <em>6 - Saat</em> hinzugefügt (2,2 kg/Kasten, Slider bis 27)</li>
+                    <li>Kategorie <strong>Brot</strong>: Slider-Maximum angepasst — Bauern bis 80, Finnenbrot bis 27, Konze bis 54, Sauerteigkassler bis 22</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Mehrkorn</em> — Slider pro Variante angepasst (Normal 850g bis 16 in 4er-Schritten, Normal 3000g bis 45, Möhren bis 12 in 4er-Schritten)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: <em>Milchbrötchen</em> — Slider pro Variante angepasst (Ohne bis 30, Rosinen/Schokolade/Hörnchen bis 10)</li>
+                </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">16.04.2026</p>
                 <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -744,15 +752,19 @@
                         { name: 'Hefe', amount: 5 }
                     ],
                     variants: [
-                        { 
+                        {
                             name: 'Normal',
                             percentage: 0,
-                            weights: [0.85, 3.0]
+                            weights: [0.85, 3.0],
+                            maxPerWeight: [16, 45],
+                            stepPerWeight: [4, 1]
                         },
-                        { 
+                        {
                             name: 'Möhren',
                             percentage: 6.25,
-                            weights: [0.8]
+                            weights: [0.8],
+                            maxPerWeight: [12],
+                            stepPerWeight: [4]
                         }
                     ]
                 });
@@ -783,17 +795,17 @@
                         { name: 'Ei', amount: 0.81 }
                     ],
                     variants: [
-                        { name: 'Ohne', perTray: 30, pieceWeight: 0.07, percentage: 0, weights: [1] },
-                        { name: 'Rosinen', perTray: 30, pieceWeight: 0.08, percentage: 20, weights: [1] },
-                        { name: 'Schokolade', perTray: 30, pieceWeight: 0.08, percentage: 9.09, weights: [1] },
-                        { name: 'Hörnchen', perTray: 20, pieceWeight: 0.09, percentage: 0, weights: [1] },
+                        { name: 'Ohne', perTray: 30, pieceWeight: 0.07, percentage: 0, weights: [1], max: 30 },
+                        { name: 'Rosinen', perTray: 30, pieceWeight: 0.08, percentage: 20, weights: [1], max: 10 },
+                        { name: 'Schokolade', perTray: 30, pieceWeight: 0.08, percentage: 9.09, weights: [1], max: 10 },
+                        { name: 'Hörnchen', perTray: 20, pieceWeight: 0.09, percentage: 0, weights: [1], max: 10 },
                         { name: 'Vanillestangen', perTray: 20, pieceWeight: 0.07, percentage: 0, weights: [1] },
                         { name: 'Cremeballen', perTray: 20, pieceWeight: 0.07, percentage: 0, weights: [1] }
                     ]
                 });
                 saveData();
             }
-            
+
             // Migration: Add Finnenbrot if missing
             const hasFinnenbrot = recipes.some(r => r.name === 'Finnenbrot');
             if (!hasFinnenbrot) {
@@ -803,7 +815,7 @@
                     category: 'Brot',
                     unit: 'Brote',
                     unitWeight: 3.3,
-                    max: 40,
+                    max: 27,
                     ingredients: [
                         { name: 'WM 550', amount: 0.46 },
                         { name: 'RM 1150', amount: 0.46 },
@@ -835,6 +847,45 @@
                         { name: 'Maxikrüstchen', amount: 0.028572 },
                         { name: 'Wasser', amount: 0.031439 },
                         { name: 'Hefe', amount: 0.001433 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Force-update Finnenbrot/Konze/Mehrkorn max values
+            const finnenbrotRef = recipes.find(r => r.name === 'Finnenbrot');
+            if (finnenbrotRef && finnenbrotRef.max !== 27) { finnenbrotRef.max = 27; saveData(); }
+            const konzeRef = recipes.find(r => r.name === 'Konze');
+            if (konzeRef && konzeRef.max !== 54) { konzeRef.max = 54; saveData(); }
+            const mehrkornRef = recipes.find(r => r.name === 'Mehrkorn');
+            if (mehrkornRef && mehrkornRef.variants) {
+                const norm = mehrkornRef.variants.find(v => v.name === 'Normal');
+                if (norm && !norm.maxPerWeight) {
+                    norm.maxPerWeight = [16, 45]; norm.stepPerWeight = [4, 1]; saveData();
+                }
+                const moehr = mehrkornRef.variants.find(v => v.name === 'Möhren');
+                if (moehr && !moehr.maxPerWeight) {
+                    moehr.maxPerWeight = [12]; moehr.stepPerWeight = [4]; saveData();
+                }
+            }
+
+            // Migration: Add 6-Saat if missing
+            const has6Saat = recipes.some(r => r.name === '6 - Saat');
+            if (!has6Saat) {
+                recipes.push({
+                    id: BASE_ID + 116,
+                    name: '6 - Saat',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 2.2,
+                    max: 27,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.623 },
+                        { name: 'Maxi - Sunny', amount: 0.623 },
+                        { name: 'Salz', amount: 0.012 },
+                        { name: 'Hefe', amount: 0.044 },
+                        { name: 'Wasser', amount: 0.698 },
+                        { name: 'Sauerteig', amount: 0.201 }
                     ]
                 });
                 saveData();
@@ -970,7 +1021,7 @@
                 category: 'Brot',
                 unit: 'Brote',
                 unitWeight: 2.4,
-                max: 100,
+                max: 22,
                 ingredients: [
                     { name: 'WM 550', amount: 0.78 },
                     { name: 'RM 1150', amount: 0.30 },
@@ -1063,7 +1114,7 @@
                     category: 'Brot',
                     unit: 'Brote',
                     unitWeight: 3.3,
-                    max: 100,
+                    max: 54,
                     ingredients: [
                         { name: 'RM 1150', amount: 0.825 },
                         { name: 'WM 550', amount: 0.808 },
@@ -1149,6 +1200,7 @@
                     ...recipes[bauernIndex],
                     name: 'Bauern',
                     unitWeight: 2.0,
+                    max: 80,
                     ingredients: [
                         { name: 'WM 550', amount: 0.94 },
                         { name: 'RM 1150', amount: 0.20 },
@@ -1170,12 +1222,28 @@
         function loadDefaultRecipes() {
             recipes = [
                 {
+                    id: BASE_ID + 116,
+                    name: '6 - Saat',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 2.2,
+                    max: 27,
+                    ingredients: [
+                        { name: 'WM 550', amount: 0.623 },
+                        { name: 'Maxi - Sunny', amount: 0.623 },
+                        { name: 'Salz', amount: 0.012 },
+                        { name: 'Hefe', amount: 0.044 },
+                        { name: 'Wasser', amount: 0.698 },
+                        { name: 'Sauerteig', amount: 0.201 }
+                    ]
+                },
+                {
                     id: BASE_ID + 1,
                     name: 'Bauern',
                     category: 'Brot',
                     unit: 'Brote',
                     unitWeight: 2.0,
-                    max: 100,
+                    max: 80,
                     ingredients: [
                         { name: 'WM 550', amount: 0.94 },
                         { name: 'RM 1150', amount: 0.20 },
@@ -1213,7 +1281,7 @@
                     category: 'Brot',
                     unit: 'Brote',
                     unitWeight: 2.4,
-                    max: 100,
+                    max: 22,
                     ingredients: [
                         { name: 'WM 550', amount: 0.78 },
                         { name: 'RM 1150', amount: 0.30 },
@@ -1232,7 +1300,7 @@
                     category: 'Brot',
                     unit: 'Brote',
                     unitWeight: 3.3,
-                    max: 40,
+                    max: 27,
                     ingredients: [
                         { name: 'WM 550', amount: 0.46 },
                         { name: 'RM 1150', amount: 0.46 },
@@ -1250,7 +1318,7 @@
                     category: 'Brot',
                     unit: 'Brote',
                     unitWeight: 3.3,
-                    max: 100,
+                    max: 54,
                     ingredients: [
                         { name: 'RM 1150', amount: 0.825 },
                         { name: 'WM 550', amount: 0.808 },
@@ -1554,15 +1622,19 @@
                         { name: 'Hefe', amount: 5 }
                     ],
                     variants: [
-                        { 
+                        {
                             name: 'Normal',
                             percentage: 0,
-                            weights: [0.85, 3.0]
+                            weights: [0.85, 3.0],
+                            maxPerWeight: [16, 45],
+                            stepPerWeight: [4, 1]
                         },
-                        { 
+                        {
                             name: 'Möhren',
                             percentage: 6.25,
-                            weights: [0.8]
+                            weights: [0.8],
+                            maxPerWeight: [12],
+                            stepPerWeight: [4]
                         }
                     ]
                 },
@@ -1587,33 +1659,37 @@
                         { name: 'Ei', amount: 0.81 }
                     ],
                     variants: [
-                        { 
+                        {
                             name: 'Ohne',
                             perTray: 30,
                             pieceWeight: 0.07, // 70g in kg
                             percentage: 0,
-                            weights: [1] // Just one "size" - trays
+                            weights: [1], // Just one "size" - trays
+                            max: 30
                         },
-                        { 
+                        {
                             name: 'Rosinen',
                             perTray: 30,
                             pieceWeight: 0.08, // 80g in kg
                             percentage: 20, // 0.4kg Rosinen / 2kg Teig = 20%
-                            weights: [1]
+                            weights: [1],
+                            max: 10
                         },
-                        { 
+                        {
                             name: 'Schokolade',
                             perTray: 30,
                             pieceWeight: 0.08, // 80g in kg
                             percentage: 9.09, // 0.2kg Schoko / 2.2kg Teig ≈ 9.09%
-                            weights: [1]
+                            weights: [1],
+                            max: 10
                         },
-                        { 
+                        {
                             name: 'Hörnchen',
                             perTray: 20,
                             pieceWeight: 0.09, // 90g in kg
                             percentage: 0,
-                            weights: [1]
+                            weights: [1],
+                            max: 10
                         },
                         { 
                             name: 'Vanillestangen',
@@ -1911,27 +1987,32 @@
             currentRecipe.variants.forEach((variant, vIndex) => {
                 variant.weights.forEach((weight, wIndex) => {
                     const sliderId = `variant-${vIndex}-${wIndex}`;
-                    
+
                     let labelText, unitText;
                     if (isTrayBased) {
-                        // Milchbrötchen: Show variant name and "Bleche"
                         labelText = variant.name;
                         unitText = 'Bleche';
                     } else {
-                        // Platzteig/Mehrkorn: Show weight in grams
                         const weightInGrams = weight * 1000;
                         labelText = `${variant.name} ${weightInGrams}g`;
                         unitText = '';
                     }
-                    
+
+                    const sliderMax = variant.maxPerWeight && variant.maxPerWeight[wIndex] !== undefined
+                        ? variant.maxPerWeight[wIndex]
+                        : (variant.max !== undefined ? variant.max : currentRecipe.max);
+                    const sliderStep = variant.stepPerWeight && variant.stepPerWeight[wIndex] !== undefined
+                        ? variant.stepPerWeight[wIndex]
+                        : 1;
+
                     const sliderHtml = `
                         <div class="slider-container">
                             <div class="slider-label">
                                 <span>${labelText}:</span>
                                 <span class="slider-value" id="${sliderId}-value">0 ${unitText}</span>
                             </div>
-                            <input type="range" id="${sliderId}" class="multi-slider" 
-                                min="0" max="${currentRecipe.max}" value="0" 
+                            <input type="range" id="${sliderId}" class="multi-slider"
+                                min="0" max="${sliderMax}" step="${sliderStep}" value="0"
                                 data-variant="${vIndex}" data-weight="${wIndex}"
                                 oninput="updateMultiVariantCalculation()">
                         </div>
