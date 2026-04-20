@@ -806,6 +806,20 @@
                 saveData();
             }
 
+            // Migration: Fix Milchbrötchen variant max values
+            const milchbroetchen = recipes.find(r => r.name === 'Milchbrötchen');
+            if (milchbroetchen && milchbroetchen.variants) {
+                const variantMaxes = { 'Ohne': 30, 'Rosinen': 10, 'Schokolade': 10, 'Hörnchen': 10 };
+                let changed = false;
+                milchbroetchen.variants.forEach(v => {
+                    if (variantMaxes[v.name] !== undefined && v.max !== variantMaxes[v.name]) {
+                        v.max = variantMaxes[v.name];
+                        changed = true;
+                    }
+                });
+                if (changed) saveData();
+            }
+
             // Migration: Add Finnenbrot if missing
             const hasFinnenbrot = recipes.some(r => r.name === 'Finnenbrot');
             if (!hasFinnenbrot) {
