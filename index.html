@@ -488,7 +488,14 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 19.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 22.04.2026</p>
+
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">22.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brötchen</strong>: <em>Sabiabrötchen</em> hinzugefügt (Slider 6–24 kg in 6er-Schritten)</li>
+                    <li>Kategorie <strong>Brötchen</strong>: <em>Milchbrötchen</em> — Ei ersetzt durch Egg &amp; Easy (250 g + 750 ml Wasser pro 1 L Ei)</li>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Platzteig</em> — Eier ersetzt durch Egg &amp; Easy (250 g + 750 ml Wasser pro 1 L Ei)</li>
+                </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">19.04.2026</p>
                 <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -686,20 +693,20 @@
                     baseWeight: 70,
                     ingredients: [
                         { name: 'WM 550', amount: 37.72 },
-                        { name: 'Wasser', amount: 15.54 },
+                        { name: 'Wasser', amount: 16.67 },
                         { name: 'Hefe', amount: 3.32 },
-                        { name: 'Eier', amount: 1.51 },
+                        { name: 'Egg & Easy', amount: 0.38 },
                         { name: 'Salz', amount: 0.60 },
                         { name: 'UniversalBackcreme', amount: 9.05 },
                         { name: 'Zucker', amount: 2.26 }
                     ],
                     variants: [
-                        { 
+                        {
                             name: 'Hagelzucker',
                             percentage: 5,
                             weights: [0.6, 0.85, 2.1]
                         },
-                        { 
+                        {
                             name: 'Rosinen',
                             percentage: 18,
                             weights: [0.6, 0.85, 2.4]
@@ -718,7 +725,19 @@
                     }
                 }
             }
-            
+
+            // Migration: Platzteig Eier → Egg & Easy (250g E&E + 750ml Wasser pro 1L Ei)
+            const ptEggMigration = recipes.find(r => r.name === 'Platzteig');
+            if (ptEggMigration && ptEggMigration.ingredients) {
+                const eierIdx = ptEggMigration.ingredients.findIndex(i => i.name === 'Eier');
+                if (eierIdx !== -1) {
+                    const wasserIng = ptEggMigration.ingredients.find(i => i.name === 'Wasser');
+                    if (wasserIng) wasserIng.amount = 16.67;
+                    ptEggMigration.ingredients[eierIdx] = { name: 'Egg & Easy', amount: 0.38 };
+                    saveData();
+                }
+            }
+
             // Migration: Add Mehrkorn if missing
             const hasMehrkorn = recipes.some(r => r.name === 'Mehrkorn');
             if (!hasMehrkorn) {
@@ -784,7 +803,7 @@
                     isTrayBased: true,
                     baseWeight: 25.21,
                     ingredients: [
-                        { name: 'Wasser', amount: 5.92 },
+                        { name: 'Wasser', amount: 6.53 },
                         { name: 'WM 550', amount: 14.03 },
                         { name: 'HTK', amount: 0.34 },
                         { name: 'Salz', amount: 0.21 },
@@ -792,7 +811,7 @@
                         { name: 'Milchpulver', amount: 0.55 },
                         { name: 'Zucker', amount: 1.6 },
                         { name: 'Hefe', amount: 0.81 },
-                        { name: 'Ei', amount: 0.81 }
+                        { name: 'Egg & Easy', amount: 0.20 }
                     ],
                     variants: [
                         { name: 'Ohne', perTray: 30, pieceWeight: 0.07, percentage: 0, weights: [1], max: 30 },
@@ -818,6 +837,42 @@
                     }
                 });
                 if (changed) saveData();
+            }
+
+            // Migration: Milchbrötchen Ei → Egg & Easy (250g E&E + 750ml Wasser pro 1L Ei)
+            const mbEggMigration = recipes.find(r => r.name === 'Milchbrötchen');
+            if (mbEggMigration && mbEggMigration.ingredients) {
+                const eiIdx = mbEggMigration.ingredients.findIndex(i => i.name === 'Ei');
+                if (eiIdx !== -1) {
+                    const wasserIng = mbEggMigration.ingredients.find(i => i.name === 'Wasser');
+                    if (wasserIng) wasserIng.amount = 6.53;
+                    mbEggMigration.ingredients[eiIdx] = { name: 'Egg & Easy', amount: 0.20 };
+                    saveData();
+                }
+            }
+
+            // Migration: Add Sabiabrötchen if missing
+            const hasSabiabroetchen = recipes.some(r => r.name === 'Sabiabrötchen');
+            if (!hasSabiabroetchen) {
+                recipes.push({
+                    id: BASE_ID + 117,
+                    name: 'Sabiabrötchen',
+                    category: 'Brötchen',
+                    unit: 'kg',
+                    unitWeight: 1.0,
+                    max: 24,
+                    step: 6,
+                    ingredients: [
+                        { name: 'Sabia',     amount: 2.5/24 },
+                        { name: 'WM 550',    amount: 8/24 },
+                        { name: 'RM 1150',   amount: 0.75/24 },
+                        { name: 'Roggenmix', amount: 3.75/24 },
+                        { name: 'Hefe',      amount: 0.6/24 },
+                        { name: 'Speiseöl',  amount: 0.2/24 },
+                        { name: 'Wasser',    amount: 8.3/24 }
+                    ]
+                });
+                saveData();
             }
 
             // Migration: Add Finnenbrot if missing
@@ -1426,6 +1481,24 @@
                     ]
                 },
                 {
+                    id: BASE_ID + 117,
+                    name: 'Sabiabrötchen',
+                    category: 'Brötchen',
+                    unit: 'kg',
+                    unitWeight: 1.0,
+                    max: 24,
+                    step: 6,
+                    ingredients: [
+                        { name: 'Sabia',     amount: 2.5/24 },
+                        { name: 'WM 550',    amount: 8/24 },
+                        { name: 'RM 1150',   amount: 0.75/24 },
+                        { name: 'Roggenmix', amount: 3.75/24 },
+                        { name: 'Hefe',      amount: 0.6/24 },
+                        { name: 'Speiseöl',  amount: 0.2/24 },
+                        { name: 'Wasser',    amount: 8.3/24 }
+                    ]
+                },
+                {
                     id: BASE_ID + 107,
                     name: 'Dinkelbrötchen',
                     category: 'Brötchen',
@@ -1586,20 +1659,20 @@
                     baseWeight: 70,
                     ingredients: [
                         { name: 'WM 550', amount: 37.72 },
-                        { name: 'Wasser', amount: 15.54 },
+                        { name: 'Wasser', amount: 16.67 },
                         { name: 'Hefe', amount: 3.32 },
-                        { name: 'Eier', amount: 1.51 },
+                        { name: 'Egg & Easy', amount: 0.38 },
                         { name: 'Salz', amount: 0.60 },
                         { name: 'UniversalBackcreme', amount: 9.05 },
                         { name: 'Zucker', amount: 2.26 }
                     ],
                     variants: [
-                        { 
+                        {
                             name: 'Hagelzucker',
                             percentage: 5,
                             weights: [0.6, 0.85, 2.1]
                         },
-                        { 
+                        {
                             name: 'Rosinen',
                             percentage: 18,
                             weights: [0.6, 0.85, 2.4]
@@ -1662,7 +1735,7 @@
                     isTrayBased: true, // Special flag for tray-based calculation
                     baseWeight: 25.21, // 25.21 kg Teig from recipe
                     ingredients: [
-                        { name: 'Wasser', amount: 5.92 },
+                        { name: 'Wasser', amount: 6.53 },
                         { name: 'WM 550', amount: 14.03 },
                         { name: 'HTK', amount: 0.34 },
                         { name: 'Salz', amount: 0.21 },
@@ -1670,7 +1743,7 @@
                         { name: 'Milchpulver', amount: 0.55 },
                         { name: 'Zucker', amount: 1.6 },
                         { name: 'Hefe', amount: 0.81 },
-                        { name: 'Ei', amount: 0.81 }
+                        { name: 'Egg & Easy', amount: 0.20 }
                     ],
                     variants: [
                         {
