@@ -495,6 +495,7 @@
                     <li>Kategorie <strong>Brötchen</strong>: <em>Sabiabrötchen</em> hinzugefügt (Slider 6–24 kg in 6er-Schritten)</li>
                     <li>Kategorie <strong>Brötchen</strong>: <em>Milchbrötchen</em> — Ei ersetzt durch Egg &amp; Easy (250 g + 750 ml Wasser pro 1 L Ei)</li>
                     <li>Kategorie <strong>Spezial</strong>: <em>Platzteig</em> — Eier ersetzt durch Egg &amp; Easy (250 g + 750 ml Wasser pro 1 L Ei)</li>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Platzteig</em> — Slider pro Variante angepasst (Hagelzucker &amp; Rosinen: 600g bis 60 in 4er-Schritten, 850g bis 60 in 3er-Schritten, 2100g/2400g bis 50)</li>
                 </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">19.04.2026</p>
@@ -704,12 +705,16 @@
                         {
                             name: 'Hagelzucker',
                             percentage: 5,
-                            weights: [0.6, 0.85, 2.1]
+                            weights: [0.6, 0.85, 2.1],
+                            maxPerWeight: [60, 60, 50],
+                            stepPerWeight: [4, 3, 1]
                         },
                         {
                             name: 'Rosinen',
                             percentage: 18,
-                            weights: [0.6, 0.85, 2.4]
+                            weights: [0.6, 0.85, 2.4],
+                            maxPerWeight: [60, 60, 50],
+                            stepPerWeight: [4, 3, 1]
                         }
                     ]
                 });
@@ -723,6 +728,17 @@
                         rosinenVariant.weights[2] = 2.4;
                         saveData();
                     }
+                }
+                // Migration: Add maxPerWeight/stepPerWeight to Platzteig variants
+                const ptSliderMigration = recipes.find(r => r.name === 'Platzteig');
+                if (ptSliderMigration && ptSliderMigration.variants) {
+                    ptSliderMigration.variants.forEach(v => {
+                        if (!v.maxPerWeight) {
+                            v.maxPerWeight = [60, 60, 50];
+                            v.stepPerWeight = [4, 3, 1];
+                        }
+                    });
+                    saveData();
                 }
             }
 
@@ -1670,12 +1686,16 @@
                         {
                             name: 'Hagelzucker',
                             percentage: 5,
-                            weights: [0.6, 0.85, 2.1]
+                            weights: [0.6, 0.85, 2.1],
+                            maxPerWeight: [60, 60, 50],
+                            stepPerWeight: [4, 3, 1]
                         },
                         {
                             name: 'Rosinen',
                             percentage: 18,
-                            weights: [0.6, 0.85, 2.4]
+                            weights: [0.6, 0.85, 2.4],
+                            maxPerWeight: [60, 60, 50],
+                            stepPerWeight: [4, 3, 1]
                         }
                     ]
                 },
