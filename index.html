@@ -177,6 +177,7 @@
             background: rgba(255,255,255,0.15);
             outline: none;
             -webkit-appearance: none;
+            touch-action: pan-y;
         }
 
         input[type="range"]::-webkit-slider-thumb {
@@ -645,7 +646,39 @@
         let recipes = [];
         let currentCategory = '';
         let currentRecipe = null;
-        
+
+        // Verhindert versehentliches Verschieben von Slidern beim Scrollen.
+        // Wenn die Geste überwiegend vertikal ist, wird der Slider-Wert zurückgesetzt.
+        function applyScrollSafeSlider(slider) {
+            if (slider.dataset.scrollSafe) return;
+            slider.dataset.scrollSafe = '1';
+            let startX, startY, savedValue, decided, isScrolling;
+            slider.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                savedValue = slider.value;
+                decided = false;
+                isScrolling = false;
+            }, { passive: true });
+            slider.addEventListener('touchmove', e => {
+                if (decided) {
+                    if (isScrolling && slider.value !== savedValue) {
+                        slider.value = savedValue;
+                        slider.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                    return;
+                }
+                const dx = Math.abs(e.touches[0].clientX - startX);
+                const dy = Math.abs(e.touches[0].clientY - startY);
+                if (Math.max(dx, dy) < 6) return;
+                decided = true;
+                isScrolling = dy > dx;
+                if (isScrolling && slider.value !== savedValue) {
+                    slider.value = savedValue;
+                    slider.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+            }, { passive: true });
+        }
 
         // Initialisierung
         function init() {
@@ -2127,7 +2160,9 @@
                     container.innerHTML += sliderHtml;
                 });
             });
-            
+
+            container.querySelectorAll('input[type="range"]').forEach(applyScrollSafeSlider);
+
             updateMultiVariantCalculation();
         }
 
@@ -2323,7 +2358,10 @@
         }
 
         // Initialisierung beim Laden
-        window.addEventListener('load', init);
+        window.addEventListener('load', () => {
+            init();
+            applyScrollSafeSlider(document.getElementById('amount-slider'));
+        });
     </script>
 </body>
 </html>
