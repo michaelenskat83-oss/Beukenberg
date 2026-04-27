@@ -489,7 +489,13 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 22.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 27.04.2026</p>
+
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">27.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brot</strong>: <em>Toast mit So Soft</em> hinzugefügt (850 g/Brot, Slider bis 40 in 4er-Schritten)</li>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Baguette</em> hinzugefügt (600 g/Brot, Slider bis 100)</li>
+                </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">22.04.2026</p>
                 <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -1305,6 +1311,50 @@
                 saveData();
             }
 
+            // Migration: Add Toast mit So Soft if missing
+            const hasToastSoSoft = recipes.some(r => r.name === 'Toast mit So Soft');
+            if (!hasToastSoSoft) {
+                recipes.push({
+                    id: BASE_ID + 118,
+                    name: 'Toast mit So Soft',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 0.85,
+                    max: 40,
+                    step: 4,
+                    ingredients: [
+                        { name: 'WM 550',      amount: 0.5 },
+                        { name: 'Wasser',      amount: 0.3 },
+                        { name: 'So Soft',     amount: 0.015 },
+                        { name: 'Hefe',        amount: 0.01 },
+                        { name: 'Salz',        amount: 0.01 },
+                        { name: 'Wiener Note', amount: 0.015 }
+                    ]
+                });
+                saveData();
+            }
+
+            // Migration: Add Baguette if missing
+            const hasBaguette = recipes.some(r => r.name === 'Baguette');
+            if (!hasBaguette) {
+                recipes.push({
+                    id: BASE_ID + 119,
+                    name: 'Baguette',
+                    category: 'Spezial',
+                    unit: 'Brote',
+                    unitWeight: 0.6,
+                    max: 100,
+                    step: 1,
+                    ingredients: [
+                        { name: 'WM 550',      amount: 0.3363 },
+                        { name: '1a Baguette', amount: 0.037 },
+                        { name: 'Hefe',        amount: 0.00807 },
+                        { name: 'Wasser',      amount: 0.2186 }
+                    ]
+                });
+                saveData();
+            }
+
             // Migration: Remove deprecated recipes
             const removedRecipes = ['Rührkuchen', 'Marmorkuchen', 'Obstkuchen', 'Dinkel-Vollkornbrot'];
             const beforeCount = recipes.length;
@@ -1496,6 +1546,23 @@
                     ]
                 },
                 {
+                    id: BASE_ID + 118,
+                    name: 'Toast mit So Soft',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 0.85,
+                    max: 40,
+                    step: 4,
+                    ingredients: [
+                        { name: 'WM 550',      amount: 0.5 },
+                        { name: 'Wasser',      amount: 0.3 },
+                        { name: 'So Soft',     amount: 0.015 },
+                        { name: 'Hefe',        amount: 0.01 },
+                        { name: 'Salz',        amount: 0.01 },
+                        { name: 'Wiener Note', amount: 0.015 }
+                    ]
+                },
+                {
                     id: BASE_ID + 109,
                     name: 'Omegabrötchen',
                     category: 'Brötchen',
@@ -1670,6 +1737,21 @@
                         { name: 'Salz',     amount: 1.19/600 },
                         { name: 'Öl',       amount: 0.52/600 },
                         { name: 'Zucker',   amount: 0.52/600 }
+                    ]
+                },
+                {
+                    id: BASE_ID + 119,
+                    name: 'Baguette',
+                    category: 'Spezial',
+                    unit: 'Brote',
+                    unitWeight: 0.6,
+                    max: 100,
+                    step: 1,
+                    ingredients: [
+                        { name: 'WM 550',      amount: 0.3363 },
+                        { name: '1a Baguette', amount: 0.037 },
+                        { name: 'Hefe',        amount: 0.00807 },
+                        { name: 'Wasser',      amount: 0.2186 }
                     ]
                 },
                 {
