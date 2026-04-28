@@ -489,7 +489,13 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 27.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 28.04.2026</p>
+
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">28.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Spezial</strong>: <em>Ciabatta</em> — Wasser (67,2 %) ergänzt</li>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Ciabatta</em> — Multi-Variante: Simit (90 g, bis 400 Stück, 20er-Schritte) + Ciabatta (120 g, bis 800 Stück, 20er-Schritte)</li>
+                </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">27.04.2026</p>
                 <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -1254,22 +1260,42 @@
                 saveData();
             }
 
-            // Migration: Update Ciabatta recipe
+            // Migration: Update Ciabatta recipe (multi-variant: Simit 90g + Ciabatta 120g)
             const ciabattaIdx = recipes.findIndex(r => r.name === 'Ciabatta');
             if (ciabattaIdx !== -1) {
                 recipes[ciabattaIdx] = {
                     ...recipes[ciabattaIdx],
-                    unitWeight: 58.36/600,
-                    max: 1000,
-                    step: 50,
+                    unit: 'Multi',
+                    isMultiVariant: true,
+                    baseWeight: 58.36,
+                    unitWeight: undefined,
+                    max: undefined,
+                    step: undefined,
                     ingredients: [
-                        { name: 'WM 550',   amount: 52/600 },
-                        { name: 'So Soft',  amount: 1.55/600 },
-                        { name: 'Staback',  amount: 1.03/600 },
-                        { name: 'Hefe',     amount: 1.55/600 },
-                        { name: 'Salz',     amount: 1.19/600 },
-                        { name: 'Öl',       amount: 0.52/600 },
-                        { name: 'Zucker',   amount: 0.52/600 }
+                        { name: 'WM 550',   amount: 52 },
+                        { name: 'Wasser',   amount: 34.944 },
+                        { name: 'So Soft',  amount: 1.55 },
+                        { name: 'Staback',  amount: 1.03 },
+                        { name: 'Hefe',     amount: 1.55 },
+                        { name: 'Salz',     amount: 1.19 },
+                        { name: 'Öl',       amount: 0.52 },
+                        { name: 'Zucker',   amount: 0.52 }
+                    ],
+                    variants: [
+                        {
+                            name: 'Simit',
+                            percentage: 0,
+                            weights: [0.09],
+                            maxPerWeight: [400],
+                            stepPerWeight: [20]
+                        },
+                        {
+                            name: 'Ciabatta',
+                            percentage: 0,
+                            weights: [0.12],
+                            maxPerWeight: [800],
+                            stepPerWeight: [20]
+                        }
                     ]
                 };
                 saveData();
@@ -1725,18 +1751,34 @@
                     id: BASE_ID + 14,
                     name: 'Ciabatta',
                     category: 'Spezial',
-                    unit: 'Stück',
-                    unitWeight: 58.36/600,
-                    max: 1000,
-                    step: 50,
+                    unit: 'Multi',
+                    isMultiVariant: true,
+                    baseWeight: 58.36,
                     ingredients: [
-                        { name: 'WM 550',   amount: 52/600 },
-                        { name: 'So Soft',  amount: 1.55/600 },
-                        { name: 'Staback',  amount: 1.03/600 },
-                        { name: 'Hefe',     amount: 1.55/600 },
-                        { name: 'Salz',     amount: 1.19/600 },
-                        { name: 'Öl',       amount: 0.52/600 },
-                        { name: 'Zucker',   amount: 0.52/600 }
+                        { name: 'WM 550',   amount: 52 },
+                        { name: 'Wasser',   amount: 34.944 },
+                        { name: 'So Soft',  amount: 1.55 },
+                        { name: 'Staback',  amount: 1.03 },
+                        { name: 'Hefe',     amount: 1.55 },
+                        { name: 'Salz',     amount: 1.19 },
+                        { name: 'Öl',       amount: 0.52 },
+                        { name: 'Zucker',   amount: 0.52 }
+                    ],
+                    variants: [
+                        {
+                            name: 'Simit',
+                            percentage: 0,
+                            weights: [0.09],
+                            maxPerWeight: [400],
+                            stepPerWeight: [20]
+                        },
+                        {
+                            name: 'Ciabatta',
+                            percentage: 0,
+                            weights: [0.12],
+                            maxPerWeight: [800],
+                            stepPerWeight: [20]
+                        }
                     ]
                 },
                 {
