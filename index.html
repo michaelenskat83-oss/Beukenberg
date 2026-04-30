@@ -490,7 +490,12 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 28.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 30.04.2026</p>
+
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">30.04.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Spezial</strong>: <em>Ciabatta</em> — Berechnungsfehler behoben (baseWeight korrigiert: 58,36 → 93,304 kg)</li>
+                </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">28.04.2026</p>
                 <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -1268,7 +1273,7 @@
                     ...recipes[ciabattaIdx],
                     unit: 'Multi',
                     isMultiVariant: true,
-                    baseWeight: 58.36,
+                    baseWeight: 93.304,
                     unitWeight: undefined,
                     max: undefined,
                     step: undefined,
@@ -1299,6 +1304,13 @@
                         }
                     ]
                 };
+                saveData();
+            }
+
+            // Migration: Fix Ciabatta baseWeight (was 58.36, must be 93.304 = sum of ingredients)
+            const ciabattaFixIdx = recipes.findIndex(r => r.name === 'Ciabatta');
+            if (ciabattaFixIdx !== -1 && recipes[ciabattaFixIdx].baseWeight === 58.36) {
+                recipes[ciabattaFixIdx].baseWeight = 93.304;
                 saveData();
             }
 
@@ -1754,7 +1766,7 @@
                     category: 'Spezial',
                     unit: 'Multi',
                     isMultiVariant: true,
-                    baseWeight: 58.36,
+                    baseWeight: 93.304,
                     ingredients: [
                         { name: 'WM 550',   amount: 52 },
                         { name: 'Wasser',   amount: 34.944 },
