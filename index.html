@@ -490,7 +490,12 @@
         <div id="changelog-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; overflow-y:auto;">
             <div style="max-width:600px; margin:40px auto; background:#1a3d6b; border:1px solid rgba(151,164,195,0.4); border-radius:15px; padding:25px;">
                 <h2 style="color:#97a4c3; margin-bottom:20px;">📝 Was hat sich geändert?</h2>
-                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 30.04.2026</p>
+                <p style="color:#aaa; font-size:13px; margin-bottom:15px;">Stand: 01.05.2026</p>
+
+                <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">01.05.2026</p>
+                <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
+                    <li>Kategorie <strong>Brot</strong>: <em>Walnussknackerbrot</em> hinzugefügt (600 g/Brot, Slider bis 40 in 2er-Schritten, mit Kochstück)</li>
+                </ul>
 
                 <p style="color:#97a4c3; font-size:13px; font-weight:600; margin:10px 0 4px;">30.04.2026</p>
                 <ul style="color:#000000; line-height:2; padding-left:20px; margin-bottom:12px;">
@@ -1400,6 +1405,42 @@
             recipes = recipes.filter(r => !removedRecipes.includes(r.name));
             if (recipes.length !== beforeCount) saveData();
 
+            // Migration: Add Walnussknackerbrot if missing
+            const hasWalnussknackerbrot = recipes.some(r => r.name === 'Walnussknackerbrot');
+            if (!hasWalnussknackerbrot) {
+                recipes.push({
+                    id: BASE_ID + 120,
+                    name: 'Walnussknackerbrot',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 0.6,
+                    max: 40,
+                    step: 2,
+                    hasPremix: true,
+                    premix: {
+                        name: 'Kochstück',
+                        ingredients: [
+                            { name: 'WM 550',            amount: 1.5 * 0.6 / 22.38 },
+                            { name: 'Sonnenblumenkerne', amount: 1.5 * 0.6 / 22.38 },
+                            { name: 'Wasser',            amount: 4.5 * 0.6 / 22.38 }
+                        ],
+                        total: 7.5 * 0.6 / 22.38
+                    },
+                    ingredients: [
+                        { name: 'WM 550',     amount: 7.1 * 0.6 / 22.38 },
+                        { name: 'Pane Scuro', amount: 1.5 * 0.6 / 22.38 },
+                        { name: 'Wasser',     amount: 3.8 * 0.6 / 22.38 },
+                        { name: 'Staback',    amount: 0.22 * 0.6 / 22.38 },
+                        { name: 'Honig',      amount: 0.33 * 0.6 / 22.38 },
+                        { name: 'Salz',       amount: 0.28 * 0.6 / 22.38 },
+                        { name: 'Hefe',       amount: 0.15 * 0.6 / 22.38 },
+                        { name: 'Walnuss',    amount: 1.5 * 0.6 / 22.38 },
+                        { name: 'Kochstück',  amount: 7.5 * 0.6 / 22.38 }
+                    ]
+                });
+                saveData();
+            }
+
             // Migration: Update old Bauernbrot to new Bauern recipe
             const bauernIndex = recipes.findIndex(r => r.name === 'Bauernbrot' || r.name === 'Bauern');
             if (bauernIndex !== -1) {
@@ -1599,6 +1640,36 @@
                         { name: 'Hefe',        amount: 0.01 },
                         { name: 'Salz',        amount: 0.01 },
                         { name: 'Wiener Note', amount: 0.015 }
+                    ]
+                },
+                {
+                    id: BASE_ID + 120,
+                    name: 'Walnussknackerbrot',
+                    category: 'Brot',
+                    unit: 'Brote',
+                    unitWeight: 0.6,
+                    max: 40,
+                    step: 2,
+                    hasPremix: true,
+                    premix: {
+                        name: 'Kochstück',
+                        ingredients: [
+                            { name: 'WM 550',            amount: 1.5 * 0.6 / 22.38 },
+                            { name: 'Sonnenblumenkerne', amount: 1.5 * 0.6 / 22.38 },
+                            { name: 'Wasser',            amount: 4.5 * 0.6 / 22.38 }
+                        ],
+                        total: 7.5 * 0.6 / 22.38
+                    },
+                    ingredients: [
+                        { name: 'WM 550',     amount: 7.1 * 0.6 / 22.38 },
+                        { name: 'Pane Scuro', amount: 1.5 * 0.6 / 22.38 },
+                        { name: 'Wasser',     amount: 3.8 * 0.6 / 22.38 },
+                        { name: 'Staback',    amount: 0.22 * 0.6 / 22.38 },
+                        { name: 'Honig',      amount: 0.33 * 0.6 / 22.38 },
+                        { name: 'Salz',       amount: 0.28 * 0.6 / 22.38 },
+                        { name: 'Hefe',       amount: 0.15 * 0.6 / 22.38 },
+                        { name: 'Walnuss',    amount: 1.5 * 0.6 / 22.38 },
+                        { name: 'Kochstück',  amount: 7.5 * 0.6 / 22.38 }
                     ]
                 },
                 {
@@ -2315,16 +2386,26 @@
 
             const tbody = document.getElementById('ingredients-body');
             let total = 0;
+            let html = '';
 
-            tbody.innerHTML = currentRecipe.ingredients.map(ing => {
+            if (currentRecipe.hasPremix && currentRecipe.premix) {
+                html += `<tr style="background: rgba(151,164,195,0.15);"><td colspan="2"><strong>${currentRecipe.premix.name}</strong></td></tr>`;
+                currentRecipe.premix.ingredients.forEach(ing => {
+                    const calculated = Math.ceil(ing.amount * amount * 100) / 100;
+                    html += `<tr style="background: rgba(151,164,195,0.05);"><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+                });
+                const premixTotal = Math.ceil(currentRecipe.premix.total * amount * 100) / 100;
+                html += `<tr style="background: rgba(151,164,195,0.25);"><td><strong>${currentRecipe.premix.name} gesamt</strong></td><td><strong>${premixTotal.toFixed(2)} kg</strong></td></tr>`;
+                html += `<tr style="background: rgba(255,255,255,0.06);"><td colspan="2"><strong>Hauptteig</strong></td></tr>`;
+            }
+
+            currentRecipe.ingredients.forEach(ing => {
                 const calculated = Math.ceil(ing.amount * amount * 100) / 100;
                 total += calculated;
-                return `<tr>
-                    <td>${ing.name}</td>
-                    <td>${calculated.toFixed(2)} kg</td>
-                </tr>`;
-            }).join('');
+                html += `<tr><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+            });
 
+            tbody.innerHTML = html;
             document.getElementById('total-weight').textContent = `${total.toFixed(2)} kg`;
 
             // Blechanzeige
