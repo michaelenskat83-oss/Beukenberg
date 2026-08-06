@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Bäckerei">
@@ -544,7 +544,15 @@
         <div id="changelog-modal" class="modal-overlay" onclick="if (event.target === this) this.style.display = 'none'">
             <div class="modal-box">
                 <h2>📝 Was hat sich geändert?</h2>
-                <p class="modal-stand">Stand: 12.06.2026</p>
+                <p class="modal-stand">Stand: 06.08.2026</p>
+
+                <p class="modal-date">06.08.2026</p>
+                <ul>
+                    <li>Kategorie <strong>Spezial</strong>: <em>Küsten-Baguette</em> hinzugefügt (400 g/Stange, Slider bis 100 in 5er-Schritten, mit Kochstück aus Küstenbohnenmehl) — Wasser gegenüber dem Blattrezept um 0,3 l je Charge reduziert, damit der Teig fester wird (TA 172 % statt 175 %)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Toast mit So Soft</em> — Slider jetzt in 1er-Schritten statt 4er-Schritten (ab 1 Brot wählbar)</li>
+                    <li><strong>Zutat</strong>: <em>Extend Natural</em> wird nicht mehr verwendet — ersetzt durch <em>BF1</em> (50 % der bisherigen Menge) bei <em>Bauern</em> und <em>Mehrkorn</em></li>
+                    <li><strong>Bedienung</strong>: Zoomen (Pinch-to-Zoom) ist wieder möglich — vorher war das Vergrößern der Seite komplett gesperrt</li>
+                </ul>
 
                 <p class="modal-date">12.06.2026</p>
                 <ul>
@@ -764,7 +772,7 @@
                     { name: 'Salz', amount: 0.025 },
                     { name: 'Staback CL', amount: 0.025 },
                     { name: 'FrischeProfi', amount: 0.012 },
-                    { name: 'Extend Natural', amount: 0.018 },
+                    { name: 'BF1', amount: 0.009 },
                     { name: 'Fett', amount: 0.030 },
                     { name: 'Hefe', amount: 0.060 },
                     { name: 'Wasser', amount: 0.69 }
@@ -898,7 +906,7 @@
                 unit: 'Brote',
                 unitWeight: 0.85,
                 max: 40,
-                step: 4,
+                step: 1,
                 ingredients: [
                     { name: 'WM 550',      amount: 0.5 },
                     { name: 'Wasser',      amount: 0.3 },
@@ -1147,6 +1155,34 @@
                 ]
             },
             {
+                id: 121,
+                name: 'Küsten-Baguette',
+                category: 'Spezial',
+                unit: 'Stangen',
+                unitWeight: 0.4,
+                max: 100,
+                step: 5,
+                hasPremix: true,
+                // Charge 17,7 kg — Blattrezept mit 0,3 l weniger Wasser im Hauptteig,
+                // damit der Teig fester wird (TA 172 statt 175). Kochstück bleibt 1:4.
+                premix: {
+                    name: 'Kochstück',
+                    ingredients: [
+                        { name: 'Küstenbohnenmehl', amount: 1.0 * 0.4 / 17.7 },
+                        { name: 'Wasser',           amount: 4.0 * 0.4 / 17.7 }
+                    ],
+                    total: 5.0 * 0.4 / 17.7
+                },
+                ingredients: [
+                    { name: 'Bonjour Roland Mehl', amount: 9.0  * 0.4 / 17.7 },
+                    { name: 'Brötchenbackmittel',  amount: 0.1  * 0.4 / 17.7 },
+                    { name: 'Hefe',                amount: 0.15 * 0.4 / 17.7 },
+                    { name: 'Salz',                amount: 0.25 * 0.4 / 17.7 },
+                    { name: 'Wasser',              amount: 3.2  * 0.4 / 17.7 },
+                    { name: 'Kochstück',           amount: 5.0  * 0.4 / 17.7 }
+                ]
+            },
+            {
                 id: 15,
                 name: 'Roggensauer',
                 category: 'Vorteig',
@@ -1232,7 +1268,7 @@
                     { name: 'BAS-T', amount: 0.8 },
                     { name: 'Staback', amount: 1 },
                     { name: 'FrischeProfi', amount: 1 },
-                    { name: 'Extend Natural', amount: 1.5 },
+                    { name: 'BF1', amount: 0.75 },
                     { name: 'Hefe', amount: 5 }
                 ],
                 variants: [
@@ -1573,7 +1609,8 @@
             'WM 550', 'RM 1150', 'KOMPLET mein VKB',
             'Kornmix', 'Roggenmix', 'Dinkelmix 33%',
             'Maxikrüstchen', 'Maxi - Sunny', 'Sabia',
-            'Pane Scuro', '1a Baguette'
+            'Pane Scuro', '1a Baguette',
+            'Bonjour Roland Mehl', 'Küstenbohnenmehl'
         ]);
 
         // Vorstufen mit eigenem Mehl-/Wasseranteil — Verhältnisse entsprechen
