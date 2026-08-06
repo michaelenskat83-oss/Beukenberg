@@ -552,6 +552,7 @@
                     <li>Kategorie <strong>Brot</strong>: <em>Toast mit So Soft</em> — Slider jetzt in 1er-Schritten statt 4er-Schritten (ab 1 Brot wählbar)</li>
                     <li><strong>Zutat</strong>: <em>Extend Natural</em> wird nicht mehr verwendet — ersetzt durch <em>BF1</em> (50 % der bisherigen Menge) bei <em>Bauern</em> und <em>Mehrkorn</em></li>
                     <li><strong>Bedienung</strong>: Zoomen (Pinch-to-Zoom) ist wieder möglich — vorher war das Vergrößern der Seite komplett gesperrt</li>
+                    <li><strong>Bugfix</strong>: Slider verschoben sich beim Zoomen mit zwei Fingern versehentlich — der Schutz vor ungewolltem Verstellen erkennt jetzt auch Zwei-Finger-Gesten</li>
                 </ul>
 
                 <p class="modal-date">12.06.2026</p>
@@ -1376,6 +1377,17 @@
                 isScrolling = false;
             }, { passive: true });
             slider.addEventListener('touchmove', e => {
+                // Zweiter Finger im Spiel (Pinch-Zoom) — niemals als Slider-Zug werten,
+                // auch wenn der erste Finger auf dem Slider gerade eher horizontal wandert.
+                if (e.touches.length > 1) {
+                    decided = true;
+                    isScrolling = true;
+                    if (slider.value !== savedValue) {
+                        slider.value = savedValue;
+                        slider.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                    return;
+                }
                 if (decided) {
                     if (isScrolling && slider.value !== savedValue) {
                         slider.value = savedValue;
