@@ -1363,6 +1363,24 @@
         let currentCategory = '';
         let currentRecipe = null;
 
+        // Merkt sich pro Rezept-ID die zuletzt eingestellten Slider-Werte,
+        // damit sie beim erneuten Öffnen der App wiederhergestellt werden.
+        const SLIDER_STATE_KEY = 'rezeptrechner_slider_state';
+
+        function loadSliderState() {
+            try {
+                return JSON.parse(localStorage.getItem(SLIDER_STATE_KEY) || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveSliderState(recipeId, data) {
+            const state = loadSliderState();
+            state[recipeId] = data;
+            localStorage.setItem(SLIDER_STATE_KEY, JSON.stringify(state));
+        }
+
         // Verhindert versehentliches Verschieben von Slidern beim Scrollen.
         // Wenn die Geste überwiegend vertikal ist, wird der Slider-Wert zurückgesetzt.
         function applyScrollSafeSlider(slider) {
@@ -1666,7 +1684,11 @@
             slider.max = currentRecipe.max;
             slider.step = step;
             slider.min = step;
-            slider.value = step;
+
+            const saved = loadSliderState()[currentRecipe.id];
+            slider.value = (saved && saved.type === 'standard' && typeof saved.value === 'number')
+                ? Math.min(Math.max(saved.value, step), currentRecipe.max)
+                : step;
 
             document.getElementById('standard-slider-container').style.display = 'block';
             document.getElementById('multi-variant-container').style.display = 'none';
@@ -1683,6 +1705,9 @@
             const container = document.getElementById('multi-variant-sliders');
             const isTrayBased = currentRecipe.isTrayBased || false;
             let html = '';
+
+            const savedMulti = loadSliderState()[currentRecipe.id];
+            const savedValues = (savedMulti && savedMulti.type === 'multi' && savedMulti.values) ? savedMulti.values : {};
 
             currentRecipe.variants.forEach((variant, vIndex) => {
                 variant.weights.forEach((weight, wIndex) => {
@@ -1704,6 +1729,9 @@
                     const sliderStep = variant.stepPerWeight && variant.stepPerWeight[wIndex] !== undefined
                         ? variant.stepPerWeight[wIndex]
                         : 1;
+                    const sliderValue = typeof savedValues[sliderId] === 'number'
+                        ? Math.min(Math.max(savedValues[sliderId], 0), sliderMax)
+                        : 0;
 
                     html += `
                         <div class="slider-container">
@@ -1712,7 +1740,7 @@
                                 <span class="slider-value" id="${sliderId}-value">0 ${unitText}</span>
                             </div>
                             <input type="range" id="${sliderId}" class="multi-slider"
-                                min="0" max="${sliderMax}" step="${sliderStep}" value="0"
+                                min="0" max="${sliderMax}" step="${sliderStep}" value="${sliderValue}"
                                 data-variant="${vIndex}" data-weight="${wIndex}"
                                 oninput="updateMultiVariantCalculation()">
                         </div>
@@ -1740,6 +1768,7 @@
 
             const amount = parseInt(document.getElementById('amount-slider').value);
             document.getElementById('slider-value').textContent = amount;
+            saveSliderState(currentRecipe.id, { type: 'standard', value: amount });
 
             const tbody = document.getElementById('ingredients-body');
             let total = 0;
@@ -1786,9 +1815,11 @@
             let totalDoughNeeded = 0;
             const variantDough = {}; // Teigmenge je Variante
             const variantAdd = {};   // Zusatzmenge (Rosinen, Hagelzucker, ...) je Variante
+            const sliderValues = {};
 
             sliders.forEach(slider => {
                 const amount = parseInt(slider.value);
+                sliderValues[slider.id] = amount;
                 const vIndex = parseInt(slider.dataset.variant);
                 const variant = currentRecipe.variants[vIndex];
 
@@ -1815,6 +1846,8 @@
                     variantAdd[variant.name] += totalProductWeight - dough;
                 }
             });
+
+            saveSliderState(currentRecipe.id, { type: 'multi', values: sliderValues });
 
             const tbody = document.getElementById('ingredients-body');
             let html = '';
