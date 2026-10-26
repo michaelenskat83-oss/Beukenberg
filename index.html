@@ -59,6 +59,16 @@
             font-weight: 700;
         }
 
+        /* Unterseiten: schmale Kopfzeile, damit der Rechner weiter oben beginnt */
+        body.sub header {
+            padding: 10px 20px;
+            margin-bottom: 14px;
+        }
+
+        body.sub h1 {
+            font-size: 18px;
+        }
+
         h2, h3 {
             color: #27508a;
         }
@@ -98,6 +108,28 @@
 
         .menu-btn .emoji {
             font-size: 28px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #fdf1de; /* warmer Kreis hinter dem Symbol */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .footer-link {
+            display: block;
+            margin: 4px auto 0;
+            background: none;
+            border: none;
+            color: #5a6b85;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            padding: 8px 12px;
         }
 
         .screen {
@@ -151,6 +183,25 @@
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             transition: background 0.2s, border-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recipe-name {
+            flex: 1;
+        }
+
+        .recipe-meta {
+            color: #5a6b85;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .recipe-chevron {
+            color: #3265a6;
+            font-size: 22px;
+            line-height: 1;
         }
 
         .recipe-btn:active {
@@ -179,8 +230,35 @@
             color: #1a2a4a;
         }
 
+        /* Slider mit −/+ zum genauen Einstellen */
+        .slider-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .step-btn {
+            flex: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: #e8eff9;
+            color: #27508a;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .step-btn:active {
+            background: #c3d2e6;
+        }
+
         input[type="range"] {
             width: 100%;
+            flex: 1;
             height: 8px;
             border-radius: 5px;
             background: #c3d2e6;
@@ -229,10 +307,31 @@
             font-weight: 700;
         }
 
-        .total-row {
+        .ingredients-table th:first-child { border-radius: 10px 0 0 0; }
+        .ingredients-table th:last-child  { border-radius: 0 10px 0 0; }
+
+        /* Mengen rechtsbündig mit gleich breiten Ziffern — Kommas stehen untereinander */
+        .ingredients-table th:last-child,
+        .ingredients-table td:last-child:not([colspan]) {
+            text-align: right;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .ingredients-table td:last-child:not([colspan]) {
+            font-weight: 600;
+            color: #1a2a4a;
+        }
+
+        .total-row td {
             font-weight: 700;
             background: #e8eff9;
             font-size: 18px;
+            color: #27508a;
+            border-top: 2px solid #3265a6;
+        }
+
+        .ingredients-table .total-row td:last-child {
             color: #27508a;
         }
 
@@ -354,6 +453,29 @@
             border-color: #3265a6;
         }
 
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: #25D366;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.35);
+        }
+
+        .share-btn:active {
+            opacity: 0.85;
+        }
+
         /* Changelog Modal */
         .modal-overlay {
             display: none;
@@ -430,7 +552,20 @@
                 min-height: 120px;
             }
 
-            .menu-btn .emoji { font-size: 42px; }
+            .menu-btn .emoji { font-size: 42px; width: 80px; height: 80px; }
+
+            body.sub h1 { font-size: 24px; }
+            .footer-link { font-size: 17px; }
+            .recipe-meta { font-size: 16px; }
+            .recipe-chevron { font-size: 28px; }
+
+            .step-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 32px;
+            }
+
+            .share-btn { font-size: 20px; padding: 18px; }
 
             .back-btn {
                 font-size: 20px;
@@ -513,14 +648,6 @@
                     <span class="emoji">🥖</span>
                     Brötchen
                 </button>
-                <button class="menu-btn" onclick="showCategory('Plunder')">
-                    <span class="emoji">🥐</span>
-                    Plunder
-                </button>
-                <button class="menu-btn" onclick="showCategory('Kuchen')">
-                    <span class="emoji">🧁</span>
-                    Kuchen
-                </button>
                 <button class="menu-btn" onclick="showCategory('Spezial')">
                     <span class="emoji">⭐</span>
                     Spezial
@@ -533,18 +660,26 @@
                     <span class="emoji">📋</span>
                     Brot Tracker
                 </button>
-                <button class="menu-btn" onclick="showChangelog()" style="grid-column: 1 / -1;">
-                    <span class="emoji">📝</span>
-                    Was hat sich geändert?
-                </button>
             </div>
+            <button class="footer-link" onclick="showChangelog()">📝 Was hat sich geändert?</button>
         </div>
 
         <!-- Changelog Modal (Tipp auf den dunklen Hintergrund schließt) -->
         <div id="changelog-modal" class="modal-overlay" onclick="if (event.target === this) this.style.display = 'none'">
             <div class="modal-box">
                 <h2>📝 Was hat sich geändert?</h2>
-                <p class="modal-stand">Stand: 06.08.2026</p>
+                <p class="modal-stand">Stand: 26.10.2026</p>
+
+                <p class="modal-date">26.10.2026</p>
+                <ul>
+                    <li>Kategorie <strong>Brot</strong>: <em>Blankenstein</em>, <em>Dinkelvollkornbrot</em> und <em>Roggenvollkornbrot</em> — Kastengewicht auf 5 kg geändert (2 Brote à 2,5 kg pro Kasten)</li>
+                    <li>Kategorie <strong>Brot</strong>: <em>Mehrkorn</em> — Chargengewicht korrigiert (153,3 statt 154,05 kg), Mengen waren rund 0,5 % zu knapp</li>
+                    <li>Kategorien <strong>Plunder</strong> und <strong>Kuchen</strong> entfernt (inkl. <em>Plunderteig Grundrezept</em>)</li>
+                    <li><strong>Rechner</strong>: −/+ Knöpfe neben jedem Slider zum genauen Einstellen</li>
+                    <li><strong>Rechner</strong>: Mengen mit Komma (8,25 statt 8.25), rechtsbündig und fett — „kg“ steht nur noch im Spaltenkopf</li>
+                    <li><strong>Rezeptliste</strong>: Stückgewicht rechts neben jedem Rezept</li>
+                    <li><strong>Design</strong>: Symbole im Hauptmenü mit warmem Kreis, schmalere Kopfzeile auf Unterseiten, „Was hat sich geändert?“ als kleiner Link, WhatsApp-Knopf mit Beschriftung</li>
+                </ul>
 
                 <p class="modal-date">06.08.2026</p>
                 <ul>
@@ -694,7 +829,11 @@
                     <span id="slider-label-text">Anzahl:</span>
                     <span class="slider-value" id="slider-value">1</span>
                 </div>
-                <input type="range" id="amount-slider" min="1" max="10" value="1" oninput="updateCalculation()">
+                <div class="slider-row">
+                    <button class="step-btn" onclick="nudgeSlider('amount-slider', -1)" aria-label="weniger">−</button>
+                    <input type="range" id="amount-slider" min="1" max="10" value="1" oninput="updateCalculation()">
+                    <button class="step-btn" onclick="nudgeSlider('amount-slider', 1)" aria-label="mehr">+</button>
+                </div>
             </div>
 
             <!-- Blech-Anzeige (nur bei Rezepten mit traySize) -->
@@ -716,7 +855,7 @@
                 <tfoot>
                     <tr class="total-row">
                         <td>Gesamt</td>
-                        <td id="total-weight">0.00 kg</td>
+                        <td id="total-weight">0,00</td>
                     </tr>
                 </tfoot>
             </table>
@@ -728,10 +867,11 @@
             <h2 style="margin-bottom: 5px;">📋 Brot Tracker</h2>
             <p id="tracker-date"></p>
             <div id="tracker-list"></div>
-            <button onclick="shareBrotTracker()" style="margin-top: 20px; background: #25D366; border: none; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(37,211,102,0.4); margin-left: auto; margin-right: auto;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="#fff">
+            <button class="share-btn" onclick="shareBrotTracker()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="#fff">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
+                Per WhatsApp senden
             </button>
         </div>
     </div>
@@ -859,16 +999,16 @@
                 name: 'Blankenstein',
                 category: 'Brot',
                 unit: 'Kästen',
-                unitWeight: 4.6,
+                unitWeight: 5,
                 max: 15,
                 step: 1,
                 ingredients: [
-                    { name: 'Roggenvollkorn', amount: 4.6 * 70   / 183.8 },
-                    { name: 'Weizenvollkorn', amount: 4.6 * 30   / 183.8 },
-                    { name: 'Hefe',           amount: 4.6 * 2    / 183.8 },
-                    { name: 'Salz',           amount: 4.6 * 0.8  / 183.8 },
-                    { name: 'Staback',        amount: 4.6 * 1    / 183.8 },
-                    { name: 'Wasser',         amount: 4.6 * 80   / 183.8 }
+                    { name: 'Roggenvollkorn', amount: 5 * 70   / 183.8 },
+                    { name: 'Weizenvollkorn', amount: 5 * 30   / 183.8 },
+                    { name: 'Hefe',           amount: 5 * 2    / 183.8 },
+                    { name: 'Salz',           amount: 5 * 0.8  / 183.8 },
+                    { name: 'Staback',        amount: 5 * 1    / 183.8 },
+                    { name: 'Wasser',         amount: 5 * 80   / 183.8 }
                 ]
             },
             {
@@ -876,14 +1016,14 @@
                 name: 'Roggenvollkornbrot',
                 category: 'Brot',
                 unit: 'Kästen',
-                unitWeight: 4.6,
+                unitWeight: 5,
                 max: 15,
                 step: 1,
                 ingredients: [
-                    { name: 'Roggenvollkorn', amount: 4.6 * 100  / 184.7 },
-                    { name: 'Wasser',         amount: 4.6 * 79.3 / 184.7 },
-                    { name: 'Hefe',           amount: 4.6 * 2.6  / 184.7 },
-                    { name: 'Salz',           amount: 4.6 * 2.8  / 184.7 }
+                    { name: 'Roggenvollkorn', amount: 5 * 100  / 184.7 },
+                    { name: 'Wasser',         amount: 5 * 79.3 / 184.7 },
+                    { name: 'Hefe',           amount: 5 * 2.6  / 184.7 },
+                    { name: 'Salz',           amount: 5 * 2.8  / 184.7 }
                 ]
             },
             {
@@ -891,13 +1031,13 @@
                 name: 'Dinkelvollkornbrot',
                 category: 'Brot',
                 unit: 'Kästen',
-                unitWeight: 4.6,
+                unitWeight: 5,
                 max: 15,
                 step: 1,
                 ingredients: [
-                    { name: 'KOMPLET mein VKB', amount: 14.29 * 4.6 / 24.55 },
-                    { name: 'Hefe',             amount: 0.26  * 4.6 / 24.55 },
-                    { name: 'Wasser',           amount: 10    * 4.6 / 24.55 }
+                    { name: 'KOMPLET mein VKB', amount: 14.29 * 5 / 24.55 },
+                    { name: 'Hefe',             amount: 0.26  * 5 / 24.55 },
+                    { name: 'Wasser',           amount: 10    * 5 / 24.55 }
                 ]
             },
             {
@@ -1090,23 +1230,6 @@
                 ]
             },
             {
-                id: 7,
-                name: 'Plunderteig Grundrezept',
-                category: 'Plunder',
-                unit: 'Bleche',
-                unitWeight: 1.0,
-                max: 50,
-                ingredients: [
-                    { name: 'WM 550', amount: 1.0 },
-                    { name: 'Milch', amount: 0.4 },
-                    { name: 'Butter', amount: 0.5 },
-                    { name: 'Zucker', amount: 0.15 },
-                    { name: 'Eier', amount: 0.15 },
-                    { name: 'Hefe', amount: 0.025 },
-                    { name: 'Salz', amount: 0.015 }
-                ]
-            },
-            {
                 id: 14,
                 name: 'Ciabatta',
                 category: 'Spezial',
@@ -1250,7 +1373,7 @@
                 unit: 'Multi',
                 max: 150,
                 isMultiVariant: true,
-                baseWeight: 154.05,
+                baseWeight: 153.3, // Summe aus Mischung (50) + Hauptteig (103,3)
                 hasPremix: true,
                 premix: {
                     name: 'Mehrkorn-Mischung',
@@ -1425,10 +1548,31 @@
             }, { passive: true });
         }
 
-        // Navigation
-        function showMainMenu() {
+        // −/+ neben dem Slider: einen Schritt weiter, innerhalb der Grenzen
+        function nudgeSlider(id, dir) {
+            const slider = document.getElementById(id);
+            const step = Number(slider.step) || 1;
+            const next = Math.min(Math.max(Number(slider.value) + dir * step, Number(slider.min)), Number(slider.max));
+            if (next === Number(slider.value)) return;
+            slider.value = next;
+            slider.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+
+        // Kilo-Angabe mit deutschem Komma, z. B. 8,25
+        function fmt(value) {
+            return value.toFixed(2).replace('.', ',');
+        }
+
+        // Navigation — Unterseiten bekommen eine schmalere Kopfzeile
+        function showScreen(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('main-menu').classList.add('active');
+            document.getElementById(id).classList.add('active');
+            document.body.classList.toggle('sub', id !== 'main-menu');
+            window.scrollTo(0, 0);
+        }
+
+        function showMainMenu() {
+            showScreen('main-menu');
         }
 
         function showChangelog() {
@@ -1529,8 +1673,7 @@
             });
 
             container.innerHTML = html;
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('brot-tracker-screen').classList.add('active');
+            showScreen('brot-tracker-screen');
         }
 
         function shareBrotTracker() {
@@ -1594,9 +1737,20 @@
         // ============================================================
         // Kategorie & Rechner
         // ============================================================
+        const CATEGORY_ICONS = { 'Brot': '🍞', 'Brötchen': '🥖', 'Spezial': '⭐', 'Vorteig': '🧪' };
+
+        // Kurzinfo rechts in der Rezeptliste, z. B. "2,2 kg" oder "70 g"
+        function recipeMeta(recipe) {
+            if (recipe.isMultiVariant) return 'Varianten';
+            if (recipe.unit === 'kg' || !recipe.unitWeight) return '';
+            return recipe.unitWeight < 1
+                ? `${Math.round(recipe.unitWeight * 1000)} g`
+                : `${String(recipe.unitWeight).replace('.', ',')} kg`;
+        }
+
         function showCategory(category) {
             currentCategory = category;
-            document.getElementById('category-title').textContent = category;
+            document.getElementById('category-title').textContent = `${CATEGORY_ICONS[category] || ''} ${category}`.trim();
 
             const categoryRecipes = recipes.filter(r => r.category === category).sort((a, b) => a.name.localeCompare(b.name, 'de'));
             const recipeList = document.getElementById('recipe-list');
@@ -1605,12 +1759,15 @@
                 recipeList.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>Keine Rezepte in dieser Kategorie</p></div>';
             } else {
                 recipeList.innerHTML = categoryRecipes.map(recipe =>
-                    `<button class="recipe-btn" onclick="showCalculator(${recipe.id})">${recipe.name}</button>`
+                    `<button class="recipe-btn" onclick="showCalculator(${recipe.id})">
+                        <span class="recipe-name">${recipe.name}</span>
+                        <span class="recipe-meta">${recipeMeta(recipe)}</span>
+                        <span class="recipe-chevron">›</span>
+                    </button>`
                 ).join('');
             }
 
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('category-screen').classList.add('active');
+            showScreen('category-screen');
         }
 
         function showCalculator(recipeId) {
@@ -1629,8 +1786,7 @@
                 showStandardCalculator();
             }
 
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('calculator-screen').classList.add('active');
+            showScreen('calculator-screen');
         }
 
         // Zutaten, die für die TA-Berechnung als Mehl zählen (exakte Namen).
@@ -1739,10 +1895,14 @@
                                 <span>${labelText}:</span>
                                 <span class="slider-value" id="${sliderId}-value">0 ${unitText}</span>
                             </div>
-                            <input type="range" id="${sliderId}" class="multi-slider"
-                                min="0" max="${sliderMax}" step="${sliderStep}" value="${sliderValue}"
-                                data-variant="${vIndex}" data-weight="${wIndex}"
-                                oninput="updateMultiVariantCalculation()">
+                            <div class="slider-row">
+                                <button class="step-btn" onclick="nudgeSlider('${sliderId}', -1)" aria-label="weniger">−</button>
+                                <input type="range" id="${sliderId}" class="multi-slider"
+                                    min="0" max="${sliderMax}" step="${sliderStep}" value="${sliderValue}"
+                                    data-variant="${vIndex}" data-weight="${wIndex}"
+                                    oninput="updateMultiVariantCalculation()">
+                                <button class="step-btn" onclick="nudgeSlider('${sliderId}', 1)" aria-label="mehr">+</button>
+                            </div>
                         </div>
                     `;
                 });
@@ -1778,21 +1938,21 @@
                 html += `<tr class="row-section"><td colspan="2"><strong>${currentRecipe.premix.name}</strong></td></tr>`;
                 currentRecipe.premix.ingredients.forEach(ing => {
                     const calculated = roundUp2(ing.amount * amount);
-                    html += `<tr class="row-sub"><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+                    html += `<tr class="row-sub"><td>${ing.name}</td><td>${fmt(calculated)}</td></tr>`;
                 });
                 const premixTotal = roundUp2(currentRecipe.premix.total * amount);
-                html += `<tr class="row-subtotal"><td><strong>${currentRecipe.premix.name} gesamt</strong></td><td><strong>${premixTotal.toFixed(2)} kg</strong></td></tr>`;
+                html += `<tr class="row-subtotal"><td><strong>${currentRecipe.premix.name} gesamt</strong></td><td><strong>${fmt(premixTotal)}</strong></td></tr>`;
                 html += `<tr class="row-section"><td colspan="2"><strong>Hauptteig</strong></td></tr>`;
             }
 
             currentRecipe.ingredients.forEach(ing => {
                 const calculated = roundUp2(ing.amount * amount);
                 total += calculated;
-                html += `<tr><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+                html += `<tr><td>${ing.name}</td><td>${fmt(calculated)}</td></tr>`;
             });
 
             tbody.innerHTML = html;
-            document.getElementById('total-weight').textContent = `${total.toFixed(2)} kg`;
+            document.getElementById('total-weight').textContent = `${fmt(total)}`;
 
             // Blechanzeige
             const trayInfo = document.getElementById('tray-info');
@@ -1872,25 +2032,25 @@
                     index += 1;
 
                     html += `<tr class="row-recipe">
-                        <td colspan="2"><strong>📝 Rezept ${index} - ${variantName}</strong> (${doughAmount.toFixed(2)} kg Teig)</td>
+                        <td colspan="2"><strong>📝 Rezept ${index} - ${variantName}</strong> (${fmt(doughAmount)} kg Teig)</td>
                     </tr>`;
 
                     let subtotal = 0;
                     currentRecipe.ingredients.forEach(ing => {
                         const calculated = roundUp2(ing.amount * batchMultiplier);
                         subtotal += calculated;
-                        html += `<tr><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+                        html += `<tr><td>${ing.name}</td><td>${fmt(calculated)}</td></tr>`;
                     });
 
                     if (additionAmount > 0.0001) {
                         const additionRounded = roundUp2(additionAmount);
                         subtotal += additionRounded;
-                        html += `<tr class="row-sub"><td>${variantName}</td><td>${additionRounded.toFixed(2)} kg</td></tr>`;
+                        html += `<tr class="row-sub"><td>${variantName}</td><td>${fmt(additionRounded)}</td></tr>`;
                     }
 
                     html += `<tr class="row-subtotal">
                         <td><strong>Gesamt Rezept ${index}</strong></td>
-                        <td><strong>${subtotal.toFixed(2)} kg</strong></td>
+                        <td><strong>${fmt(subtotal)}</strong></td>
                     </tr>`;
                     totalWeight += subtotal;
                 });
@@ -1904,17 +2064,17 @@
                     currentRecipe.premix.ingredients.forEach(ing => {
                         const calculated = roundUp2(ing.amount * batchMultiplier);
                         totalWeight += calculated;
-                        html += `<tr class="row-sub"><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+                        html += `<tr class="row-sub"><td>${ing.name}</td><td>${fmt(calculated)}</td></tr>`;
                     });
                     const premixTotal = roundUp2(currentRecipe.premix.total * batchMultiplier);
-                    html += `<tr class="row-subtotal"><td><strong>${currentRecipe.premix.name} gesamt</strong></td><td><strong>${premixTotal.toFixed(2)} kg</strong></td></tr>`;
+                    html += `<tr class="row-subtotal"><td><strong>${currentRecipe.premix.name} gesamt</strong></td><td><strong>${fmt(premixTotal)}</strong></td></tr>`;
                 }
 
                 html += '<tr class="row-section"><td colspan="2"><strong>Hauptteig</strong></td></tr>';
                 currentRecipe.ingredients.forEach(ing => {
                     const calculated = roundUp2(ing.amount * batchMultiplier);
                     totalWeight += calculated;
-                    html += `<tr><td>${ing.name}</td><td>${calculated.toFixed(2)} kg</td></tr>`;
+                    html += `<tr><td>${ing.name}</td><td>${fmt(calculated)}</td></tr>`;
                 });
 
                 // Zusätze (Rosinen, Hagelzucker, ...) mit Teig-Aufschlüsselung
@@ -1927,14 +2087,14 @@
                         totalWeight += additionRounded;
 
                         html += `<tr class="row-sub"><td colspan="2"><strong>${name}:</strong></td></tr>`;
-                        html += `<tr class="row-sub"><td style="padding-left: 20px;">Teig</td><td>${doughRounded.toFixed(2)} kg</td></tr>`;
-                        html += `<tr class="row-sub"><td style="padding-left: 20px;">${name}</td><td>${additionRounded.toFixed(2)} kg</td></tr>`;
+                        html += `<tr class="row-sub"><td style="padding-left: 20px;">Teig</td><td>${fmt(doughRounded)}</td></tr>`;
+                        html += `<tr class="row-sub"><td style="padding-left: 20px;">${name}</td><td>${fmt(additionRounded)}</td></tr>`;
                     });
                 }
             }
 
             tbody.innerHTML = html;
-            document.getElementById('total-weight').textContent = `${totalWeight.toFixed(2)} kg`;
+            document.getElementById('total-weight').textContent = `${fmt(totalWeight)}`;
         }
 
         // Initialisierung beim Laden
